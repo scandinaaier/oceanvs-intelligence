@@ -4,7 +4,9 @@ interface ImportMetaEnv {
   readonly VITE_NEWSDATA_API_KEY?: string
   readonly VITE_EXCHANGERATE_KEY?: string
   readonly VITE_OPEN_METEO_KEY?: string
-  readonly VITE_AUTHORIZED_EMAILS?: string
+  readonly VITE_SUPABASE_URL?: string
+  readonly VITE_SUPABASE_ANON_KEY?: string
+  readonly VITE_FORMSPREE_ID?: string
 }
 
 interface ImportMeta {

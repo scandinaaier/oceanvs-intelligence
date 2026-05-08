@@ -18,9 +18,3 @@ export const STALE_TIMES = {
   static: Infinity
 }
 
-export const AUTHORIZED_EMAILS = (
-  import.meta.env.VITE_AUTHORIZED_EMAILS ?? 'tauriq@oceanvs.com,andy@oceanvs.com'
-)
-  .split(',')
-  .map((s: string) => s.trim().toLowerCase())
-  .filter(Boolean)

@@ -11,7 +11,14 @@ import { GapMarkets } from './pages/sections/GapMarkets'
 import { LmiDetail } from './pages/sections/LmiDetail'
 
 const RequireAuth: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const { email } = useAuth()
+  const { email, loading } = useAuth()
+  if (loading) {
+    return (
+      <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--bg)' }}>
+        <span className="eyebrow">Loading…</span>
+      </div>
+    )
+  }
   if (!email) return <Navigate to="/login" replace />
   return <>{children}</>
 }

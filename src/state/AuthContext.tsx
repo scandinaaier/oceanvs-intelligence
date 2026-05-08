@@ -1,39 +1,55 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
-import { AUTHORIZED_EMAILS } from '../config/api'
+import type { Session, User } from '@supabase/supabase-js'
+import { supabase } from '../lib/supabase'
 
 interface AuthState {
+  user: User | null
+  session: Session | null
   email: string | null
-  login: (email: string) => { ok: true } | { ok: false; reason: string }
-  logout: () => void
+  loading: boolean
+  signIn: (email: string, password: string) => Promise<{ ok: true } | { ok: false; reason: string }>
+  signOut: () => Promise<void>
 }
 
 const Ctx = createContext<AuthState | null>(null)
 
-const STORAGE_KEY = 'oceanvs_auth_email'
-
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [email, setEmail] = useState<string | null>(() => localStorage.getItem(STORAGE_KEY))
+  const [user, setUser] = useState<User | null>(null)
+  const [session, setSession] = useState<Session | null>(null)
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    if (email) localStorage.setItem(STORAGE_KEY, email)
-    else localStorage.removeItem(STORAGE_KEY)
-  }, [email])
+    supabase.auth.getSession().then(({ data }) => {
+      setSession(data.session)
+      setUser(data.session?.user ?? null)
+      setLoading(false)
+    })
 
-  const login = (raw: string) => {
-    const e = raw.trim().toLowerCase()
-    if (!e || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(e)) {
-      return { ok: false as const, reason: 'Please enter a valid email.' }
+    const { data: sub } = supabase.auth.onAuthStateChange((_event, s) => {
+      setSession(s)
+      setUser(s?.user ?? null)
+    })
+
+    return () => { sub.subscription.unsubscribe() }
+  }, [])
+
+  const signIn = async (email: string, password: string) => {
+    const { error } = await supabase.auth.signInWithPassword({ email: email.trim().toLowerCase(), password })
+    if (error) {
+      return { ok: false as const, reason: error.message }
     }
-    if (!AUTHORIZED_EMAILS.includes(e)) {
-      return { ok: false as const, reason: 'This email is not authorised. Contact the Oceanvs team for access.' }
-    }
-    setEmail(e)
     return { ok: true as const }
   }
 
-  const logout = () => setEmail(null)
+  const signOut = async () => {
+    await supabase.auth.signOut()
+  }
 
-  return <Ctx.Provider value={{ email, login, logout }}>{children}</Ctx.Provider>
+  return (
+    <Ctx.Provider value={{ user, session, email: user?.email ?? null, loading, signIn, signOut }}>
+      {children}
+    </Ctx.Provider>
+  )
 }
 
 export const useAuth = (): AuthState => {

@@ -6,10 +6,10 @@ import type { Vertical } from '../../types'
 
 export const TopBar: React.FC = () => {
   const { city, vertical, setCity, setVertical } = useApp()
-  const { logout, email } = useAuth()
+  const { signOut, email } = useAuth()
 
-  const onSignOut = () => {
-    logout()
+  const onSignOut = async () => {
+    await signOut()
     window.location.href = '/'
   }
 

@@ -3,19 +3,23 @@ import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../state/AuthContext'
 
 export const Login: React.FC = () => {
-  const { login, email: existing } = useAuth()
+  const { signIn, email: existing, loading } = useAuth()
   const navigate = useNavigate()
   const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
   const [error, setError] = useState<string | null>(null)
+  const [submitting, setSubmitting] = useState(false)
 
   useEffect(() => {
-    if (existing) navigate('/dashboard', { replace: true })
-  }, [existing, navigate])
+    if (!loading && existing) navigate('/dashboard', { replace: true })
+  }, [existing, loading, navigate])
 
-  const onSubmit = (e: React.FormEvent) => {
+  const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setError(null)
-    const r = login(email)
+    setSubmitting(true)
+    const r = await signIn(email, password)
+    setSubmitting(false)
     if (r.ok) navigate('/dashboard', { replace: true })
     else setError(r.reason)
   }
@@ -41,35 +45,57 @@ export const Login: React.FC = () => {
         </div>
 
         <form onSubmit={onSubmit} className="flex flex-col items-center gap-3 w-full">
-          <div
-            className="flex items-center w-full rounded-full overflow-hidden backdrop-blur"
+          <input
+            autoFocus
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Email"
+            required
+            autoComplete="email"
+            className="w-full bg-transparent border-0 outline-none rounded-full backdrop-blur"
             style={{
+              color: 'rgba(255,255,255,0.92)',
+              fontSize: 12,
+              letterSpacing: '0.05em',
+              height: 44,
+              padding: '0 24px',
               background: 'rgba(255,255,255,0.05)',
               border: '1px solid rgba(91,164,207,0.32)'
             }}
+          />
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Password"
+            required
+            autoComplete="current-password"
+            className="w-full bg-transparent border-0 outline-none rounded-full backdrop-blur"
+            style={{
+              color: 'rgba(255,255,255,0.92)',
+              fontSize: 12,
+              letterSpacing: '0.05em',
+              height: 44,
+              padding: '0 24px',
+              background: 'rgba(255,255,255,0.05)',
+              border: '1px solid rgba(91,164,207,0.32)'
+            }}
+          />
+          <button
+            type="submit"
+            disabled={submitting}
+            className="w-full px-5 py-3 rounded-full text-[10px] font-semibold uppercase tracking-[0.18em]"
+            style={{
+              background: 'linear-gradient(135deg, #1A6B9A 0%, #2AA8B4 100%)',
+              color: 'white',
+              opacity: submitting ? 0.6 : 1
+            }}
           >
-            <input
-              autoFocus
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Your authorised email"
-              className="flex-1 bg-transparent border-0 outline-none px-6"
-              style={{ color: 'rgba(255,255,255,0.92)', fontSize: 12, letterSpacing: '0.05em', height: 44 }}
-            />
-            <button
-              type="submit"
-              className="m-1 px-5 py-2.5 rounded-full text-[10px] font-semibold uppercase tracking-[0.14em]"
-              style={{
-                background: 'linear-gradient(135deg, #1A6B9A 0%, #2AA8B4 100%)',
-                color: 'white'
-              }}
-            >
-              Sign in
-            </button>
-          </div>
+            {submitting ? 'Signing in…' : 'Sign in'}
+          </button>
           {error && (
-            <span style={{ fontSize: 11, color: '#E05C2A', letterSpacing: '0.04em' }}>{error}</span>
+            <span style={{ fontSize: 11, color: '#E05C2A', letterSpacing: '0.04em', textAlign: 'center' }}>{error}</span>
           )}
         </form>
 
