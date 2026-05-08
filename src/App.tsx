@@ -1,7 +1,7 @@
 import React from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import { AuthProvider, useAuth } from './state/AuthContext'
-import { Landing } from './pages/Landing'
+import { Login } from './pages/Login'
 import { DashboardLayout } from './components/layout/DashboardLayout'
 import { CityOverview } from './pages/sections/CityOverview'
 import { MarketIntelligence } from './pages/sections/MarketIntelligence'
@@ -12,14 +12,14 @@ import { LmiDetail } from './pages/sections/LmiDetail'
 
 const RequireAuth: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { email } = useAuth()
-  if (!email) return <Navigate to="/" replace />
+  if (!email) return <Navigate to="/login" replace />
   return <>{children}</>
 }
 
 const App: React.FC = () => (
   <AuthProvider>
     <Routes>
-      <Route path="/" element={<Landing />} />
+      <Route path="/login" element={<Login />} />
       <Route
         path="/dashboard"
         element={
@@ -35,7 +35,8 @@ const App: React.FC = () => (
         <Route path="gaps" element={<GapMarkets />} />
         <Route path="lmi" element={<LmiDetail />} />
       </Route>
-      <Route path="*" element={<Navigate to="/" replace />} />
+      {/* Anything else handled by the React app falls back to login. The static landing page is served by Netlify at "/" so we never see "/" here. */}
+      <Route path="*" element={<Navigate to="/login" replace />} />
     </Routes>
   </AuthProvider>
 )

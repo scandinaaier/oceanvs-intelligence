@@ -2,7 +2,13 @@
   command = "npm run build"
   publish = "dist"
 
+# React SPA routes — rewrite to app.html so React Router takes over.
 [[redirects]]
-  from = "/*"
-  to = "/index.html"
+  from = "/login"
+  to = "/app.html"
+  status = 200
+
+[[redirects]]
+  from = "/dashboard/*"
+  to = "/app.html"
   status = 200

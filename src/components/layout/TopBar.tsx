@@ -8,6 +8,11 @@ export const TopBar: React.FC = () => {
   const { city, vertical, setCity, setVertical } = useApp()
   const { logout, email } = useAuth()
 
+  const onSignOut = () => {
+    logout()
+    window.location.href = '/'
+  }
+
   return (
     <header className="card mx-4 mt-4 px-5 py-3 flex items-center gap-6 sticky top-4 z-30">
       <div className="flex items-center gap-2 shrink-0">
@@ -56,7 +61,7 @@ export const TopBar: React.FC = () => {
 
       <div className="flex items-center gap-2 shrink-0">
         {email && <span className="text-[11px] text-text-muted hidden lg:inline">{email}</span>}
-        <button onClick={logout} className="text-[11px] text-text-muted hover:text-accent-primary transition">
+        <button onClick={onSignOut} className="text-[11px] text-text-muted hover:text-accent-primary transition">
           Sign out
         </button>
       </div>
