@@ -3,13 +3,23 @@
 // untouched in source — this just rewrites the built artifact.
 import { readFileSync, writeFileSync, existsSync } from 'node:fs'
 
+function readEnvLocal() {
+  if (!existsSync('.env.local')) return {}
+  const out = {}
+  for (const line of readFileSync('.env.local', 'utf8').split(/\r?\n/)) {
+    const m = line.match(/^\s*([A-Z0-9_]+)\s*=\s*(.*)\s*$/)
+    if (m) out[m[1]] = m[2].replace(/^['"]|['"]$/g, '')
+  }
+  return out
+}
+
 const target = 'dist/index.html'
 if (!existsSync(target)) {
   console.error(`[formspree] ${target} not found`)
   process.exit(0)
 }
 
-const id = process.env.VITE_FORMSPREE_ID || ''
+const id = process.env.VITE_FORMSPREE_ID || readEnvLocal().VITE_FORMSPREE_ID || ''
 if (!id) {
   console.warn('[formspree] VITE_FORMSPREE_ID not set — landing form will toast "you\'re on the list" but no email will be delivered until set.')
   process.exit(0)
