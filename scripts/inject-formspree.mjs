@@ -26,9 +26,10 @@ if (!id) {
 }
 
 const html = readFileSync(target, 'utf8')
-const replaced = html.replace(/const FORMSPREE_ID = '[^']*'/, `const FORMSPREE_ID = '${id}'`)
+// Target only the real placeholder (not the "Example:" string inside the comment block).
+const replaced = html.replace(/const FORMSPREE_ID = 'YOUR_FORM_ID'/, `const FORMSPREE_ID = '${id}'`)
 if (replaced === html) {
-  console.warn('[formspree] FORMSPREE_ID placeholder not found in dist/index.html — landing source may have been edited')
+  console.warn('[formspree] Placeholder `YOUR_FORM_ID` not found in dist/index.html — landing source may have been edited')
 } else {
   writeFileSync(target, replaced)
   console.log(`[formspree] Injected form ID into ${target}`)
