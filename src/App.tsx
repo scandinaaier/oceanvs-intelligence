@@ -9,6 +9,7 @@ import { AcquisitionPipeline } from './pages/sections/AcquisitionPipeline'
 import { PortfolioBuilder } from './pages/sections/PortfolioBuilder'
 import { GapMarkets } from './pages/sections/GapMarkets'
 import { LmiDetail } from './pages/sections/LmiDetail'
+import { SignalLog } from './pages/sections/SignalLog'
 
 const RequireAuth: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { email, loading } = useAuth()
@@ -39,6 +40,7 @@ const App: React.FC = () => (
         <Route path="intel" element={<MarketIntelligence />} />
         <Route path="pipeline" element={<AcquisitionPipeline />} />
         <Route path="portfolio" element={<PortfolioBuilder />} />
+        <Route path="signals" element={<SignalLog />} />
         <Route path="gaps" element={<GapMarkets />} />
         <Route path="lmi" element={<LmiDetail />} />
       </Route>

@@ -4,6 +4,7 @@ import { useApp } from '../../state/AppContext'
 import { CITIES } from '../../data/mock/cities'
 import { fetchCityKpi, fetchCityBrief } from '../../api/cities'
 import { fetchLiveSignals, fetchCurrency, fetchWeather } from '../../api/signals'
+import { fetchTeamSignalsByCity } from '../../api/teamSignals'
 import { LmiGauge } from '../../components/common/LmiGauge'
 import { Skeleton } from '../../components/common/Skeleton'
 import { STALE_TIMES } from '../../config/api'
@@ -73,6 +74,12 @@ export const CityOverview: React.FC = () => {
     queryFn: () => fetchWeather(cityMeta.lat, cityMeta.lon),
     staleTime: STALE_TIMES.weather,
     enabled: vertical === 'PREMIUM_SAUNAS'
+  })
+
+  const teamSignalsQ = useQuery({
+    queryKey: ['teamSignals', 'city', city],
+    queryFn: () => fetchTeamSignalsByCity(city),
+    staleTime: 30_000,
   })
 
   const kpi = kpiQ.data
@@ -169,6 +176,16 @@ export const CityOverview: React.FC = () => {
                 }} />
               )}
               {signalsQ.data?.signals.map(s => <SignalCard key={s.id} s={s} />)}
+              {teamSignalsQ.data?.map(ts => (
+                <SignalCard key={`team-${ts.id}`} s={{
+                  id: `team-${ts.id}`,
+                  name: ts.title,
+                  insight: ts.description || `${ts.asset_class}${ts.tip_source ? ` — via ${ts.tip_source}` : ''}`,
+                  direction: '→',
+                  recency: new Date(ts.submitted_at).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' }),
+                  source: 'Team',
+                }} />
+              ))}
             </div>
           )}
         </div>

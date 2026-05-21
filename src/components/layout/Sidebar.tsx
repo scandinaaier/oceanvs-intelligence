@@ -6,6 +6,7 @@ const NAV = [
   { to: '/dashboard/intel', label: 'Market Intelligence' },
   { to: '/dashboard/pipeline', label: 'Acquisition Pipeline' },
   { to: '/dashboard/portfolio', label: 'Portfolio Builder' },
+  { to: '/dashboard/signals', label: 'Signal Log' },
   { to: '/dashboard/gaps', label: 'Gap Markets' },
   { to: '/dashboard/lmi', label: 'LMI Detail' }
 ]

@@ -105,3 +105,33 @@ export interface GapMarket {
   vertical: Vertical
   rationale: string
 }
+
+// ── Signal Capture ────────────────────────────────────────
+export type ThesisTag =
+  | 'undervalued_coastal'
+  | 'nordic_wellness_demand'
+  | 'consolidation_play'
+  | 'climate_migration'
+  | 'emerging_asset_class'
+
+export interface TeamSignal {
+  id: string
+  url: string | null
+  title: string
+  description: string | null
+  asset_class: string
+  city: CityKey | null
+  vertical: Vertical | 'BOTH' | null
+  thesis_tag: ThesisTag | null
+  tip_source: string | null
+  submitted_by: string
+  submitted_at: string
+  notes: string | null
+  archived: boolean
+}
+
+export interface AssetClass {
+  id: number
+  name: string
+  created_at: string
+}
