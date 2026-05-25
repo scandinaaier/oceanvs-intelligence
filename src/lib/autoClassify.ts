@@ -80,7 +80,7 @@ export function autoClassify(title: string, description?: string): Classificatio
   return { vertical, asset_class, thesis_tag }
 }
 
-// ── Finn.no URL detection ─────────────────────────────────
+// ── URL helpers ───────────────────────────────────────────
 export function isFinnUrl(url: string): boolean {
   return /finn\.no\/realestate/.test(url)
 }
@@ -88,4 +88,44 @@ export function isFinnUrl(url: string): boolean {
 export function extractFinnkode(url: string): string | null {
   const match = url.match(/finnkode=(\d+)/)
   return match ? match[1] : null
+}
+
+// ── Campsite detection ────────────────────────────────────
+// Used to decide whether to also create a Campsite Pipeline entry
+const CAMPSITE_STRONG = ['campingplass', 'camping', 'leirplass', 'teltplass', 'familiecamping']
+const CAMPSITE_SUPPORTING = ['sjø', 'strand', 'fjord', 'brygge', 'sjøfront', 'waterfront']
+
+export function isCampsiteSignal(title: string, description?: string): boolean {
+  const text = `${title} ${description || ''}`.toLowerCase()
+  const strongHits = CAMPSITE_STRONG.filter(kw => text.includes(kw)).length
+  const supportingHits = CAMPSITE_SUPPORTING.filter(kw => text.includes(kw)).length
+  return strongHits >= 1 || (strongHits === 0 && supportingHits >= 2)
+}
+
+// ── URL metadata via Netlify function ─────────────────────
+export interface UrlMeta {
+  title: string
+  description: string
+  image: string
+  images: string[]
+  siteName: string
+  priceNok: number
+  finnkode: string | null
+  location: string
+  region: string
+  isFinn: boolean
+  url: string
+  error?: string
+  partial?: boolean
+}
+
+export async function fetchUrlMeta(url: string): Promise<UrlMeta | null> {
+  try {
+    const endpoint = `/.netlify/functions/fetch-url-meta?url=${encodeURIComponent(url)}`
+    const res = await fetch(endpoint)
+    if (!res.ok) return null
+    return await res.json()
+  } catch {
+    return null
+  }
 }
