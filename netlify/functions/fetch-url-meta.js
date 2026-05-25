@@ -4,13 +4,19 @@
 // Optionally translates Norwegian content to English via DeepL (set DEEPL_API_KEY in Netlify env vars).
 
 // ── DeepL translation helper ──────────────────────────────
+// Free keys end in :fx and use api-free.deepl.com
+// Paid keys use api.deepl.com
 async function translateToEnglish(texts) {
   const apiKey = process.env.DEEPL_API_KEY
-  if (!apiKey) return null  // no key → skip silently
+  if (!apiKey) return { result: null, error: 'NO_KEY' }
 
-  // Filter out empty strings before sending
   const nonEmpty = texts.map(t => t || '')
-  if (nonEmpty.every(t => !t.trim())) return null
+  if (nonEmpty.every(t => !t.trim())) return { result: null, error: 'EMPTY_INPUT' }
+
+  // Auto-detect which endpoint to use based on key format
+  const endpoint = apiKey.endsWith(':fx')
+    ? 'https://api-free.deepl.com/v2/translate'
+    : 'https://api.deepl.com/v2/translate'
 
   try {
     const params = new URLSearchParams()
@@ -18,7 +24,7 @@ async function translateToEnglish(texts) {
     params.append('target_lang', 'EN-US')
     params.append('source_lang', 'NO')
 
-    const res = await fetch('https://api-free.deepl.com/v2/translate', {
+    const res = await fetch(endpoint, {
       method: 'POST',
       headers: {
         'Authorization': `DeepL-Auth-Key ${apiKey}`,
@@ -28,11 +34,15 @@ async function translateToEnglish(texts) {
       signal: AbortSignal.timeout(5000),
     })
 
-    if (!res.ok) return null
+    if (!res.ok) {
+      const errText = await res.text().catch(() => res.status.toString())
+      return { result: null, error: `DEEPL_${res.status}: ${errText.slice(0, 120)}` }
+    }
+
     const data = await res.json()
-    return data.translations.map(t => t.text)
-  } catch {
-    return null   // translation failure is non-fatal
+    return { result: data.translations.map(t => t.text), error: null }
+  } catch (e) {
+    return { result: null, error: `EXCEPTION: ${e.message}` }
   }
 }
 
@@ -135,9 +145,9 @@ export const handler = async (event) => {
 
       // Translate Norwegian title + description to English via DeepL
       const rawTitle = finnTitle || title
-      const translated = await translateToEnglish([rawTitle, description])
-      const finalTitle       = translated?.[0] || rawTitle
-      const finalDescription = translated?.[1] || description
+      const { result: translations, error: translateError } = await translateToEnglish([rawTitle, description])
+      const finalTitle       = translations?.[0] || rawTitle
+      const finalDescription = translations?.[1] || description
 
       return {
         statusCode: 200,
@@ -154,7 +164,9 @@ export const handler = async (event) => {
           location,
           region: regionMatch ? regionMatch[1] : '',
           isFinn: true,
-          translated: !!translated,
+          translated: !!translations,
+          translateError,           // null on success, error string on failure — helps diagnose
+          deeplConfigured: !!process.env.DEEPL_API_KEY,
           url,
         })
       }
@@ -167,11 +179,13 @@ export const handler = async (event) => {
     let finalDescription = description
     let wasTranslated = false
 
+    let translateError = null
     if (isNorwegian && (title || description)) {
-      const translated = await translateToEnglish([title, description])
-      if (translated) {
-        finalTitle       = translated[0] || title
-        finalDescription = translated[1] || description
+      const { result: translations, error: tErr } = await translateToEnglish([title, description])
+      translateError = tErr
+      if (translations) {
+        finalTitle       = translations[0] || title
+        finalDescription = translations[1] || description
         wasTranslated    = true
       }
     }
@@ -192,6 +206,8 @@ export const handler = async (event) => {
         region: '',
         isFinn: false,
         translated: wasTranslated,
+        translateError,
+        deeplConfigured: !!process.env.DEEPL_API_KEY,
         url,
       })
     }
