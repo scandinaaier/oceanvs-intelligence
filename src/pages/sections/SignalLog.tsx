@@ -52,7 +52,7 @@ const AddSignalModal: React.FC<AddModalProps> = ({ open, onClose, assetClasses, 
     url: '',
     title: '',
     description: '',
-    asset_class: assetClasses[0] ?? 'Boutique Hotel',
+    asset_class: '',   // intentionally empty — auto-classify fills it; user can also pick manually
     city: '' as string,
     vertical: '' as string,
     thesis_tag: '' as string,
@@ -123,13 +123,12 @@ const AddSignalModal: React.FC<AddModalProps> = ({ open, onClose, assetClasses, 
   const handleTitleChange = (title: string) => {
     setForm(f => {
       const updated = { ...f, title }
-      // Only auto-classify if fields are empty
-      if (!f.vertical && !f.asset_class) {
-        const c = autoClassify(title, f.description)
-        if (c.asset_class && assetClasses.includes(c.asset_class)) updated.asset_class = c.asset_class
-        if (c.vertical) updated.vertical = c.vertical
-        if (c.thesis_tag && !f.thesis_tag) updated.thesis_tag = c.thesis_tag
-      }
+      const c = autoClassify(title, f.description)
+      // Always update asset_class when we find a keyword match
+      if (c.asset_class && assetClasses.includes(c.asset_class)) updated.asset_class = c.asset_class
+      // Only set vertical/thesis if user hasn't manually chosen one yet
+      if (c.vertical && !f.vertical) updated.vertical = c.vertical as string
+      if (c.thesis_tag && !f.thesis_tag) updated.thesis_tag = c.thesis_tag
       return updated
     })
   }
@@ -155,7 +154,7 @@ const AddSignalModal: React.FC<AddModalProps> = ({ open, onClose, assetClasses, 
   })
 
   const resetForm = () => {
-    setForm({ url: '', title: '', description: '', asset_class: assetClasses[0] ?? '', city: '', vertical: '', thesis_tag: '', tip_source: '', notes: '' })
+    setForm({ url: '', title: '', description: '', asset_class: '', city: '', vertical: '', thesis_tag: '', tip_source: '', notes: '' })
     setError('')
   }
 
@@ -275,6 +274,7 @@ const AddSignalModal: React.FC<AddModalProps> = ({ open, onClose, assetClasses, 
                   onChange={e => setForm(f => ({ ...f, asset_class: e.target.value }))}
                   className="flex-1 border border-[var(--border)] rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[var(--accent-primary)]/30"
                 >
+                  <option value="">— Auto-detect or select</option>
                   {assetClasses.map(ac => <option key={ac} value={ac}>{ac}</option>)}
                 </select>
                 <button
