@@ -22,7 +22,8 @@ async function translateToEnglish(texts) {
     const params = new URLSearchParams()
     nonEmpty.forEach(t => params.append('text', t))
     params.append('target_lang', 'EN-US')
-    params.append('source_lang', 'NO')
+    // source_lang intentionally omitted — DeepL auto-detects accurately
+    // and 'NO' is not a valid DeepL code (use NB for Norwegian Bokmål)
 
     const res = await fetch(endpoint, {
       method: 'POST',
