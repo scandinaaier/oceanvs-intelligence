@@ -4,7 +4,8 @@ import { useAuth } from '../../state/AuthContext'
 import { fetchTeamSignals, fetchAssetClasses, createTeamSignal, archiveTeamSignal, createAssetClass } from '../../api/teamSignals'
 import { CITIES } from '../../data/mock/cities'
 import { Skeleton } from '../../components/common/Skeleton'
-import { autoClassify, isFinnUrl, extractFinnkode } from '../../lib/autoClassify'
+import { autoClassify, fetchUrlMeta, isCampsiteSignal } from '../../lib/autoClassify'
+import { createCampsite } from '../../api/campsitePipeline'
 import type { TeamSignal, CityKey, Vertical, ThesisTag } from '../../types'
 
 // ── Constants ─────────────────────────────────────────────
@@ -62,49 +63,57 @@ const AddSignalModal: React.FC<AddModalProps> = ({ open, onClose, assetClasses, 
   const [showNewAssetClass, setShowNewAssetClass] = useState(false)
   const [error, setError] = useState('')
   const [fetching, setFetching] = useState(false)
+  const [addedToPipeline, setAddedToPipeline] = useState(false)
+  const [extractedMeta, setExtractedMeta] = useState<{ images: string[]; finnkode: string | null; priceNok: number; location: string; region: string } | null>(null)
 
-  // Auto-fill from Finn.no URL
+  // Universal URL handler — works for Finn.no, news sites, any URL
   const handleUrlPaste = async (url: string) => {
     setForm(f => ({ ...f, url }))
-    if (!isFinnUrl(url)) return
-    const finnkode = extractFinnkode(url)
-    if (!finnkode) return
+    setAddedToPipeline(false)
+    setExtractedMeta(null)
+
+    // Need at least a plausible URL
+    if (!url.startsWith('http') || url.length < 12) return
 
     setFetching(true)
     setError('')
     try {
-      const res = await fetch(`https://www.finn.no/realestate/businesssale/ad.html?finnkode=${finnkode}`, {
-        headers: { 'User-Agent': 'Mozilla/5.0' }
+      const meta = await fetchUrlMeta(url)
+      if (!meta || meta.error) {
+        // Silent fail — user fills manually
+        setFetching(false)
+        return
+      }
+
+      // Auto-classify on extracted content
+      const classification = autoClassify(meta.title, meta.description)
+
+      // Build description string
+      let descParts: string[] = []
+      if (meta.priceNok > 0) descParts.push(`Asking: NOK ${meta.priceNok.toLocaleString('no-NO')}`)
+      if (meta.location) descParts.push(`Location: ${meta.location}`)
+      if (meta.description) descParts.push(meta.description)
+      const builtDesc = descParts.join('\n').slice(0, 800)
+
+      setExtractedMeta({
+        images: meta.images,
+        finnkode: meta.finnkode,
+        priceNok: meta.priceNok,
+        location: meta.location,
+        region: meta.region,
       })
-      if (!res.ok) throw new Error('Could not fetch listing')
-      const html = await res.text()
-
-      // Extract title from <title> tag
-      const titleMatch = html.match(/<title>(.*?)(?:\s*\|\s*FINN[^<]*)?<\/title>/)
-      const title = titleMatch ? titleMatch[1].replace(/&amp;/g, '&').replace(/&#x27;/g, "'").trim() : ''
-
-      // Extract price
-      const priceMatch = html.match(/data-testid="pricing-indicative-price"[^>]*>.*?<span[^>]*>([\d\s]+)\s*kr/s)
-      const priceRaw = priceMatch ? priceMatch[1].replace(/\s/g, '') : ''
-
-      // Extract location
-      const locMatch = html.match(/data-testid="(?:object-address|location)"[^>]*>(.*?)<\//s)
-      const location = locMatch ? locMatch[1].replace(/<[^>]+>/g, '').trim() : ''
-
-      // Auto-classify based on extracted title
-      const classification = autoClassify(title)
 
       setForm(f => ({
         ...f,
-        title: title || f.title,
-        description: f.description || (priceRaw ? `Asking: NOK ${parseInt(priceRaw).toLocaleString('no-NO')}` : '') + (location ? `\nLocation: ${location}` : ''),
+        title: meta.title || f.title,
+        description: f.description || builtDesc,
         asset_class: classification.asset_class && assetClasses.includes(classification.asset_class) ? classification.asset_class : f.asset_class,
-        vertical: classification.vertical || f.vertical,
+        vertical: (classification.vertical || f.vertical) as string,
         thesis_tag: classification.thesis_tag || f.thesis_tag,
-        tip_source: f.tip_source || 'Finn.no',
+        tip_source: f.tip_source || meta.siteName,
       }))
     } catch {
-      // Silent fail — user can still fill in manually
+      // Silent fail
     } finally {
       setFetching(false)
     }
@@ -129,8 +138,7 @@ const AddSignalModal: React.FC<AddModalProps> = ({ open, onClose, assetClasses, 
     mutationFn: createTeamSignal,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['teamSignals'] })
-      onClose()
-      resetForm()
+      // Close/reset is handled by handleSubmit so we can run campsite dual-write first
     },
     onError: (err: Error) => setError(err.message),
   })
@@ -151,23 +159,58 @@ const AddSignalModal: React.FC<AddModalProps> = ({ open, onClose, assetClasses, 
     setError('')
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!form.title.trim()) { setError('Title is required'); return }
     if (!form.asset_class) { setError('Asset class is required'); return }
     setError('')
-    createMut.mutate({
-      url: form.url || undefined,
-      title: form.title.trim(),
-      description: form.description || undefined,
-      asset_class: form.asset_class,
-      city: (form.city || undefined) as CityKey | undefined,
-      vertical: (form.vertical || undefined) as Vertical | 'BOTH' | undefined,
-      thesis_tag: (form.thesis_tag || undefined) as ThesisTag | undefined,
-      tip_source: form.tip_source || undefined,
-      submitted_by: email ?? 'unknown',
-      notes: form.notes || undefined,
-    })
+
+    try {
+      // 1 — Save to Signal Log
+      await createMut.mutateAsync({
+        url: form.url || undefined,
+        title: form.title.trim(),
+        description: form.description || undefined,
+        asset_class: form.asset_class,
+        city: (form.city || undefined) as CityKey | undefined,
+        vertical: (form.vertical || undefined) as Vertical | 'BOTH' | undefined,
+        thesis_tag: (form.thesis_tag || undefined) as ThesisTag | undefined,
+        tip_source: form.tip_source || undefined,
+        submitted_by: email ?? 'unknown',
+        notes: form.notes || undefined,
+      })
+
+      // 2 — Dual-write to Campsite Pipeline if it looks like a campsite
+      if (isCampsiteSignal(form.title, form.description)) {
+        try {
+          await createCampsite({
+            finnkode: extractedMeta?.finnkode || undefined,
+            url: form.url || undefined,
+            title: form.title.trim(),
+            description: form.description || undefined,
+            price_nok: extractedMeta?.priceNok || undefined,
+            location: extractedMeta?.location || undefined,
+            region: extractedMeta?.region || undefined,
+            images: extractedMeta?.images || [],
+            added_by: email ?? 'unknown',
+            scraped_at: new Date().toISOString(),
+          })
+          queryClient.invalidateQueries({ queryKey: ['campsites'] })
+          setAddedToPipeline(true)
+          // Show banner for 2 s then close
+          setTimeout(() => { onClose(); resetForm() }, 2200)
+        } catch {
+          // Campsite write failed silently — signal is already saved
+          onClose()
+          resetForm()
+        }
+      } else {
+        onClose()
+        resetForm()
+      }
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : 'Failed to save signal')
+    }
   }
 
   if (!open) return null
@@ -324,10 +367,20 @@ const AddSignalModal: React.FC<AddModalProps> = ({ open, onClose, assetClasses, 
             />
           </label>
 
+          {/* Campsite pipeline confirmation banner */}
+          {addedToPipeline && (
+            <div className="flex items-center gap-2.5 text-sm text-emerald-700 bg-emerald-50 border border-emerald-200 rounded-lg px-3 py-2.5">
+              <svg className="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+              <span><strong>Added to Campsite Pipeline</strong> — this listing will appear in your acquisition board.</span>
+            </div>
+          )}
+
           {/* Submit */}
           <div className="flex justify-end gap-2 pt-2">
             <button type="button" onClick={onClose} className="btn-secondary">Cancel</button>
-            <button type="submit" className="btn-primary" disabled={createMut.isPending}>
+            <button type="submit" className="btn-primary" disabled={createMut.isPending || addedToPipeline}>
               {createMut.isPending ? 'Saving...' : 'Save Signal'}
             </button>
           </div>
