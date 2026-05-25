@@ -1,6 +1,40 @@
 // Netlify Function — fetch-url-meta
 // Fetches any URL and extracts Open Graph metadata server-side.
 // Avoids CORS issues since this runs on Netlify's servers, not the browser.
+// Optionally translates Norwegian content to English via DeepL (set DEEPL_API_KEY in Netlify env vars).
+
+// ── DeepL translation helper ──────────────────────────────
+async function translateToEnglish(texts) {
+  const apiKey = process.env.DEEPL_API_KEY
+  if (!apiKey) return null  // no key → skip silently
+
+  // Filter out empty strings before sending
+  const nonEmpty = texts.map(t => t || '')
+  if (nonEmpty.every(t => !t.trim())) return null
+
+  try {
+    const params = new URLSearchParams()
+    nonEmpty.forEach(t => params.append('text', t))
+    params.append('target_lang', 'EN-US')
+    params.append('source_lang', 'NO')
+
+    const res = await fetch('https://api-free.deepl.com/v2/translate', {
+      method: 'POST',
+      headers: {
+        'Authorization': `DeepL-Auth-Key ${apiKey}`,
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: params.toString(),
+      signal: AbortSignal.timeout(5000),
+    })
+
+    if (!res.ok) return null
+    const data = await res.json()
+    return data.translations.map(t => t.text)
+  } catch {
+    return null   // translation failure is non-fatal
+  }
+}
 
 export const handler = async (event) => {
   const headers = {
@@ -99,12 +133,19 @@ export const handler = async (event) => {
       const imgMatches = [...html.matchAll(/https:\/\/images\.finncdn\.no\/dynamic\/(?:1600w|1280w)[^\"\s\)']+/g)]
       const images = [...new Set(imgMatches.map(m => m[0]))].slice(0, 10)
 
+      // Translate Norwegian title + description to English via DeepL
+      const rawTitle = finnTitle || title
+      const translated = await translateToEnglish([rawTitle, description])
+      const finalTitle       = translated?.[0] || rawTitle
+      const finalDescription = translated?.[1] || description
+
       return {
         statusCode: 200,
         headers,
         body: JSON.stringify({
-          title: finnTitle || title,
-          description,
+          title: finalTitle,
+          titleOriginal: rawTitle,
+          description: finalDescription,
           image: images[0] || image,
           images,
           siteName: 'Finn.no',
@@ -113,8 +154,25 @@ export const handler = async (event) => {
           location,
           region: regionMatch ? regionMatch[1] : '',
           isFinn: true,
+          translated: !!translated,
           url,
         })
+      }
+    }
+
+    // Translate if the page appears to be Norwegian (no, nb, nn content-language or .no domain)
+    const contentLang = res.headers.get('content-language') || ''
+    const isNorwegian = /\bno\b|\bnb\b|\bnn\b/i.test(contentLang) || parsedUrl.hostname.endsWith('.no')
+    let finalTitle = title
+    let finalDescription = description
+    let wasTranslated = false
+
+    if (isNorwegian && (title || description)) {
+      const translated = await translateToEnglish([title, description])
+      if (translated) {
+        finalTitle       = translated[0] || title
+        finalDescription = translated[1] || description
+        wasTranslated    = true
       }
     }
 
@@ -122,8 +180,9 @@ export const handler = async (event) => {
       statusCode: 200,
       headers,
       body: JSON.stringify({
-        title,
-        description,
+        title: finalTitle,
+        titleOriginal: isNorwegian ? title : undefined,
+        description: finalDescription,
         image,
         images: image ? [image] : [],
         siteName,
@@ -132,6 +191,7 @@ export const handler = async (event) => {
         location: '',
         region: '',
         isFinn: false,
+        translated: wasTranslated,
         url,
       })
     }

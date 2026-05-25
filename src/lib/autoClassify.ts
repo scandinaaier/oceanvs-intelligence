@@ -126,6 +126,7 @@ export function isCampsiteSignal(title: string, description?: string): boolean {
 // ── URL metadata via Netlify function ─────────────────────
 export interface UrlMeta {
   title: string
+  titleOriginal?: string       // original Norwegian title before translation
   description: string
   image: string
   images: string[]
@@ -135,6 +136,7 @@ export interface UrlMeta {
   location: string
   region: string
   isFinn: boolean
+  translated: boolean          // true if DeepL translation was applied
   url: string
   error?: string
   partial?: boolean

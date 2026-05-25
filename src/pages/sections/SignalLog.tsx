@@ -64,7 +64,7 @@ const AddSignalModal: React.FC<AddModalProps> = ({ open, onClose, assetClasses, 
   const [error, setError] = useState('')
   const [fetching, setFetching] = useState(false)
   const [addedToPipeline, setAddedToPipeline] = useState(false)
-  const [extractedMeta, setExtractedMeta] = useState<{ images: string[]; finnkode: string | null; priceNok: number; location: string; region: string } | null>(null)
+  const [extractedMeta, setExtractedMeta] = useState<{ images: string[]; finnkode: string | null; priceNok: number; location: string; region: string; translated: boolean } | null>(null)
 
   // Universal URL handler — works for Finn.no, news sites, any URL
   const handleUrlPaste = async (url: string) => {
@@ -101,6 +101,7 @@ const AddSignalModal: React.FC<AddModalProps> = ({ open, onClose, assetClasses, 
         priceNok: meta.priceNok,
         location: meta.location,
         region: meta.region,
+        translated: meta.translated ?? false,
       })
 
       setForm(f => ({
@@ -232,11 +233,19 @@ const AddSignalModal: React.FC<AddModalProps> = ({ open, onClose, assetClasses, 
             <span className="eyebrow">URL {fetching && <span className="text-[var(--accent-secondary)] ml-2 normal-case tracking-normal">Fetching listing...</span>}</span>
             <input
               type="url"
-              placeholder="Paste a Finn.no URL to auto-fill title, price & classification..."
+              placeholder="Paste any URL — Finn.no listing, news article, LinkedIn post..."
               value={form.url}
               onChange={e => handleUrlPaste(e.target.value)}
               className="border border-[var(--border)] rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[var(--accent-primary)]/30 focus:border-[var(--accent-primary)]"
             />
+            {extractedMeta?.translated && (
+              <span className="flex items-center gap-1.5 text-[11px] text-[var(--accent-secondary)] mt-0.5">
+                <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+                </svg>
+                Auto-translated from Norwegian
+              </span>
+            )}
           </label>
 
           {/* Title */}
