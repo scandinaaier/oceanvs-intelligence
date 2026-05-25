@@ -32,6 +32,22 @@ const WATERFRONT_KEYWORDS = [
   'fjordutsikt', 'sjønært', 'strand', 'tomt', 'eiendom',
 ]
 
+const COMMERCIAL_WATERFRONT_KEYWORDS = [
+  'næringseiendom', 'næringsbygg', 'næringsareal', 'næring',
+  'commercial building', 'commercial property', 'commercially zoned',
+  'service center', 'service centre', 'kombinert bolig', 'combined use',
+  'mixed use', 'mixed-use', 'forretning', 'office building',
+  'warehousing', 'industrial waterfront',
+]
+
+const MARKET_INTEL_KEYWORDS = [
+  'solo traveller', 'solo travel', 'solo tourist',
+  'linkedin', 'article', 'report', 'study', 'insight', 'whitepaper',
+  'merger', 'acquisition news', 'market outlook', 'industry trend',
+  'growth forecast', 'demand outlook', 'hospitality market',
+  'wellness trend', 'travel trend', 'investor update', 'press release',
+]
+
 const THESIS_INDICATORS: { keywords: string[]; tag: ThesisTag }[] = [
   { keywords: ['underpriced', 'underpriset', 'under takst', 'redusert', 'billig', 'selges raskt'], tag: 'undervalued_coastal' },
   { keywords: ['wellness', 'helse', 'mental health', 'recovery', 'restorative'], tag: 'nordic_wellness_demand' },
@@ -48,23 +64,28 @@ export function autoClassify(title: string, description?: string): Classificatio
   const text = `${title} ${description || ''}`.toLowerCase()
 
   // Score each category
-  const hotelScore = countHits(text, HOTEL_KEYWORDS)
-  const saunaScore = countHits(text, SAUNA_KEYWORDS)
-  const campingScore = countHits(text, CAMPING_KEYWORDS)
-  const waterfrontScore = countHits(text, WATERFRONT_KEYWORDS)
+  const hotelScore        = countHits(text, HOTEL_KEYWORDS)
+  const saunaScore        = countHits(text, SAUNA_KEYWORDS)
+  const campingScore      = countHits(text, CAMPING_KEYWORDS)
+  const waterfrontScore   = countHits(text, WATERFRONT_KEYWORDS)
+  const commercialScore   = countHits(text, COMMERCIAL_WATERFRONT_KEYWORDS)
+  const marketIntelScore  = countHits(text, MARKET_INTEL_KEYWORDS)
 
-  // Determine vertical
+  // Determine vertical (only set for property-type signals)
   let vertical: Vertical | 'BOTH' | null = null
   if (hotelScore > 0 && saunaScore > 0) vertical = 'BOTH'
   else if (hotelScore > saunaScore) vertical = 'COASTAL_HOTELS'
   else if (saunaScore > 0) vertical = 'PREMIUM_SAUNAS'
 
-  // Determine asset class (most specific wins)
+  // Determine asset class — specificity order matters
+  // Property signals first, then commercial waterfront, then catch-all waterfront, then intel
   let asset_class: string | null = null
-  if (campingScore > 0) asset_class = 'Camping Ground'
-  else if (hotelScore > 0) asset_class = 'Boutique Hotel'
-  else if (saunaScore > 0) asset_class = 'Premium Sauna'
-  else if (waterfrontScore > 0) asset_class = 'Waterfront Property'
+  if (campingScore > 0)                          asset_class = 'Camping Ground'
+  else if (hotelScore > 0)                       asset_class = 'Boutique Hotel'
+  else if (saunaScore > 0)                       asset_class = 'Premium Sauna'
+  else if (commercialScore > 0)                  asset_class = 'Commercial Waterfront'
+  else if (waterfrontScore > 0)                  asset_class = 'Waterfront Property'
+  else if (marketIntelScore > 0)                 asset_class = 'Market Intelligence'
 
   // Determine thesis tag
   let thesis_tag: ThesisTag | null = null
