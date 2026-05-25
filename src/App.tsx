@@ -5,6 +5,7 @@ import { Login } from './pages/Login'
 import { DashboardLayout } from './components/layout/DashboardLayout'
 import { CityOverview } from './pages/sections/CityOverview'
 import { MarketIntelligence } from './pages/sections/MarketIntelligence'
+import { CampsitePipeline } from './pages/sections/CampsitePipeline'
 import { AcquisitionPipeline } from './pages/sections/AcquisitionPipeline'
 import { PortfolioBuilder } from './pages/sections/PortfolioBuilder'
 import { GapMarkets } from './pages/sections/GapMarkets'
@@ -38,7 +39,8 @@ const App: React.FC = () => (
       >
         <Route index element={<CityOverview />} />
         <Route path="intel" element={<MarketIntelligence />} />
-        <Route path="pipeline" element={<AcquisitionPipeline />} />
+        <Route path="pipeline" element={<CampsitePipeline />} />
+        <Route path="operators" element={<AcquisitionPipeline />} />
         <Route path="portfolio" element={<PortfolioBuilder />} />
         <Route path="signals" element={<SignalLog />} />
         <Route path="gaps" element={<GapMarkets />} />

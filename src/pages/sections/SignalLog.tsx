@@ -4,6 +4,7 @@ import { useAuth } from '../../state/AuthContext'
 import { fetchTeamSignals, fetchAssetClasses, createTeamSignal, archiveTeamSignal, createAssetClass } from '../../api/teamSignals'
 import { CITIES } from '../../data/mock/cities'
 import { Skeleton } from '../../components/common/Skeleton'
+import { autoClassify, isFinnUrl, extractFinnkode } from '../../lib/autoClassify'
 import type { TeamSignal, CityKey, Vertical, ThesisTag } from '../../types'
 
 // ── Constants ─────────────────────────────────────────────
@@ -60,6 +61,69 @@ const AddSignalModal: React.FC<AddModalProps> = ({ open, onClose, assetClasses, 
   const [newAssetClass, setNewAssetClass] = useState('')
   const [showNewAssetClass, setShowNewAssetClass] = useState(false)
   const [error, setError] = useState('')
+  const [fetching, setFetching] = useState(false)
+
+  // Auto-fill from Finn.no URL
+  const handleUrlPaste = async (url: string) => {
+    setForm(f => ({ ...f, url }))
+    if (!isFinnUrl(url)) return
+    const finnkode = extractFinnkode(url)
+    if (!finnkode) return
+
+    setFetching(true)
+    setError('')
+    try {
+      const res = await fetch(`https://www.finn.no/realestate/businesssale/ad.html?finnkode=${finnkode}`, {
+        headers: { 'User-Agent': 'Mozilla/5.0' }
+      })
+      if (!res.ok) throw new Error('Could not fetch listing')
+      const html = await res.text()
+
+      // Extract title from <title> tag
+      const titleMatch = html.match(/<title>(.*?)(?:\s*\|\s*FINN[^<]*)?<\/title>/)
+      const title = titleMatch ? titleMatch[1].replace(/&amp;/g, '&').replace(/&#x27;/g, "'").trim() : ''
+
+      // Extract price
+      const priceMatch = html.match(/data-testid="pricing-indicative-price"[^>]*>.*?<span[^>]*>([\d\s]+)\s*kr/s)
+      const priceRaw = priceMatch ? priceMatch[1].replace(/\s/g, '') : ''
+
+      // Extract location
+      const locMatch = html.match(/data-testid="(?:object-address|location)"[^>]*>(.*?)<\//s)
+      const location = locMatch ? locMatch[1].replace(/<[^>]+>/g, '').trim() : ''
+
+      // Auto-classify based on extracted title
+      const classification = autoClassify(title)
+
+      setForm(f => ({
+        ...f,
+        title: title || f.title,
+        description: f.description || (priceRaw ? `Asking: NOK ${parseInt(priceRaw).toLocaleString('no-NO')}` : '') + (location ? `\nLocation: ${location}` : ''),
+        asset_class: classification.asset_class && assetClasses.includes(classification.asset_class) ? classification.asset_class : f.asset_class,
+        vertical: classification.vertical || f.vertical,
+        thesis_tag: classification.thesis_tag || f.thesis_tag,
+        tip_source: f.tip_source || 'Finn.no',
+      }))
+    } catch {
+      // Silent fail — user can still fill in manually
+    } finally {
+      setFetching(false)
+    }
+  }
+
+  // Auto-classify when title changes
+  const handleTitleChange = (title: string) => {
+    setForm(f => {
+      const updated = { ...f, title }
+      // Only auto-classify if fields are empty
+      if (!f.vertical && !f.asset_class) {
+        const c = autoClassify(title, f.description)
+        if (c.asset_class && assetClasses.includes(c.asset_class)) updated.asset_class = c.asset_class
+        if (c.vertical) updated.vertical = c.vertical
+        if (c.thesis_tag && !f.thesis_tag) updated.thesis_tag = c.thesis_tag
+      }
+      return updated
+    })
+  }
 
   const createMut = useMutation({
     mutationFn: createTeamSignal,
@@ -123,12 +187,12 @@ const AddSignalModal: React.FC<AddModalProps> = ({ open, onClose, assetClasses, 
 
           {/* URL */}
           <label className="flex flex-col gap-1">
-            <span className="eyebrow">URL (optional)</span>
+            <span className="eyebrow">URL {fetching && <span className="text-[var(--accent-secondary)] ml-2 normal-case tracking-normal">Fetching listing...</span>}</span>
             <input
               type="url"
-              placeholder="https://finn.no/realestate/..."
+              placeholder="Paste a Finn.no URL to auto-fill title, price & classification..."
               value={form.url}
-              onChange={e => setForm(f => ({ ...f, url: e.target.value }))}
+              onChange={e => handleUrlPaste(e.target.value)}
               className="border border-[var(--border)] rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[var(--accent-primary)]/30 focus:border-[var(--accent-primary)]"
             />
           </label>
@@ -138,9 +202,9 @@ const AddSignalModal: React.FC<AddModalProps> = ({ open, onClose, assetClasses, 
             <span className="eyebrow">Title *</span>
             <input
               type="text"
-              placeholder="e.g. 12-room coastal hotel, Lofoten — asking €1.8M"
+              placeholder="e.g. Campingplass ved sjøen, Vestfold — NOK 10M"
               value={form.title}
-              onChange={e => setForm(f => ({ ...f, title: e.target.value }))}
+              onChange={e => handleTitleChange(e.target.value)}
               className="border border-[var(--border)] rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[var(--accent-primary)]/30 focus:border-[var(--accent-primary)]"
               required
             />
