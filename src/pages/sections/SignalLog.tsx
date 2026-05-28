@@ -404,6 +404,7 @@ const AddSignalModal: React.FC<AddModalProps> = ({ open, onClose, assetClasses, 
 // ── Signal Row ────────────────────────────────────────────
 const SignalRow: React.FC<{ signal: TeamSignal; onArchive: (id: string) => void; onDelete: (signal: TeamSignal) => void }> = ({ signal, onArchive, onDelete }) => {
   const [expanded, setExpanded] = useState(false)
+  const [confirmDelete, setConfirmDelete] = useState(false)
   const cityMeta = signal.city ? CITIES.find(c => c.key === signal.city) : null
   const thesisLabel = THESIS_TAGS.find(t => t.value === signal.thesis_tag)?.label
 
@@ -463,19 +464,37 @@ const SignalRow: React.FC<{ signal: TeamSignal; onArchive: (id: string) => void;
           {signal.notes && (
             <p className="text-xs text-[var(--text-muted)] italic leading-relaxed">{signal.notes}</p>
           )}
-          <div className="flex gap-3 pt-1">
+          <div className="flex items-center gap-3 pt-1">
             <button
               className="text-[10px] uppercase tracking-widest text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:underline"
               onClick={e => { e.stopPropagation(); onArchive(signal.id) }}
             >
               Archive
             </button>
-            <button
-              className="text-[10px] uppercase tracking-widest text-[var(--alert)] hover:underline"
-              onClick={e => { e.stopPropagation(); onDelete(signal) }}
-            >
-              Delete
-            </button>
+            {confirmDelete ? (
+              <span className="flex items-center gap-2" onClick={e => e.stopPropagation()}>
+                <span className="text-[10px] text-[var(--alert)]">Permanently delete?</span>
+                <button
+                  className="text-[10px] uppercase tracking-widest text-[var(--alert)] font-semibold hover:underline"
+                  onClick={e => { e.stopPropagation(); onDelete(signal) }}
+                >
+                  Yes, delete
+                </button>
+                <button
+                  className="text-[10px] uppercase tracking-widest text-[var(--text-muted)] hover:underline"
+                  onClick={e => { e.stopPropagation(); setConfirmDelete(false) }}
+                >
+                  Cancel
+                </button>
+              </span>
+            ) : (
+              <button
+                className="text-[10px] uppercase tracking-widest text-[var(--alert)] hover:underline"
+                onClick={e => { e.stopPropagation(); setConfirmDelete(true) }}
+              >
+                Delete
+              </button>
+            )}
           </div>
         </div>
       )}
@@ -510,13 +529,8 @@ export const SignalLog: React.FC = () => {
   const deleteMut = useMutation({
     mutationFn: deleteTeamSignal,
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ['teamSignals'] }),
-    onError: (err: Error) => alert(`Delete failed: ${err.message}`),
+    onError: (err: Error) => console.error('Delete failed:', err.message),
   })
-
-  const handleDelete = (signal: TeamSignal) => {
-    const ok = window.confirm(`Permanently delete "${signal.title}"?\n\nThis cannot be undone.`)
-    if (ok) deleteMut.mutate(signal.id)
-  }
 
   const assetClassNames = useMemo(() => classesQ.data?.map(ac => ac.name) ?? [], [classesQ.data])
 
@@ -622,7 +636,7 @@ export const SignalLog: React.FC = () => {
           </div>
         ) : (
           filtered.map(s => (
-            <SignalRow key={s.id} signal={s} onArchive={id => archiveMut.mutate(id)} onDelete={handleDelete} />
+            <SignalRow key={s.id} signal={s} onArchive={id => archiveMut.mutate(id)} onDelete={s => deleteMut.mutate(s.id)} />
           ))
         )}
       </div>
