@@ -510,6 +510,7 @@ export const SignalLog: React.FC = () => {
   const deleteMut = useMutation({
     mutationFn: deleteTeamSignal,
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ['teamSignals'] }),
+    onError: (err: Error) => alert(`Delete failed: ${err.message}`),
   })
 
   const handleDelete = (signal: TeamSignal) => {
