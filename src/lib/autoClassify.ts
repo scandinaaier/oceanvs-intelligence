@@ -113,8 +113,18 @@ export function extractFinnkode(url: string): string | null {
 
 // ── Campsite detection ────────────────────────────────────
 // Used to decide whether to also create a Campsite Pipeline entry
-const CAMPSITE_STRONG = ['campingplass', 'camping', 'leirplass', 'teltplass', 'familiecamping']
-const CAMPSITE_SUPPORTING = ['sjø', 'strand', 'fjord', 'brygge', 'sjøfront', 'waterfront']
+const CAMPSITE_STRONG = [
+  // Norwegian
+  'campingplass', 'camping', 'leirplass', 'teltplass', 'familiecamping', 'bobil', 'hytteutleie',
+  // English (post-DeepL translation of Finn listings)
+  'campsite', 'campground', 'caravan park', 'rv park', 'holiday park',
+]
+const CAMPSITE_SUPPORTING = [
+  // Norwegian
+  'sjø', 'strand', 'fjord', 'brygge', 'sjøfront', 'waterfront',
+  // English equivalents (post-translation)
+  'sea', 'beach', 'dock', 'seafront',
+]
 
 export function isCampsiteSignal(title: string, description?: string): boolean {
   const text = `${title} ${description || ''}`.toLowerCase()

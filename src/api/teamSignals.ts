@@ -73,6 +73,16 @@ export async function archiveTeamSignal(id: string): Promise<void> {
   if (error) throw new Error(error.message)
 }
 
+// ── Hard-delete a signal (used for clearing duplicates) ───
+export async function deleteTeamSignal(id: string): Promise<void> {
+  const { error } = await supabase
+    .from('team_signals')
+    .delete()
+    .eq('id', id)
+
+  if (error) throw new Error(error.message)
+}
+
 // ── Asset classes (dynamic lookup) ────────────────────────
 export async function fetchAssetClasses(): Promise<AssetClass[]> {
   const { data, error } = await supabase

@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import { useAuth } from '../../state/AuthContext'
-import { fetchTeamSignals, fetchAssetClasses, createTeamSignal, archiveTeamSignal, createAssetClass } from '../../api/teamSignals'
+import { fetchTeamSignals, fetchAssetClasses, createTeamSignal, archiveTeamSignal, deleteTeamSignal, createAssetClass } from '../../api/teamSignals'
 import { CITIES } from '../../data/mock/cities'
 import { Skeleton } from '../../components/common/Skeleton'
 import { autoClassify, fetchUrlMeta, isCampsiteSignal } from '../../lib/autoClassify'
@@ -180,8 +180,10 @@ const AddSignalModal: React.FC<AddModalProps> = ({ open, onClose, assetClasses, 
         notes: form.notes || undefined,
       })
 
-      // 2 — Dual-write to Campsite Pipeline if it looks like a campsite
-      if (isCampsiteSignal(form.title, form.description)) {
+      // 2 — Dual-write to Campsite Pipeline if the asset class is Camping Ground,
+      // or if the keyword sniffer detects campsite language (catches English-language
+      // entries where the explicit class was left blank).
+      if (form.asset_class === 'Camping Ground' || isCampsiteSignal(form.title, form.description)) {
         try {
           await createCampsite({
             finnkode: extractedMeta?.finnkode || undefined,
@@ -400,7 +402,7 @@ const AddSignalModal: React.FC<AddModalProps> = ({ open, onClose, assetClasses, 
 }
 
 // ── Signal Row ────────────────────────────────────────────
-const SignalRow: React.FC<{ signal: TeamSignal; onArchive: (id: string) => void }> = ({ signal, onArchive }) => {
+const SignalRow: React.FC<{ signal: TeamSignal; onArchive: (id: string) => void; onDelete: (signal: TeamSignal) => void }> = ({ signal, onArchive, onDelete }) => {
   const [expanded, setExpanded] = useState(false)
   const cityMeta = signal.city ? CITIES.find(c => c.key === signal.city) : null
   const thesisLabel = THESIS_TAGS.find(t => t.value === signal.thesis_tag)?.label
@@ -461,12 +463,18 @@ const SignalRow: React.FC<{ signal: TeamSignal; onArchive: (id: string) => void 
           {signal.notes && (
             <p className="text-xs text-[var(--text-muted)] italic leading-relaxed">{signal.notes}</p>
           )}
-          <div className="flex gap-2 pt-1">
+          <div className="flex gap-3 pt-1">
             <button
-              className="text-[10px] uppercase tracking-widest text-[var(--alert)] hover:underline"
+              className="text-[10px] uppercase tracking-widest text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:underline"
               onClick={e => { e.stopPropagation(); onArchive(signal.id) }}
             >
               Archive
+            </button>
+            <button
+              className="text-[10px] uppercase tracking-widest text-[var(--alert)] hover:underline"
+              onClick={e => { e.stopPropagation(); onDelete(signal) }}
+            >
+              Delete
             </button>
           </div>
         </div>
@@ -498,6 +506,16 @@ export const SignalLog: React.FC = () => {
     mutationFn: archiveTeamSignal,
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ['teamSignals'] }),
   })
+
+  const deleteMut = useMutation({
+    mutationFn: deleteTeamSignal,
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ['teamSignals'] }),
+  })
+
+  const handleDelete = (signal: TeamSignal) => {
+    const ok = window.confirm(`Permanently delete "${signal.title}"?\n\nThis cannot be undone.`)
+    if (ok) deleteMut.mutate(signal.id)
+  }
 
   const assetClassNames = useMemo(() => classesQ.data?.map(ac => ac.name) ?? [], [classesQ.data])
 
@@ -603,7 +621,7 @@ export const SignalLog: React.FC = () => {
           </div>
         ) : (
           filtered.map(s => (
-            <SignalRow key={s.id} signal={s} onArchive={id => archiveMut.mutate(id)} />
+            <SignalRow key={s.id} signal={s} onArchive={id => archiveMut.mutate(id)} onDelete={handleDelete} />
           ))
         )}
       </div>
