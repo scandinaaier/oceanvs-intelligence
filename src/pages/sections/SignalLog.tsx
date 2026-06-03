@@ -214,10 +214,11 @@ const AddSignalModal: React.FC<AddModalProps> = ({ open, onClose, assetClasses, 
           setAddedToPipeline(true)
           // Show banner for 2 s then close
           setTimeout(() => { onClose(); resetForm() }, 2200)
-        } catch {
-          // Campsite write failed silently — signal is already saved
-          onClose()
-          resetForm()
+        } catch (campErr: unknown) {
+          // The signal is already saved; surface the pipeline failure instead of
+          // hiding it, and keep the modal open so the reason is visible.
+          setError('Saved to Signal Log, but adding to Campsite Pipeline failed: ' +
+            (campErr instanceof Error ? campErr.message : String(campErr)))
         }
       } else {
         onClose()

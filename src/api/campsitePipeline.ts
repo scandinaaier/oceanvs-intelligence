@@ -58,29 +58,36 @@ export interface NewCampsite {
 }
 
 export async function createCampsite(c: NewCampsite): Promise<CampsiteListing> {
-  const { data, error } = await supabase
-    .from('campsite_pipeline')
-    .insert({
-      finnkode: c.finnkode || null,
-      url: c.url || null,
-      title: c.title,
-      description: c.description || null,
-      price_nok: c.price_nok || 0,
-      currency: c.currency || 'NOK',
-      location: c.location || null,
-      region: c.region || null,
-      images: c.images || [],
-      plot_size: c.plot_size || null,
-      building_area: c.building_area || null,
-      property_type: c.property_type || null,
-      waterfront: c.waterfront ?? false,
-      pitches: c.pitches || null,
-      notes: c.notes || null,
-      added_by: c.added_by || null,
-      scraped_at: c.scraped_at || null,
-    })
-    .select()
-    .single()
+  const row = {
+    finnkode: c.finnkode || null,
+    url: c.url || null,
+    title: c.title,
+    description: c.description || null,
+    price_nok: c.price_nok || 0,
+    currency: c.currency || 'NOK',
+    location: c.location || null,
+    region: c.region || null,
+    images: c.images || [],
+    plot_size: c.plot_size || null,
+    building_area: c.building_area || null,
+    property_type: c.property_type || null,
+    waterfront: c.waterfront ?? false,
+    pitches: c.pitches || null,
+    notes: c.notes || null,
+    added_by: c.added_by || null,
+    scraped_at: c.scraped_at || null,
+  }
+
+  let { data, error } = await supabase.from('campsite_pipeline').insert(row).select().single()
+
+  // Resilience: if PostgREST hasn't picked up the `currency` column yet (stale
+  // schema cache right after the migration), retry without it — the column has a
+  // 'NOK' default, so the listing still lands instead of silently disappearing.
+  if (error && /currency/i.test(error.message)) {
+    const rowNoCurrency: Record<string, unknown> = { ...row }
+    delete rowNoCurrency.currency
+    ;({ data, error } = await supabase.from('campsite_pipeline').insert(rowNoCurrency).select().single())
+  }
 
   if (error) throw new Error(error.message)
   return data as CampsiteListing
