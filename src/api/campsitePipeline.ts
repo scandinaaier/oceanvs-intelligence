@@ -3,6 +3,7 @@ import { supabase } from '../lib/supabase'
 // ── Types ─────────────────────────────────────────────────
 export interface CampsiteListing {
   id: string
+  signal_id: string | null   // team_signals.id this listing was created from (cascade-deletes with it)
   finnkode: string | null
   url: string | null
   title: string
@@ -38,6 +39,7 @@ export async function fetchCampsites(): Promise<CampsiteListing[]> {
 
 // ── Create a new campsite listing ─────────────────────────
 export interface NewCampsite {
+  signal_id?: string
   finnkode?: string
   url?: string
   title: string
@@ -59,6 +61,7 @@ export interface NewCampsite {
 
 export async function createCampsite(c: NewCampsite): Promise<CampsiteListing> {
   const row = {
+    signal_id: c.signal_id || null,
     finnkode: c.finnkode || null,
     url: c.url || null,
     title: c.title,
@@ -80,13 +83,16 @@ export async function createCampsite(c: NewCampsite): Promise<CampsiteListing> {
 
   let { data, error } = await supabase.from('campsite_pipeline').insert(row).select().single()
 
-  // Resilience: if PostgREST hasn't picked up the `currency` column yet (stale
-  // schema cache right after the migration), retry without it — the column has a
-  // 'NOK' default, so the listing still lands instead of silently disappearing.
-  if (error && /currency/i.test(error.message)) {
-    const rowNoCurrency: Record<string, unknown> = { ...row }
-    delete rowNoCurrency.currency
-    ;({ data, error } = await supabase.from('campsite_pipeline').insert(rowNoCurrency).select().single())
+  // Resilience: right after a migration PostgREST's schema cache may not yet know a
+  // newly added column (currency / signal_id), which fails the insert. Retry once
+  // without those optional columns so the listing still lands instead of silently
+  // disappearing (currency falls back to its 'NOK' default; the signal link is lost
+  // for that row until the cache catches up).
+  if (error && /currency|signal_id|schema cache|column/i.test(error.message)) {
+    const slim: Record<string, unknown> = { ...row }
+    delete slim.currency
+    delete slim.signal_id
+    ;({ data, error } = await supabase.from('campsite_pipeline').insert(slim).select().single())
   }
 
   if (error) throw new Error(error.message)

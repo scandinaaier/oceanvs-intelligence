@@ -175,8 +175,8 @@ const AddSignalModal: React.FC<AddModalProps> = ({ open, onClose, assetClasses, 
     setError('')
 
     try {
-      // 1 — Save to Signal Log
-      await createMut.mutateAsync({
+      // 1 — Save to Signal Log (returns the created row so we can link the campsite to it)
+      const createdSignal = await createMut.mutateAsync({
         url: form.url || undefined,
         title: form.title.trim(),
         description: form.description || undefined,
@@ -198,6 +198,7 @@ const AddSignalModal: React.FC<AddModalProps> = ({ open, onClose, assetClasses, 
           // extraction found one, hand-typed otherwise. Strip non-digits before parsing.
           const parsedPrice = parseInt(form.price.replace(/[^\d]/g, ''), 10)
           await createCampsite({
+            signal_id: createdSignal.id,   // link so deleting the signal cascade-deletes this listing
             finnkode: extractedMeta?.finnkode || undefined,
             url: form.url || undefined,
             title: form.title.trim(),
@@ -567,7 +568,12 @@ export const SignalLog: React.FC = () => {
 
   const deleteMut = useMutation({
     mutationFn: deleteTeamSignal,
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: ['teamSignals'] }),
+    onSuccess: () => {
+      // Deleting the signal cascade-deletes its linked campsite in the DB, so
+      // refresh the pipeline too.
+      queryClient.invalidateQueries({ queryKey: ['teamSignals'] })
+      queryClient.invalidateQueries({ queryKey: ['campsites'] })
+    },
     onError: (err: Error) => console.error('Delete failed:', err.message),
   })
 
