@@ -52,6 +52,8 @@ const AddSignalModal: React.FC<AddModalProps> = ({ open, onClose, assetClasses, 
     url: '',
     title: '',
     description: '',
+    price: '',         // asking price as typed; auto-filled from extraction, user-editable
+    currency: 'NOK',   // ISO code; auto-filled from extraction, user-editable
     asset_class: '',   // intentionally empty — auto-classify fills it; user can also pick manually
     city: '' as string,
     vertical: '' as string,
@@ -88,9 +90,13 @@ const AddSignalModal: React.FC<AddModalProps> = ({ open, onClose, assetClasses, 
       // Auto-classify on extracted content
       const classification = autoClassify(meta.title, meta.description)
 
+      // Extracted asking price + currency (price falls back to legacy priceNok)
+      const extractedAmount = meta.price ?? meta.priceNok ?? 0
+      const extractedCurrency = meta.currency || 'NOK'
+
       // Build description string
       let descParts: string[] = []
-      if (meta.priceNok > 0) descParts.push(`Asking: NOK ${meta.priceNok.toLocaleString('no-NO')}`)
+      if (extractedAmount > 0) descParts.push(`Asking: ${extractedCurrency} ${extractedAmount.toLocaleString('no-NO')}`)
       if (meta.location) descParts.push(`Location: ${meta.location}`)
       if (meta.description) descParts.push(meta.description)
       const builtDesc = descParts.join('\n').slice(0, 800)
@@ -108,6 +114,9 @@ const AddSignalModal: React.FC<AddModalProps> = ({ open, onClose, assetClasses, 
         ...f,
         title: meta.title || f.title,
         description: f.description || builtDesc,
+        // Pre-fill price only when extraction found one; otherwise leave blank for manual entry
+        price: extractedAmount > 0 ? String(extractedAmount) : f.price,
+        currency: extractedCurrency,
         asset_class: classification.asset_class && assetClasses.includes(classification.asset_class) ? classification.asset_class : f.asset_class,
         vertical: (classification.vertical || f.vertical) as string,
         thesis_tag: classification.thesis_tag || f.thesis_tag,
@@ -155,7 +164,7 @@ const AddSignalModal: React.FC<AddModalProps> = ({ open, onClose, assetClasses, 
   })
 
   const resetForm = () => {
-    setForm({ url: '', title: '', description: '', asset_class: '', city: '', vertical: '', thesis_tag: '', tip_source: '', notes: '' })
+    setForm({ url: '', title: '', description: '', price: '', currency: 'NOK', asset_class: '', city: '', vertical: '', thesis_tag: '', tip_source: '', notes: '' })
     setError('')
   }
 
@@ -185,12 +194,16 @@ const AddSignalModal: React.FC<AddModalProps> = ({ open, onClose, assetClasses, 
       // entries where the explicit class was left blank).
       if (form.asset_class === 'Camping Ground' || isCampsiteSignal(form.title, form.description)) {
         try {
+          // Asking price comes from the (editable) form field — auto-filled when
+          // extraction found one, hand-typed otherwise. Strip non-digits before parsing.
+          const parsedPrice = parseInt(form.price.replace(/[^\d]/g, ''), 10)
           await createCampsite({
             finnkode: extractedMeta?.finnkode || undefined,
             url: form.url || undefined,
             title: form.title.trim(),
             description: form.description || undefined,
-            price_nok: extractedMeta?.priceNok || undefined,
+            price_nok: Number.isFinite(parsedPrice) && parsedPrice > 0 ? parsedPrice : undefined,
+            currency: form.currency || 'NOK',
             location: extractedMeta?.location || undefined,
             region: extractedMeta?.region || undefined,
             images: extractedMeta?.images || [],
@@ -274,6 +287,31 @@ const AddSignalModal: React.FC<AddModalProps> = ({ open, onClose, assetClasses, 
               className="border border-[var(--border)] rounded-lg px-3 py-2 text-sm resize-none focus:outline-none focus:ring-2 focus:ring-[var(--accent-primary)]/30 focus:border-[var(--accent-primary)]"
             />
           </label>
+
+          {/* Row: Asking Price + Currency — auto-filled from the listing, editable */}
+          <div className="grid grid-cols-[1fr_120px] gap-3">
+            <label className="flex flex-col gap-1">
+              <span className="eyebrow">Asking Price {fetching && <span className="text-[var(--accent-secondary)] ml-1 normal-case tracking-normal">…</span>}</span>
+              <input
+                type="text"
+                inputMode="numeric"
+                placeholder="e.g. 250000 — or leave blank if POA"
+                value={form.price}
+                onChange={e => setForm(f => ({ ...f, price: e.target.value }))}
+                className="border border-[var(--border)] rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[var(--accent-primary)]/30 focus:border-[var(--accent-primary)]"
+              />
+            </label>
+            <label className="flex flex-col gap-1">
+              <span className="eyebrow">Currency</span>
+              <select
+                value={form.currency}
+                onChange={e => setForm(f => ({ ...f, currency: e.target.value }))}
+                className="border border-[var(--border)] rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[var(--accent-primary)]/30"
+              >
+                {['NOK', 'SEK', 'DKK', 'EUR', 'GBP', 'USD', 'ISK', 'CHF'].map(c => <option key={c} value={c}>{c}</option>)}
+              </select>
+            </label>
+          </div>
 
           {/* Row: Asset Class + City */}
           <div className="grid grid-cols-2 gap-3">

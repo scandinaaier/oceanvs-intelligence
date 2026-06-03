@@ -142,6 +142,8 @@ export interface UrlMeta {
   images: string[]
   siteName: string
   priceNok: number
+  price?: number          // generic amount (may be non-NOK); falls back to priceNok
+  currency?: string       // ISO 4217 code for `price` (e.g. NOK, EUR, SEK)
   finnkode: string | null
   location: string
   region: string

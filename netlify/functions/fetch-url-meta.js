@@ -91,12 +91,11 @@ export const handler = async (event) => {
       return { statusCode: 200, headers, body: JSON.stringify({ error: 'Not an HTML page', partial: true }) }
     }
 
-    // Most sites: OG tags live in <head>, so 100KB and stop at </head> is plenty.
-    // Finn.no: the asking price ("Prisantydning") sits in the <body> — its JSON
-    // form is at ~36KB and the visible DOM element at ~150–205KB — so we must keep
-    // reading past </head>. 250KB covers price, location and image URLs.
-    const isFinnHost = parsedUrl.hostname.includes('finn.no')
-    const MAX_BYTES = isFinnHost ? 250_000 : 100_000
+    // Read up to 250KB of the body for every host. Price data is not confined to
+    // <head>: JSON-LD <script> blocks, Finn's ad-targeting JSON (~36KB) and visible
+    // price elements (~150–205KB) all live further down. 250KB streams in well under
+    // the request timeout and covers title/price/location/images on the sites we hit.
+    const MAX_BYTES = 250_000
 
     const reader = res.body.getReader()
     let html = ''
@@ -107,8 +106,6 @@ export const handler = async (event) => {
       if (done) break
       html += new TextDecoder().decode(value)
       bytesRead += value.length
-      // Non-Finn pages: OG tags are in <head>, so stop early once we pass it.
-      if (!isFinnHost && html.includes('</head>')) break
     }
     reader.cancel()
 
@@ -178,6 +175,8 @@ export const handler = async (event) => {
           images,
           siteName: 'Finn.no',
           priceNok,
+          price: priceNok,          // generic price (Finn listings are always NOK)
+          currency: 'NOK',
           finnkode,
           location,
           region: regionMatch ? regionMatch[1] : '',
@@ -189,6 +188,12 @@ export const handler = async (event) => {
         })
       }
     }
+
+    // Universal price + currency extraction (JSON-LD, OpenGraph, microdata, then a
+    // conservative currency-symbol fallback). Works for any site that exposes the
+    // price in its server HTML; bot-walled / JS-only portals return 0 and the user
+    // types the price manually in the Add Signal form.
+    const { price, currency } = extractPrice(html, parsedUrl.hostname)
 
     // Translate if the page appears to be Norwegian (no, nb, nn content-language or .no domain)
     const contentLang = res.headers.get('content-language') || ''
@@ -218,7 +223,9 @@ export const handler = async (event) => {
         image,
         images: image ? [image] : [],
         siteName,
-        priceNok: 0,
+        priceNok: price,            // back-compat: numeric amount (may be non-NOK)
+        price,
+        currency,
         finnkode: null,
         location: '',
         region: '',
@@ -243,3 +250,130 @@ function extractTag(html, tag) {
   const m = html.match(new RegExp(`<${tag}[^>]*>([^<]+)<\/${tag}>`, 'i'))
   return m ? m[1].trim() : ''
 }
+
+// ── Universal price + currency extraction ─────────────────
+// Returns { price: <integer amount>, currency: <ISO 4217 code> }. price is 0 when
+// no reliable price is found (the user then enters it manually).
+
+const SYMBOL_CURRENCY = { '€': 'EUR', '£': 'GBP', '$': 'USD' }
+
+// Best-guess currency for a host when the price source doesn't state one.
+function currencyForHost(hostname) {
+  const h = hostname.toLowerCase()
+  if (h.endsWith('.no')) return 'NOK'
+  if (h.endsWith('.se')) return 'SEK'
+  if (h.endsWith('.dk')) return 'DKK'
+  if (h.endsWith('.is')) return 'ISK'
+  if (h.endsWith('.ch')) return 'CHF'
+  if (h.endsWith('.uk') || h.endsWith('.co.uk')) return 'GBP'
+  if (h.endsWith('.us') || h.endsWith('.com')) return 'EUR' // .com is ambiguous; EUR is the safer default for this pipeline
+  return 'EUR' // most of our target markets (FI, GR, DE, FR, ES, IT, PT) are euro
+}
+
+// Parse a human price string into an integer. Handles "250000", "250.000",
+// "250 000", "1,200,000", "1.200.000,50", "250000.00", non-breaking spaces.
+function parseAmount(raw) {
+  if (raw == null) return 0
+  let s = String(raw).replace(/[\s ]/g, '')
+  s = s.replace(/[.,]\d{2}$/, '')   // drop a trailing 2-digit decimal part
+  s = s.replace(/[.,]/g, '')        // remaining . and , are thousand separators
+  const n = parseInt(s, 10)
+  return Number.isFinite(n) && n > 0 ? n : 0
+}
+
+// Walk a parsed JSON-LD value looking for an Offer-style price + currency.
+function priceFromJsonLd(node) {
+  if (!node || typeof node !== 'object') return null
+  if (Array.isArray(node)) {
+    for (const item of node) { const r = priceFromJsonLd(item); if (r) return r }
+    return null
+  }
+  const priceRaw = node.price ?? node.lowPrice ?? node.highPrice
+  if (priceRaw != null) {
+    const amount = parseAmount(priceRaw)
+    if (amount) {
+      const cur = typeof node.priceCurrency === 'string' ? node.priceCurrency.toUpperCase() : null
+      return { amount, currency: cur }
+    }
+  }
+  for (const key of ['offers', 'priceSpecification', '@graph', 'makesOffer', 'itemOffered']) {
+    if (node[key]) { const r = priceFromJsonLd(node[key]); if (r) return r }
+  }
+  return null
+}
+
+function extractPrice(html, hostname) {
+  const fallbackCurrency = currencyForHost(hostname)
+
+  // Finn.no — ad-targeting JSON (clean integer, always NOK), with the visible
+  // "Prisantydning" element as a secondary source.
+  if (hostname.includes('finn.no')) {
+    const m = html.match(/"key":"price","value":\["(\d+)"\]/)
+    if (m) return { price: parseInt(m[1], 10), currency: 'NOK' }
+    const dom = html.match(/data-testid="pricing-indicative-price"[\s\S]*?<span[^>]*>([\d\s ]+)\s*kr/)
+    if (dom) return { price: parseAmount(dom[1]), currency: 'NOK' }
+  }
+
+  // 1) JSON-LD <script> blocks (schema.org Product/Offer/RealEstateListing)
+  for (const block of html.matchAll(/<script[^>]+application\/ld\+json[^>]*>([\s\S]*?)<\/script>/gi)) {
+    const text = block[1].trim()
+    try {
+      const r = priceFromJsonLd(JSON.parse(text))
+      if (r) return { price: r.amount, currency: r.currency || fallbackCurrency }
+    } catch {
+      // Malformed/concatenated JSON-LD — fall back to regex on the block text
+      const p = text.match(/"(?:price|lowPrice)"\s*:\s*"?([\d.,]+)"?/)
+      if (p && parseAmount(p[1])) {
+        const c = text.match(/"priceCurrency"\s*:\s*"([A-Za-z]{3})"/)
+        return { price: parseAmount(p[1]), currency: c ? c[1].toUpperCase() : fallbackCurrency }
+      }
+    }
+  }
+
+  // 2) OpenGraph / product price meta tags (amount + currency in any attribute order)
+  const ogAmt = html.match(/(?:product:price:amount|og:price:amount)["'][^>]*content=["']([\d.,]+)["']/i)
+             || html.match(/content=["']([\d.,]+)["'][^>]*(?:product:price:amount|og:price:amount)["']/i)
+  if (ogAmt && parseAmount(ogAmt[1])) {
+    const ogCur = html.match(/(?:product:price:currency|og:price:currency)["'][^>]*content=["']([A-Za-z]{3})["']/i)
+                || html.match(/content=["']([A-Za-z]{3})["'][^>]*(?:product:price:currency|og:price:currency)["']/i)
+    return { price: parseAmount(ogAmt[1]), currency: ogCur ? ogCur[1].toUpperCase() : fallbackCurrency }
+  }
+
+  // 3) Microdata itemprop="price" (+ optional itemprop="priceCurrency")
+  const ip = html.match(/itemprop=["']price["'][^>]*content=["']([\d.,]+)["']/i)
+          || html.match(/content=["']([\d.,]+)["'][^>]*itemprop=["']price["']/i)
+  if (ip && parseAmount(ip[1])) {
+    const ipc = html.match(/itemprop=["']priceCurrency["'][^>]*content=["']([A-Za-z]{3})["']/i)
+    return { price: parseAmount(ip[1]), currency: ipc ? ipc[1].toUpperCase() : fallbackCurrency }
+  }
+
+  // 4) Conservative currency-symbol fallback. Only accepts a plausible asking price
+  //    (>= 10,000) sitting next to a currency token, to avoid matching fees, sizes
+  //    or phone numbers. Scans visible text with tags stripped.
+  const text = html.replace(/<script[\s\S]*?<\/script>/gi, ' ').replace(/<[^>]+>/g, ' ')
+  const NUM = '\\d{1,3}(?:[ . ]\\d{3})+(?:,\\d{2})?'  // grouped thousands, e.g. 250 000 / 250.000
+  const patterns = [
+    { re: new RegExp(`([€£$])\\s?(${NUM})`), curFromSym: true },                          // €250.000
+    { re: new RegExp(`(${NUM})\\s?([€£$])`), curFromSym: true, numFirst: true },          // 250.000€
+    { re: new RegExp(`\\b(NOK|SEK|DKK|EUR|GBP|USD|CHF|ISK)\\s?(${NUM})`, 'i'), code: true },
+    { re: new RegExp(`(${NUM})\\s?(NOK|SEK|DKK|EUR|GBP|USD|CHF|ISK|kr|:-)`, 'i'), code: true, numFirst: true },
+  ]
+  for (const p of patterns) {
+    const m = text.match(p.re)
+    if (!m) continue
+    const numStr = p.numFirst ? m[1] : m[2]
+    const token  = p.numFirst ? m[2] : m[1]
+    const amount = parseAmount(numStr)
+    if (amount < 10000) continue
+    let currency = fallbackCurrency
+    if (p.curFromSym) currency = SYMBOL_CURRENCY[token] || fallbackCurrency
+    else if (/^(NOK|SEK|DKK|EUR|GBP|USD|CHF|ISK)$/i.test(token)) currency = token.toUpperCase()
+    // "kr" / ":-" are ambiguous (NOK/SEK/DKK) — keep the host-based guess.
+    return { price: amount, currency }
+  }
+
+  return { price: 0, currency: fallbackCurrency }
+}
+
+// Exported for unit testing (Netlify only invokes `handler`).
+export { extractPrice, parseAmount, currencyForHost }

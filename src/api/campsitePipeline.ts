@@ -8,6 +8,7 @@ export interface CampsiteListing {
   title: string
   description: string | null
   price_nok: number
+  currency: string
   location: string | null
   region: string | null
   images: string[]
@@ -42,6 +43,7 @@ export interface NewCampsite {
   title: string
   description?: string
   price_nok?: number
+  currency?: string
   location?: string
   region?: string
   images?: string[]
@@ -64,6 +66,7 @@ export async function createCampsite(c: NewCampsite): Promise<CampsiteListing> {
       title: c.title,
       description: c.description || null,
       price_nok: c.price_nok || 0,
+      currency: c.currency || 'NOK',
       location: c.location || null,
       region: c.region || null,
       images: c.images || [],

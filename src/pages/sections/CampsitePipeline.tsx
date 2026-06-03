@@ -6,10 +6,16 @@ import { Skeleton } from '../../components/common/Skeleton'
 import type { CampsiteListing } from '../../api/campsitePipeline'
 
 // ── Helpers ───────────────────────────────────────────────
-function fmtNok(n: number): string {
+// Format an asking price in its own currency, e.g. €250,000 / SEK 2.5M / NOK 20M.
+function fmtPrice(n: number, currency: string = 'NOK'): string {
   if (!n) return 'POA'
-  if (n >= 1_000_000) return `NOK ${(n / 1_000_000).toFixed(1)}M`
-  return `NOK ${n.toLocaleString('no-NO')}`
+  const cur = (currency || 'NOK').toUpperCase()
+  const symbol: Record<string, string> = { EUR: '€', GBP: '£', USD: '$' }
+  const unit = symbol[cur] ?? `${cur} `
+  const body = n >= 1_000_000
+    ? `${(n / 1_000_000).toFixed(n >= 10_000_000 ? 0 : 1)}M`
+    : n.toLocaleString('en-US')
+  return `${unit}${body}`
 }
 
 function timeAgo(dateStr: string): string {
@@ -77,7 +83,7 @@ const SiteCard: React.FC<{
 
       {/* Price + location */}
       <div className="flex items-center justify-between">
-        <span className="text-sm font-semibold text-[var(--accent-primary)]">{fmtNok(site.price_nok)}</span>
+        <span className="text-sm font-semibold text-[var(--accent-primary)]">{fmtPrice(site.price_nok, site.currency)}</span>
         {site.location && (
           <span className="text-[10px] text-[var(--text-muted)] truncate max-w-[50%]">{site.location.split(',')[0]}</span>
         )}
@@ -149,7 +155,7 @@ const DetailModal: React.FC<{
           <div className="grid grid-cols-3 gap-4">
             <div className="card p-3">
               <span className="eyebrow">Asking Price</span>
-              <div className="text-xl font-semibold text-[var(--accent-primary)] mt-1">{fmtNok(site.price_nok)}</div>
+              <div className="text-xl font-semibold text-[var(--accent-primary)] mt-1">{fmtPrice(site.price_nok, site.currency)}</div>
             </div>
             {site.plot_size && (
               <div className="card p-3">
@@ -298,9 +304,16 @@ export const CampsitePipeline: React.FC = () => {
     return list
   }, [sites, regionFilter, statusFilter, search, sortMode])
 
-  // Stats
-  const totalValue = sites.reduce((s, c) => s + (c.price_nok || 0), 0)
-  const avgPrice = sites.length > 0 ? totalValue / sites.length : 0
+  // Stats — value aggregates are computed within the single most common currency so
+  // we never add NOK + EUR together. Mixed pipelines show the dominant currency only.
+  const dominantCurrency = useMemo(() => {
+    const counts: Record<string, number> = {}
+    for (const s of sites) if (s.price_nok) counts[s.currency || 'NOK'] = (counts[s.currency || 'NOK'] || 0) + 1
+    return Object.entries(counts).sort((a, b) => b[1] - a[1])[0]?.[0] || 'NOK'
+  }, [sites])
+  const valued = sites.filter(s => s.price_nok && (s.currency || 'NOK') === dominantCurrency)
+  const totalValue = valued.reduce((s, c) => s + (c.price_nok || 0), 0)
+  const avgPrice = valued.length > 0 ? totalValue / valued.length : 0
   const activeCount = sites.filter(s => ['watching', 'contacted', 'active'].includes(s.status)).length
 
   return (
@@ -333,12 +346,12 @@ export const CampsitePipeline: React.FC = () => {
           <div className="text-3xl font-semibold text-[var(--accent-primary)] mt-2">{activeCount}</div>
         </div>
         <div className="card p-4">
-          <span className="eyebrow">Total Listed Value</span>
-          <div className="text-2xl font-semibold text-[var(--text-primary)] mt-2">{fmtNok(totalValue)}</div>
+          <span className="eyebrow">Total Listed Value{valued.length < sites.length && ` (${dominantCurrency})`}</span>
+          <div className="text-2xl font-semibold text-[var(--text-primary)] mt-2">{fmtPrice(totalValue, dominantCurrency)}</div>
         </div>
         <div className="card p-4">
           <span className="eyebrow">Avg Asking Price</span>
-          <div className="text-2xl font-semibold text-[var(--text-primary)] mt-2">{fmtNok(Math.round(avgPrice))}</div>
+          <div className="text-2xl font-semibold text-[var(--text-primary)] mt-2">{fmtPrice(Math.round(avgPrice), dominantCurrency)}</div>
         </div>
       </section>
 
