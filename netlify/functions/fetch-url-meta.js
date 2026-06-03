@@ -91,19 +91,24 @@ export const handler = async (event) => {
       return { statusCode: 200, headers, body: JSON.stringify({ error: 'Not an HTML page', partial: true }) }
     }
 
-    // Only read first 100KB — OG tags are always in <head>
+    // Most sites: OG tags live in <head>, so 100KB and stop at </head> is plenty.
+    // Finn.no: the asking price ("Prisantydning") sits in the <body> — its JSON
+    // form is at ~36KB and the visible DOM element at ~150–205KB — so we must keep
+    // reading past </head>. 250KB covers price, location and image URLs.
+    const isFinnHost = parsedUrl.hostname.includes('finn.no')
+    const MAX_BYTES = isFinnHost ? 250_000 : 100_000
+
     const reader = res.body.getReader()
     let html = ''
     let bytesRead = 0
-    const MAX_BYTES = 100_000
 
     while (bytesRead < MAX_BYTES) {
       const { done, value } = await reader.read()
       if (done) break
       html += new TextDecoder().decode(value)
       bytesRead += value.length
-      // Stop once we've passed </head>
-      if (html.includes('</head>')) break
+      // Non-Finn pages: OG tags are in <head>, so stop early once we pass it.
+      if (!isFinnHost && html.includes('</head>')) break
     }
     reader.cancel()
 
@@ -132,8 +137,20 @@ export const handler = async (event) => {
       const titleTag = html.match(/<title>(.*?)(?:\s*\|\s*FINN[^<]*)?<\/title>/)
       const finnTitle = titleTag ? titleTag[1].replace(/&amp;/g, '&').replace(/&#x27;/g, "'").trim() : ''
 
-      const priceMatch = html.match(/data-testid="pricing-indicative-price"[^>]*>.*?<span[^>]*>([\d\s]+)\s*kr/s)
-      priceNok = priceMatch ? parseInt(priceMatch[1].replace(/\s/g, '')) : 0
+      // Asking price. Primary source is Finn's ad-targeting JSON, which carries the
+      // price as a clean integer string with no separators, e.g.:
+      //   {"key":"price","value":["20000000"]}
+      // Fallback is the visible DOM element, where the value uses spaces / non-breaking
+      // spaces as thousand separators, e.g.:
+      //   data-testid="pricing-indicative-price"...<span ...>20 000 000 kr</span>
+      const jsonPrice = html.match(/"key":"price","value":\["(\d+)"\]/)
+      if (jsonPrice) {
+        priceNok = parseInt(jsonPrice[1], 10)
+      } else {
+        const domPrice = html.match(/data-testid="pricing-indicative-price"[\s\S]*?<span[^>]*>([\d\s ]+)\s*kr/)
+        priceNok = domPrice ? parseInt(domPrice[1].replace(/[\s ]/g, ''), 10) : 0
+      }
+      if (!Number.isFinite(priceNok)) priceNok = 0
 
       const locMatch = html.match(/data-testid="(?:object-address|location)"[^>]*>(.*?)<\//s)
       const location = locMatch ? locMatch[1].replace(/<[^>]+>/g, '').trim() : ''
