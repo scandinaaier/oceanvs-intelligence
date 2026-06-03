@@ -79,7 +79,7 @@ export const handler = async (event) => {
         'Accept-Language': 'no-NO,no;q=0.9,en;q=0.8',
       },
       redirect: 'follow',
-      signal: AbortSignal.timeout(8000),
+      signal: AbortSignal.timeout(10000),
     })
 
     if (!res.ok) {
@@ -91,19 +91,22 @@ export const handler = async (event) => {
       return { statusCode: 200, headers, body: JSON.stringify({ error: 'Not an HTML page', partial: true }) }
     }
 
-    // Only read first 100KB — OG tags are always in <head>
+    // Finn.no: price ("Prisantydning") is in the <body>, so we must read well past </head>.
+    // Other sites: OG tags are in <head> so we can stop early.
+    const isFinnHost = parsedUrl.hostname.includes('finn.no')
+    const MAX_BYTES = isFinnHost ? 400_000 : 100_000
+
     const reader = res.body.getReader()
     let html = ''
     let bytesRead = 0
-    const MAX_BYTES = 100_000
 
     while (bytesRead < MAX_BYTES) {
       const { done, value } = await reader.read()
       if (done) break
       html += new TextDecoder().decode(value)
       bytesRead += value.length
-      // Stop once we've passed </head>
-      if (html.includes('</head>')) break
+      // For non-Finn pages, OG tags live in <head> — stop early to save time
+      if (!isFinnHost && html.includes('</head>')) break
     }
     reader.cancel()
 
@@ -132,8 +135,40 @@ export const handler = async (event) => {
       const titleTag = html.match(/<title>(.*?)(?:\s*\|\s*FINN[^<]*)?<\/title>/)
       const finnTitle = titleTag ? titleTag[1].replace(/&amp;/g, '&').replace(/&#x27;/g, "'").trim() : ''
 
-      const priceMatch = html.match(/data-testid="pricing-indicative-price"[^>]*>.*?<span[^>]*>([\d\s]+)\s*kr/s)
-      priceNok = priceMatch ? parseInt(priceMatch[1].replace(/\s/g, '')) : 0
+      // "Prisantydning" (asking price) can appear in several HTML forms on Finn.no.
+      // Norwegian prices use non-breaking spaces (\xa0 / &nbsp;) as thousand separators.
+      const cleanPrice = (s) => {
+        const n = parseInt(s.replace(/&nbsp;/g, '').replace(/[\s\xa0   ]+/g, '').replace(/\./g, ''))
+        return isNaN(n) || n < 10000 ? 0 : n
+      }
+
+      // P1: data-testid element with a nested child element containing the price
+      const p1 = html.match(/data-testid="pricing-indicative-price"[^>]*>[\s\S]{0,150}<[^>]+>([\d][\d\s\xa0 &;nbp]*)\s*kr/i)
+      if (p1) priceNok = cleanPrice(p1[1])
+
+      // P2: data-testid element with price text directly inside (no child element)
+      if (!priceNok) {
+        const p2 = html.match(/data-testid="pricing-indicative-price"[^>]*>([\d][\d\s\xa0 &;nbp]*)\s*kr/i)
+        if (p2) priceNok = cleanPrice(p2[1])
+      }
+
+      // P3: "Prisantydning" label (Norwegian) followed by the price value nearby
+      if (!priceNok) {
+        const p3 = html.match(/Prisantydning[\s\S]{0,400}?([\d]{1,3}(?:[\s\xa0 &;nbp\.]{0,12}[\d]{3})+)\s*(?:kr|NOK)/i)
+        if (p3) priceNok = cleanPrice(p3[1])
+      }
+
+      // P4: JSON-LD or __NEXT_DATA__ structured price fields
+      if (!priceNok) {
+        const p4 = html.match(/"(?:totalPrice|askingPrice|listPrice|priceValue|indicativePrice)"\s*:\s*"?([\d]{5,})"?/)
+        if (p4) priceNok = parseInt(p4[1])
+      }
+
+      // P5: Generic "price" key in JSON with a plausible NOK value (≥ 100 000)
+      if (!priceNok) {
+        const p5 = html.match(/"price"\s*:\s*([\d]{6,})/)
+        if (p5) priceNok = parseInt(p5[1])
+      }
 
       const locMatch = html.match(/data-testid="(?:object-address|location)"[^>]*>(.*?)<\//s)
       const location = locMatch ? locMatch[1].replace(/<[^>]+>/g, '').trim() : ''

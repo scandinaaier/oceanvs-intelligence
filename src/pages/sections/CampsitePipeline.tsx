@@ -245,6 +245,7 @@ export const CampsitePipeline: React.FC = () => {
   const [selectedId, setSelectedId] = useState<string | null>(null)
   const [regionFilter, setRegionFilter] = useState('All')
   const [statusFilter, setStatusFilter] = useState('All')
+  const [priceFilter, setPriceFilter] = useState('all')
   const [search, setSearch] = useState('')
   const [sortMode, setSortMode] = useState<'newest' | 'price_asc' | 'price_desc'>('newest')
 
@@ -282,6 +283,11 @@ export const CampsitePipeline: React.FC = () => {
     let list = [...sites]
     if (regionFilter !== 'All') list = list.filter(s => s.region === regionFilter)
     if (statusFilter !== 'All') list = list.filter(s => s.status === statusFilter)
+    if (priceFilter === 'poa') list = list.filter(s => !s.price_nok)
+    else if (priceFilter === 'under5m') list = list.filter(s => s.price_nok > 0 && s.price_nok < 5_000_000)
+    else if (priceFilter === '5m-10m') list = list.filter(s => s.price_nok >= 5_000_000 && s.price_nok < 10_000_000)
+    else if (priceFilter === '10m-20m') list = list.filter(s => s.price_nok >= 10_000_000 && s.price_nok < 20_000_000)
+    else if (priceFilter === 'over20m') list = list.filter(s => s.price_nok >= 20_000_000)
     if (search.trim()) {
       const q = search.toLowerCase()
       list = list.filter(s =>
@@ -296,7 +302,7 @@ export const CampsitePipeline: React.FC = () => {
     else if (sortMode === 'price_desc') list.sort((a, b) => (b.price_nok || 0) - (a.price_nok || 0))
     else list.sort((a, b) => new Date(b.added_at).getTime() - new Date(a.added_at).getTime())
     return list
-  }, [sites, regionFilter, statusFilter, search, sortMode])
+  }, [sites, regionFilter, statusFilter, priceFilter, search, sortMode])
 
   // Stats
   const totalValue = sites.reduce((s, c) => s + (c.price_nok || 0), 0)
@@ -370,6 +376,20 @@ export const CampsitePipeline: React.FC = () => {
           >
             <option value="All">All Status</option>
             {STATUS_OPTIONS.map(s => <option key={s} value={s}>{s}</option>)}
+          </select>
+
+          {/* Price filter */}
+          <select
+            value={priceFilter}
+            onChange={e => setPriceFilter(e.target.value)}
+            className="border border-[var(--border)] rounded-lg px-3 py-1.5 text-[11px] uppercase tracking-widest bg-white text-[var(--text-muted)] focus:outline-none"
+          >
+            <option value="all">All Prices</option>
+            <option value="under5m">Under NOK 5M</option>
+            <option value="5m-10m">NOK 5M – 10M</option>
+            <option value="10m-20m">NOK 10M – 20M</option>
+            <option value="over20m">NOK 20M+</option>
+            <option value="poa">POA Only</option>
           </select>
 
           {/* Sort */}
