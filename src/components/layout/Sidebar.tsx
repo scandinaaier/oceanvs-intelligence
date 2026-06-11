@@ -8,6 +8,12 @@ const PRIMARY_NAV = [
   { to: '/dashboard/intel', label: 'Market Intelligence' },
 ]
 
+const ROLLUP_NAV = [
+  { to: '/dashboard/saunas', label: 'Sauna Registry' },
+  { to: '/dashboard/campsites', label: 'Campsite Registry' },
+  { to: '/dashboard/crm', label: 'CRM Board' },
+]
+
 const SECONDARY_NAV = [
   { to: '/dashboard/operators', label: 'Operator Pipeline' },
   { to: '/dashboard/portfolio', label: 'Portfolio Builder' },
@@ -37,6 +43,13 @@ export const Sidebar: React.FC = () => (
       <span className="eyebrow block mb-3 px-2">Acquisition</span>
       <ul className="flex flex-col gap-0.5">
         {PRIMARY_NAV.map(item => <NavItem key={item.to} {...item} />)}
+      </ul>
+
+      <div className="border-t border-[var(--border)] my-3" />
+
+      <span className="eyebrow block mb-3 px-2">Roll-Up CRM</span>
+      <ul className="flex flex-col gap-0.5">
+        {ROLLUP_NAV.map(item => <NavItem key={item.to} {...item} />)}
       </ul>
 
       <div className="border-t border-[var(--border)] my-3" />

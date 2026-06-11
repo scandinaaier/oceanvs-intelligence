@@ -1,0 +1,3504 @@
+[
+ {
+  "id": "kok-oslo",
+  "vertical": "sauna",
+  "name": "KOK Oslo",
+  "region": "Eastern Norway",
+  "subRegion": "Oslo",
+  "type": "Commercial",
+  "format": "Floating sauna boat",
+  "ownershipModel": "Private company",
+  "waterAccess": "Yes — Oslofjord",
+  "priceRange": "320–3,700 NOK",
+  "bookingModel": "Drop-in + Private hire",
+  "yearEst": "c.2018",
+  "notes": "Two sites: Langkaia (Opera) & Aker Brygge. Wood-fired. Sauna cruise option.",
+  "website": "koknorge.no",
+  "isMultiSite": true,
+  "priority": "high",
+  "stage": "prospect",
+  "outreachNotes": [],
+  "tags": [
+   "multi-site",
+   "floating",
+   "premium",
+   "oslo",
+   "brand"
+  ],
+  "estimatedValuation": "EUR 3–6M",
+  "contact": {
+   "email": "bedrift@koknorge.no",
+   "phone": "+47 934 00 522",
+   "address": "C/O Mesh, Tordenskiolds gate 2, 0160 Oslo",
+   "contactSource": "website"
+  },
+  "brreg_match": "high",
+  "brreg": {
+   "org_number": "923783024",
+   "legal_name": "KOK OSLO AS",
+   "org_form": "AS",
+   "nace": "93.291 Opplevelsesaktiviteter",
+   "employees": 31,
+   "founded": "2019-10-02",
+   "municipality": "OSLO",
+   "registry_email": null,
+   "registry_website": null,
+   "ceo": "Kristin Lorange",
+   "board": [
+    "Kristin Lorange",
+    "Lars Johan Bjørkevoll",
+    "Elsa Solheim Braadland",
+    "Rina Mariann Hansen",
+    "Lars Wilhelm Hartwig"
+   ],
+   "owners_count": 5,
+   "financials": [
+    {
+     "year": 2024,
+     "revenue_nok": 27236637,
+     "ebit_nok": 500503,
+     "result_nok": 544335,
+     "equity_nok": -523156,
+     "debt_nok": 5674585
+    }
+   ],
+   "revenue_nok": 27236637,
+   "revenue_year": 2024,
+   "ebit_nok": 500503,
+   "yoy_growth_pct": null
+  }
+ },
+ {
+  "id": "oslo-badstuforening",
+  "vertical": "sauna",
+  "name": "Oslo Badstuforening",
+  "region": "Eastern Norway",
+  "subRegion": "Oslo (multiple)",
+  "type": "Association / Non-profit",
+  "format": "Floating raft (multiple units)",
+  "ownershipModel": "Non-profit",
+  "waterAccess": "Yes — Oslofjord",
+  "priceRange": "125–260 NOK",
+  "bookingModel": "Drop-in (members + public)",
+  "yearEst": "2016",
+  "notes": "6–7 locations incl. Sukkerbiten, Langkaia. Trosten unit won TIME Greatest Places 2025.",
+  "website": "oslobadstuforening.no",
+  "isMultiSite": true,
+  "priority": "low",
+  "stage": "prospect",
+  "outreachNotes": [],
+  "tags": [
+   "non-profit",
+   "floating",
+   "multi-site",
+   "oslo"
+  ],
+  "contact": {
+   "contactSource": "research_needed"
+  },
+  "brreg_match": "uncertain",
+  "brreg": {
+   "org_number": "918303391",
+   "legal_name": "OSLO BADSTUFORENING",
+   "org_form": "FLI",
+   "nace": "94.992 Aktiviteter i andre medlemsorganisasjoner ellers",
+   "employees": 61,
+   "founded": "2016-12-07",
+   "municipality": "OSLO",
+   "registry_email": "post@oslobadstuforening.no",
+   "registry_website": null,
+   "ceo": "Ragna Marie Fjeld",
+   "board": [
+    "Erik Markus Degerman",
+    "Maria Josefina Schybergson",
+    "Yngve Steinar Konglevoll",
+    "Mina Lin Vinje",
+    "Anne Håbjørg Lysvåg",
+    "Sigrid Vesaas",
+    "Simon Torp",
+    "Sigbjørn Sand Johansen"
+   ],
+   "owners_count": 8,
+   "financials": [
+    {
+     "year": 2024,
+     "revenue_nok": 49587057,
+     "ebit_nok": -7759233,
+     "result_nok": -8160231,
+     "equity_nok": 17407928,
+     "debt_nok": 16605112
+    }
+   ],
+   "revenue_nok": 49587057,
+   "revenue_year": 2024,
+   "ebit_nok": -7759233,
+   "yoy_growth_pct": null
+  }
+ },
+ {
+  "id": "salt-sauna",
+  "vertical": "sauna",
+  "name": "SALT Sauna",
+  "region": "Eastern Norway",
+  "subRegion": "Oslo",
+  "type": "Commercial",
+  "format": "Land-based (12 saunas, waterfront)",
+  "ownershipModel": "Private company",
+  "waterAccess": "Yes — Oslofjord",
+  "priceRange": "205–1,990 NOK",
+  "bookingModel": "Drop-in + Private hire",
+  "yearEst": "c.2019",
+  "notes": "12 saunas; capacities 4–100 ppl. Cultural venue with bar/music. Festival atmosphere.",
+  "website": "salted.no",
+  "isMultiSite": false,
+  "priority": "high",
+  "stage": "prospect",
+  "outreachNotes": [],
+  "tags": [
+   "land-based",
+   "premium",
+   "oslo",
+   "large-capacity",
+   "cultural"
+  ],
+  "estimatedValuation": "EUR 4–8M",
+  "contact": {
+   "contactSource": "research_needed"
+  },
+  "brreg_match": "uncertain",
+  "brreg": {
+   "org_number": "989149423",
+   "legal_name": "SALT AS",
+   "org_form": "AS",
+   "nace": "64.323 Andre egeninvesteringsselskaper",
+   "employees": null,
+   "founded": "2005-12-05",
+   "municipality": "BERGEN",
+   "registry_email": null,
+   "registry_website": null,
+   "ceo": "Fredrik Herud Sørensen",
+   "board": [
+    "Fredrik Herud Sørensen"
+   ],
+   "owners_count": 1,
+   "financials": [
+    {
+     "year": 2025,
+     "revenue_nok": null,
+     "ebit_nok": -50156,
+     "result_nok": 12132849,
+     "equity_nok": 12861254,
+     "debt_nok": 558931
+    }
+   ],
+   "revenue_nok": null,
+   "revenue_year": 2025,
+   "ebit_nok": -50156,
+   "yoy_growth_pct": null
+  }
+ },
+ {
+  "id": "bademaschinen",
+  "vertical": "sauna",
+  "name": "Bademaschinen",
+  "region": "Eastern Norway",
+  "subRegion": "Oslo",
+  "type": "Commercial",
+  "format": "Floating (glass-sided)",
+  "ownershipModel": "Private company",
+  "waterAccess": "Yes — Oslofjord",
+  "priceRange": "250–350 NOK",
+  "bookingModel": "Drop-in + Private hire",
+  "yearEst": "c.2019",
+  "notes": "Architecturally distinctive glass structure. Oslo waterfront.",
+  "website": "",
+  "isMultiSite": false,
+  "priority": "medium",
+  "stage": "prospect",
+  "outreachNotes": [],
+  "tags": [
+   "floating",
+   "design",
+   "oslo"
+  ],
+  "contact": {
+   "contactSource": "research_needed"
+  },
+  "brreg_match": "none",
+  "brreg": null
+ },
+ {
+  "id": "oslo-fjord-sauna",
+  "vertical": "sauna",
+  "name": "Oslo Fjord Sauna (FjordCleanUP)",
+  "region": "Eastern Norway",
+  "subRegion": "Oslo — Sørenga",
+  "type": "Social enterprise",
+  "format": "Floating (2 units)",
+  "ownershipModel": "Social enterprise",
+  "waterAccess": "Yes — Oslofjord",
+  "priceRange": "~200 NOK",
+  "bookingModel": "Drop-in",
+  "yearEst": "2021",
+  "notes": "Huginn & Muninn units. Proceeds fund seabed litter removal.",
+  "website": "fjordcleanup.no",
+  "isMultiSite": false,
+  "priority": "low",
+  "stage": "prospect",
+  "outreachNotes": [],
+  "tags": [
+   "floating",
+   "social-enterprise",
+   "oslo",
+   "eco"
+  ],
+  "contact": {
+   "contactSource": "research_needed"
+  },
+  "brreg_match": "none",
+  "brreg": null
+ },
+ {
+  "id": "greenboats",
+  "vertical": "sauna",
+  "name": "GreenBoats",
+  "region": "Eastern Norway",
+  "subRegion": "Oslo",
+  "type": "Commercial",
+  "format": "Floating (solar-powered)",
+  "ownershipModel": "Private company",
+  "waterAccess": "Yes — Oslofjord",
+  "priceRange": "~300 NOK",
+  "bookingModel": "Private hire",
+  "yearEst": "c.2021",
+  "notes": "Solar-powered. Eco positioning.",
+  "website": "",
+  "isMultiSite": false,
+  "priority": "medium",
+  "stage": "prospect",
+  "outreachNotes": [],
+  "tags": [
+   "floating",
+   "eco",
+   "oslo",
+   "solar"
+  ],
+  "contact": {
+   "contactSource": "research_needed"
+  },
+  "brreg_match": "none",
+  "brreg": null
+ },
+ {
+  "id": "fjordtokt",
+  "vertical": "sauna",
+  "name": "Fjordtokt Båt & Badstu",
+  "region": "Eastern Norway",
+  "subRegion": "Oslo",
+  "type": "Commercial",
+  "format": "Floating (mobile sauna cruise)",
+  "ownershipModel": "Private company",
+  "waterAccess": "Yes — Oslofjord",
+  "priceRange": "~500+ NOK",
+  "bookingModel": "Private hire (cruise format)",
+  "yearEst": "c.2020",
+  "notes": "Sail-and-sauna format; not stationary.",
+  "website": "",
+  "isMultiSite": false,
+  "priority": "medium",
+  "stage": "prospect",
+  "outreachNotes": [],
+  "tags": [
+   "floating",
+   "cruise",
+   "oslo",
+   "mobile"
+  ],
+  "contact": {
+   "contactSource": "research_needed"
+  },
+  "brreg_match": "none",
+  "brreg": null
+ },
+ {
+  "id": "kongen-marina",
+  "vertical": "sauna",
+  "name": "Kongen Marina",
+  "region": "Eastern Norway",
+  "subRegion": "Oslo — Frognerkilen",
+  "type": "Commercial",
+  "format": "Land-based (dome + glass sauna)",
+  "ownershipModel": "Private company",
+  "waterAccess": "Yes — Oslofjord",
+  "priceRange": "Members + guests",
+  "bookingModel": "Members + guests",
+  "yearEst": "c.2022",
+  "notes": "Dome sauna + 360° glass sauna. Miami-style beach club setting.",
+  "website": "kongenmarina.no",
+  "isMultiSite": false,
+  "priority": "medium",
+  "stage": "prospect",
+  "outreachNotes": [],
+  "tags": [
+   "land-based",
+   "premium",
+   "oslo",
+   "beach-club",
+   "members"
+  ],
+  "contact": {
+   "contactSource": "research_needed"
+  },
+  "brreg_match": "high",
+  "brreg": {
+   "org_number": "966381175",
+   "legal_name": "KONGEN MARINA AS",
+   "org_form": "AS",
+   "nace": "47.300 Detaljhandel med drivstoff til motorvogner",
+   "employees": 15,
+   "founded": "1993-03-01",
+   "municipality": "OSLO",
+   "registry_email": null,
+   "registry_website": null,
+   "ceo": "Stephen Tormod Landsverk",
+   "board": [
+    "Rolf Hongseth",
+    "Stephen Tormod Landsverk"
+   ],
+   "owners_count": 2,
+   "financials": [
+    {
+     "year": 2024,
+     "revenue_nok": 41187377,
+     "ebit_nok": 1458815,
+     "result_nok": 1247849,
+     "equity_nok": 8198539,
+     "debt_nok": 4381195
+    }
+   ],
+   "revenue_nok": 41187377,
+   "revenue_year": 2024,
+   "ebit_nok": 1458815,
+   "yoy_growth_pct": null
+  }
+ },
+ {
+  "id": "sagene-folkebad",
+  "vertical": "sauna",
+  "name": "Sagene Folkebad",
+  "region": "Eastern Norway",
+  "subRegion": "Oslo — Grünerløkka",
+  "type": "Association / Non-profit",
+  "format": "Land-based (historic bathhouse)",
+  "ownershipModel": "Non-profit (Oslo Badstuforening)",
+  "waterAccess": "No — cold plunge pool only",
+  "priceRange": "~150–220 NOK",
+  "bookingModel": "Drop-in",
+  "yearEst": "2025 (reopened)",
+  "notes": "Historic 1899 building. 42-seat sauna, 12.5m pool, cold plunge. Phone-free zone.",
+  "website": "oslobadstuforening.no",
+  "isMultiSite": false,
+  "priority": "low",
+  "stage": "prospect",
+  "outreachNotes": [],
+  "tags": [
+   "land-based",
+   "non-profit",
+   "oslo",
+   "historic"
+  ],
+  "contact": {
+   "contactSource": "research_needed"
+  },
+  "brreg_match": "none",
+  "brreg": null
+ },
+ {
+  "id": "son-spa",
+  "vertical": "sauna",
+  "name": "Son Spa Sauna Rafts",
+  "region": "Eastern Norway",
+  "subRegion": "Son, Viken",
+  "type": "Commercial",
+  "format": "Floating raft",
+  "ownershipModel": "Private company",
+  "waterAccess": "Yes — Oslofjord",
+  "priceRange": "~300–500 NOK",
+  "bookingModel": "Private hire",
+  "yearEst": "c.2020",
+  "notes": "Popular day-trip from Oslo. Busy summer season.",
+  "website": "",
+  "isMultiSite": false,
+  "priority": "medium",
+  "stage": "prospect",
+  "outreachNotes": [],
+  "tags": [
+   "floating",
+   "oslofjord",
+   "vestfold"
+  ],
+  "contact": {
+   "contactSource": "research_needed"
+  },
+  "brreg_match": "high",
+  "brreg": {
+   "org_number": "991377891",
+   "legal_name": "SON SPA AS",
+   "org_form": "AS",
+   "nace": "55.100 Drift av hoteller",
+   "employees": 153,
+   "founded": "2007-05-25",
+   "municipality": "VESTBY",
+   "registry_email": "thor@nhg.no",
+   "registry_website": "www.sonspa.no",
+   "ceo": "Ann Jeanette Myrland",
+   "board": [
+    "Thor Morten Halvorsen",
+    "Thor Filip Børresen Halvorsen"
+   ],
+   "owners_count": 2,
+   "financials": [
+    {
+     "year": 2024,
+     "revenue_nok": 147687070,
+     "ebit_nok": -1077360,
+     "result_nok": -954971,
+     "equity_nok": 958704,
+     "debt_nok": 28271349
+    }
+   ],
+   "revenue_nok": 147687070,
+   "revenue_year": 2024,
+   "ebit_nok": -1077360,
+   "yoy_growth_pct": null
+  }
+ },
+ {
+  "id": "aasgaardstrand",
+  "vertical": "sauna",
+  "name": "Aasgaardstrand Badeselskab",
+  "region": "Eastern Norway",
+  "subRegion": "Åsgårdstrand, Vestfold",
+  "type": "Association / Non-profit",
+  "format": "Land-based (barrel, harbourside)",
+  "ownershipModel": "Non-profit",
+  "waterAccess": "Yes — Oslofjord",
+  "priceRange": "~100–150 NOK",
+  "bookingModel": "Drop-in + members",
+  "yearEst": "Est.",
+  "notes": "Active bathing association. Direct harbour access.",
+  "website": "",
+  "isMultiSite": false,
+  "priority": "low",
+  "stage": "prospect",
+  "outreachNotes": [],
+  "tags": [
+   "land-based",
+   "non-profit",
+   "vestfold"
+  ],
+  "contact": {
+   "contactSource": "research_needed"
+  },
+  "brreg_match": "none",
+  "brreg": null
+ },
+ {
+  "id": "holmestrand",
+  "vertical": "sauna",
+  "name": "Holmestrand Fjordbadstu",
+  "region": "Eastern Norway",
+  "subRegion": "Holmestrand, Vestfold",
+  "type": "Commercial",
+  "format": "Floating",
+  "ownershipModel": "Private company",
+  "waterAccess": "Yes — Oslofjord",
+  "priceRange": "~250–400 NOK",
+  "bookingModel": "Private hire",
+  "yearEst": "c.2021",
+  "notes": "Inner Oslofjord / Vestfold coast.",
+  "website": "",
+  "isMultiSite": false,
+  "priority": "medium",
+  "stage": "prospect",
+  "outreachNotes": [],
+  "tags": [
+   "floating",
+   "vestfold"
+  ],
+  "contact": {
+   "contactSource": "research_needed"
+  },
+  "brreg_match": "none",
+  "brreg": null
+ },
+ {
+  "id": "sjobadet-tonsberg",
+  "vertical": "sauna",
+  "name": "Sjøbadet Badstue (Tønsberg)",
+  "region": "Eastern Norway",
+  "subRegion": "Tønsberg, Vestfold",
+  "type": "Commercial",
+  "format": "Floating / land-based waterfront",
+  "ownershipModel": "Private company",
+  "waterAccess": "Yes",
+  "priceRange": "~250 NOK",
+  "bookingModel": "Drop-in + Private hire",
+  "yearEst": "c.2021",
+  "notes": "Tønsberg harbour.",
+  "website": "",
+  "isMultiSite": false,
+  "priority": "medium",
+  "stage": "prospect",
+  "outreachNotes": [],
+  "tags": [
+   "floating",
+   "vestfold",
+   "tønsberg"
+  ],
+  "contact": {
+   "contactSource": "research_needed"
+  },
+  "brreg_match": "high",
+  "brreg": {
+   "org_number": "926084275",
+   "legal_name": "SJØBADET AS",
+   "org_form": "AS",
+   "nace": "93.292 Fritidsvirksomhet ellers",
+   "founded": "2020-11-05",
+   "municipality": "TØNSBERG",
+   "registry_email": null,
+   "registry_website": null,
+   "ceo": "Andre Natland",
+   "board": [
+    "Jørgen Nydahl",
+    "Kristoffer Knoph Andreassen",
+    "Andre Natland"
+   ],
+   "owners_count": 3,
+   "financials": [
+    {
+     "year": 2024,
+     "revenue_nok": 1083336,
+     "ebit_nok": 255882,
+     "result_nok": 199835,
+     "equity_nok": 670809,
+     "debt_nok": 139458
+    }
+   ],
+   "revenue_nok": 1083336,
+   "revenue_year": 2024,
+   "ebit_nok": 255882,
+   "yoy_growth_pct": null
+  }
+ },
+ {
+  "id": "flyt-stavern",
+  "vertical": "sauna",
+  "name": "FLYT Stavern",
+  "region": "Eastern Norway",
+  "subRegion": "Stavern (Larvik), Vestfold",
+  "type": "Commercial",
+  "format": "Floating",
+  "ownershipModel": "Private company",
+  "waterAccess": "Yes — Skagerrak",
+  "priceRange": "~250–400 NOK",
+  "bookingModel": "Private hire",
+  "yearEst": "c.2022",
+  "notes": "Larvik municipality, Skagerrak coast.",
+  "website": "",
+  "isMultiSite": false,
+  "priority": "medium",
+  "stage": "prospect",
+  "outreachNotes": [],
+  "tags": [
+   "floating",
+   "skagerrak",
+   "vestfold"
+  ],
+  "contact": {
+   "contactSource": "research_needed"
+  },
+  "brreg_match": "uncertain",
+  "brreg": {
+   "org_number": "926490842",
+   "legal_name": "FLYT AS",
+   "org_form": "AS",
+   "nace": "52.219 Tjenester tilknyttet landtransport ikke nevnt annet sted",
+   "employees": 34,
+   "founded": "2021-01-12",
+   "municipality": "BERGEN",
+   "registry_email": null,
+   "registry_website": null,
+   "ceo": "Jahn Erik Stenhaug",
+   "board": [
+    "Daniel Frøyland",
+    "Ivar Helmich Pedersen"
+   ],
+   "owners_count": 2,
+   "financials": [
+    {
+     "year": 2024,
+     "revenue_nok": 178249630,
+     "ebit_nok": 48318261,
+     "result_nok": 44417773,
+     "equity_nok": 159992669,
+     "debt_nok": 574000958
+    }
+   ],
+   "revenue_nok": 178249630,
+   "revenue_year": 2024,
+   "ebit_nok": 48318261,
+   "yoy_growth_pct": null
+  }
+ },
+ {
+  "id": "kragero-badstuforening",
+  "vertical": "sauna",
+  "name": "Kragerø Badstuforening",
+  "region": "Eastern Norway",
+  "subRegion": "Kragerø, Telemark",
+  "type": "Association / Non-profit",
+  "format": "Floating raft",
+  "ownershipModel": "Non-profit",
+  "waterAccess": "Yes — Skagerrak",
+  "priceRange": "~100–200 NOK",
+  "bookingModel": "Drop-in + members",
+  "yearEst": "c.2020",
+  "notes": "Association model. Telemark coast archipelago.",
+  "website": "",
+  "isMultiSite": false,
+  "priority": "low",
+  "stage": "prospect",
+  "outreachNotes": [],
+  "tags": [
+   "floating",
+   "non-profit",
+   "telemark"
+  ],
+  "contact": {
+   "contactSource": "research_needed"
+  },
+  "brreg_match": "uncertain",
+  "brreg": {
+   "org_number": "924571543",
+   "legal_name": "KRAGERØ BADSTUFORENING",
+   "org_form": "FLI",
+   "nace": "94.992 Aktiviteter i andre medlemsorganisasjoner ellers",
+   "founded": "2019-11-15",
+   "municipality": null,
+   "registry_email": null,
+   "registry_website": null,
+   "ceo": null,
+   "board": [
+    "Torgeir Paulsen",
+    "Sigurd Gausdal",
+    "Kine Veronica Myhre",
+    "Trine Jørgensen Dahll",
+    "Marikken Kiil Skeimo"
+   ],
+   "owners_count": 5,
+   "financials": [],
+   "revenue_nok": null,
+   "revenue_year": null,
+   "ebit_nok": null,
+   "yoy_growth_pct": null
+  }
+ },
+ {
+  "id": "hvaler-badstuforening",
+  "vertical": "sauna",
+  "name": "Hvaler Badstuforening",
+  "region": "Eastern Norway",
+  "subRegion": "Hvaler, Viken",
+  "type": "Association / Non-profit",
+  "format": "Floating",
+  "ownershipModel": "Non-profit",
+  "waterAccess": "Yes — Skagerrak",
+  "priceRange": "~100–150 NOK",
+  "bookingModel": "Drop-in + members",
+  "yearEst": "c.2021",
+  "notes": "Hvaler archipelago near Swedish border.",
+  "website": "",
+  "isMultiSite": false,
+  "priority": "low",
+  "stage": "prospect",
+  "outreachNotes": [],
+  "tags": [
+   "floating",
+   "non-profit",
+   "viken"
+  ],
+  "contact": {
+   "contactSource": "research_needed"
+  },
+  "brreg_match": "uncertain",
+  "brreg": {
+   "org_number": "929678877",
+   "legal_name": "HVALER BADSTUFORENING",
+   "org_form": "FLI",
+   "nace": "94.992 Aktiviteter i andre medlemsorganisasjoner ellers",
+   "employees": null,
+   "founded": "2022-06-24",
+   "municipality": "HVALER",
+   "registry_email": null,
+   "registry_website": null,
+   "ceo": null,
+   "board": [
+    "Inger Synøve Brekke",
+    "Olita Linde",
+    "Torill Hagelund"
+   ],
+   "owners_count": 3,
+   "financials": [],
+   "revenue_nok": null,
+   "revenue_year": null,
+   "ebit_nok": null,
+   "yoy_growth_pct": null
+  }
+ },
+ {
+  "id": "badstufergen",
+  "vertical": "sauna",
+  "name": "Badstufergen",
+  "region": "Eastern Norway",
+  "subRegion": "Lillehammer, Innlandet",
+  "type": "Commercial",
+  "format": "Floating (converted ferry)",
+  "ownershipModel": "Private company",
+  "waterAccess": "Yes — Lake Mjøsa",
+  "priceRange": "~300–500 NOK",
+  "bookingModel": "Private hire",
+  "yearEst": "c.2020",
+  "notes": "Converted ferry sauna on Norway's largest lake.",
+  "website": "",
+  "isMultiSite": false,
+  "priority": "medium",
+  "stage": "prospect",
+  "outreachNotes": [],
+  "tags": [
+   "floating",
+   "lake",
+   "innlandet",
+   "unique-format"
+  ],
+  "contact": {
+   "contactSource": "research_needed"
+  },
+  "brreg_match": "high",
+  "brreg": {
+   "org_number": "926830570",
+   "legal_name": "BADSTUFERGEN AS",
+   "org_form": "AS",
+   "nace": "77.340 Utleie og leasing av sjøtransportmateriell",
+   "founded": "2021-03-01",
+   "municipality": "LILLEHAMMER",
+   "registry_email": null,
+   "registry_website": null,
+   "ceo": "Harald Grav",
+   "board": [
+    "Harald Grav"
+   ],
+   "owners_count": 1,
+   "financials": [
+    {
+     "year": 2024,
+     "revenue_nok": 677329,
+     "ebit_nok": 247271,
+     "result_nok": 177338,
+     "equity_nok": 338460,
+     "debt_nok": 181905
+    }
+   ],
+   "revenue_nok": 677329,
+   "revenue_year": 2024,
+   "ebit_nok": 247271,
+   "yoy_growth_pct": null
+  }
+ },
+ {
+  "id": "kok-mjosa",
+  "vertical": "sauna",
+  "name": "KOK Mjøsa",
+  "region": "Eastern Norway",
+  "subRegion": "Hamar, Innlandet",
+  "type": "Commercial",
+  "format": "Floating sauna boat",
+  "ownershipModel": "Private company (KOK brand)",
+  "waterAccess": "Yes — Lake Mjøsa",
+  "priceRange": "~320–3,700 NOK",
+  "bookingModel": "Drop-in + Private hire",
+  "yearEst": "c.2022",
+  "notes": "Sister operation to KOK Oslo on Lake Mjøsa at Hamar.",
+  "website": "koknorge.no",
+  "isMultiSite": true,
+  "priority": "high",
+  "stage": "prospect",
+  "outreachNotes": [],
+  "tags": [
+   "floating",
+   "lake",
+   "innlandet",
+   "multi-site",
+   "kok-brand"
+  ],
+  "estimatedValuation": "EUR 3–6M (combined with KOK Oslo)",
+  "contact": {
+   "email": "bedrift@koknorge.no",
+   "phone": "+47 934 00 522",
+   "address": "C/O Mesh, Tordenskiolds gate 2, 0160 Oslo",
+   "contactSource": "website"
+  },
+  "brreg_match": "uncertain",
+  "brreg": {
+   "org_number": "919851341",
+   "legal_name": "KOK AS",
+   "org_form": "AS",
+   "nace": "50.109 Kysttrafikk med passasjerer ikke nevnt annet sted",
+   "founded": "2017-09-27",
+   "municipality": "OSLO",
+   "registry_email": null,
+   "registry_website": null,
+   "ceo": "Kristin Lorange",
+   "board": [
+    "Kristin Lorange",
+    "Sinead Mary Wyer",
+    "Susanne Louise Kaluza",
+    "Amie Jagne Sørensen"
+   ],
+   "owners_count": 4,
+   "financials": [
+    {
+     "year": 2024,
+     "revenue_nok": 8696247,
+     "ebit_nok": 2916876,
+     "result_nok": 2246887,
+     "equity_nok": 3231712,
+     "debt_nok": 3448638
+    }
+   ],
+   "revenue_nok": 8696247,
+   "revenue_year": 2024,
+   "ebit_nok": 2916876,
+   "yoy_growth_pct": null
+  }
+ },
+ {
+  "id": "flyt-fjordsauna",
+  "vertical": "sauna",
+  "name": "Flyt Fjordsauna",
+  "region": "Eastern Norway",
+  "subRegion": "Jevnaker, Innlandet",
+  "type": "Commercial",
+  "format": "Floating raft",
+  "ownershipModel": "Private company",
+  "waterAccess": "Yes — Randsfjorden",
+  "priceRange": "~250–400 NOK",
+  "bookingModel": "Private hire",
+  "yearEst": "c.2021",
+  "notes": "Randsfjorden lake. Wood-fired.",
+  "website": "",
+  "isMultiSite": false,
+  "priority": "medium",
+  "stage": "prospect",
+  "outreachNotes": [],
+  "tags": [
+   "floating",
+   "lake",
+   "innlandet"
+  ],
+  "contact": {
+   "contactSource": "research_needed"
+  },
+  "brreg_match": "uncertain",
+  "brreg": {
+   "org_number": "934924142",
+   "legal_name": "FJORDSAUNA AS",
+   "org_form": "AS",
+   "nace": "93.292 Fritidsvirksomhet ellers",
+   "employees": 8,
+   "founded": "2025-01-03",
+   "municipality": "AURLAND",
+   "registry_email": "mail@fjordsauna.com",
+   "registry_website": "www.fjordsauna.com",
+   "ceo": "Kristin Skahjem",
+   "board": [
+    "Torgeir Skjerdal",
+    "Kristin Skahjem"
+   ],
+   "owners_count": 2,
+   "financials": [
+    {
+     "year": 2025,
+     "revenue_nok": 9055862,
+     "ebit_nok": 604738,
+     "result_nok": 299613,
+     "equity_nok": 443767,
+     "debt_nok": 4078998
+    }
+   ],
+   "revenue_nok": 9055862,
+   "revenue_year": 2025,
+   "ebit_nok": 604738,
+   "yoy_growth_pct": null
+  }
+ },
+ {
+  "id": "glod-badstue",
+  "vertical": "sauna",
+  "name": "Glod Badstue / Glod Sauna",
+  "region": "Eastern Norway",
+  "subRegion": "Innlandet / Viken (lake)",
+  "type": "Commercial",
+  "format": "Land-based barrel",
+  "ownershipModel": "Private company",
+  "waterAccess": "Yes — lake",
+  "priceRange": "~250–400 NOK",
+  "bookingModel": "Private hire",
+  "yearEst": "c.2021",
+  "notes": "Intimate nature-facing barrel sauna. Fire pre-lit on arrival.",
+  "website": "",
+  "isMultiSite": false,
+  "priority": "medium",
+  "stage": "prospect",
+  "outreachNotes": [],
+  "tags": [
+   "land-based",
+   "barrel",
+   "innlandet",
+   "nature"
+  ],
+  "contact": {
+   "contactSource": "research_needed"
+  },
+  "brreg_match": "none",
+  "brreg": null
+ },
+ {
+  "id": "spreke-opplevelser",
+  "vertical": "sauna",
+  "name": "Spreke Opplevelser",
+  "region": "Eastern Norway",
+  "subRegion": "Innlandet",
+  "type": "Commercial",
+  "format": "Land-based (barrel, nature)",
+  "ownershipModel": "Private company",
+  "waterAccess": "Yes — lake/river",
+  "priceRange": "Package pricing",
+  "bookingModel": "Package / Private hire",
+  "yearEst": "c.2020",
+  "notes": "Sauna combined with guided outdoor/nature activities + winter swimming.",
+  "website": "",
+  "isMultiSite": false,
+  "priority": "medium",
+  "stage": "prospect",
+  "outreachNotes": [],
+  "tags": [
+   "land-based",
+   "barrel",
+   "innlandet",
+   "nature",
+   "activities"
+  ],
+  "contact": {
+   "contactSource": "research_needed"
+  },
+  "brreg_match": "high",
+  "brreg": {
+   "org_number": "928153118",
+   "legal_name": "SPREKE OPPLEVELSER AS",
+   "org_form": "AS",
+   "nace": "79.121 Aktiviteter utført av utflukts- og eventarrangører",
+   "founded": "2021-11-02",
+   "municipality": "LØTEN",
+   "registry_email": null,
+   "registry_website": null,
+   "ceo": "Emilie Westli Kristiansen",
+   "board": [
+    "Amund Hagen Kristiansen",
+    "Emilie Westli Kristiansen",
+    "Steinar Libak"
+   ],
+   "owners_count": 3,
+   "financials": [
+    {
+     "year": 2024,
+     "revenue_nok": 388539,
+     "ebit_nok": 27220,
+     "result_nok": 18965,
+     "equity_nok": 218066,
+     "debt_nok": 71230
+    }
+   ],
+   "revenue_nok": 388539,
+   "revenue_year": 2024,
+   "ebit_nok": 27220,
+   "yoy_growth_pct": null
+  }
+ },
+ {
+  "id": "mirror-sauna",
+  "vertical": "sauna",
+  "name": "Mirror Sauna",
+  "region": "Eastern Norway",
+  "subRegion": "Telemark",
+  "type": "Commercial",
+  "format": "Land-based (barrel, mirrored)",
+  "ownershipModel": "Private company",
+  "waterAccess": "Yes — lake",
+  "priceRange": "~300–500 NOK",
+  "bookingModel": "Private hire",
+  "yearEst": "c.2022",
+  "notes": "Mirror-clad barrel sauna. Landmark structure in Telemark forest.",
+  "website": "",
+  "isMultiSite": false,
+  "priority": "medium",
+  "stage": "prospect",
+  "outreachNotes": [],
+  "tags": [
+   "land-based",
+   "barrel",
+   "telemark",
+   "design",
+   "landmark"
+  ],
+  "contact": {
+   "contactSource": "research_needed"
+  },
+  "brreg_match": "none",
+  "brreg": null
+ },
+ {
+  "id": "eldmolla-sauna",
+  "vertical": "sauna",
+  "name": "Eldmølla Sauna",
+  "region": "Eastern Norway",
+  "subRegion": "Innlandet (forest/pond)",
+  "type": "Commercial",
+  "format": "Land-based (forest / barrel)",
+  "ownershipModel": "Private company",
+  "waterAccess": "Yes — natural pond",
+  "priceRange": "~200–350 NOK",
+  "bookingModel": "Private hire",
+  "yearEst": "2024",
+  "notes": "Norwegian Sauna Association Newcomer of Year 2025. Cold dip in zinc tubs + oak barrels. Fairy-tale forest.",
+  "website": "",
+  "isMultiSite": false,
+  "priority": "medium",
+  "stage": "prospect",
+  "outreachNotes": [],
+  "tags": [
+   "land-based",
+   "barrel",
+   "innlandet",
+   "award-winning",
+   "new"
+  ],
+  "contact": {
+   "contactSource": "research_needed"
+  },
+  "brreg_match": "none",
+  "brreg": null
+ },
+ {
+  "id": "hoyasen-sauna",
+  "vertical": "sauna",
+  "name": "Høyåsen Sauna",
+  "region": "Eastern Norway",
+  "subRegion": "Innlandet (historic farm)",
+  "type": "Commercial",
+  "format": "Land-based (historic farm cabin)",
+  "ownershipModel": "Private company",
+  "waterAccess": "Yes — outdoor cold dip",
+  "priceRange": "~200–350 NOK",
+  "bookingModel": "Private hire",
+  "yearEst": "c.2022",
+  "notes": "16th-century farm roots. Historic restored cabin + sauna rental.",
+  "website": "",
+  "isMultiSite": false,
+  "priority": "low",
+  "stage": "prospect",
+  "outreachNotes": [],
+  "tags": [
+   "land-based",
+   "innlandet",
+   "historic"
+  ],
+  "contact": {
+   "contactSource": "research_needed"
+  },
+  "brreg_match": "high",
+  "brreg": {
+   "org_number": "933741761",
+   "legal_name": "HØYÅSEN AS",
+   "org_form": "AS",
+   "nace": "68.200 Utleie av egen eller leid fast eiendom",
+   "founded": "2024-06-13",
+   "municipality": "ARENDAL",
+   "registry_email": null,
+   "registry_website": null,
+   "ceo": "Preben Emil Bjørne",
+   "board": [
+    "Preben Emil Bjørne"
+   ],
+   "owners_count": 1,
+   "financials": [
+    {
+     "year": 2025,
+     "revenue_nok": 724226,
+     "ebit_nok": 97422,
+     "result_nok": 53149,
+     "equity_nok": 64114,
+     "debt_nok": 1126089
+    }
+   ],
+   "revenue_nok": 724226,
+   "revenue_year": 2025,
+   "ebit_nok": 97422,
+   "yoy_growth_pct": null
+  }
+ },
+ {
+  "id": "eggedal-outdoor",
+  "vertical": "sauna",
+  "name": "Eggedal Outdoor Sauna",
+  "region": "Eastern Norway",
+  "subRegion": "Eggedal, Numedal",
+  "type": "Commercial",
+  "format": "Land-based barrel (remote)",
+  "ownershipModel": "Private company",
+  "waterAccess": "Yes — river/lake",
+  "priceRange": "~200–300 NOK",
+  "bookingModel": "Private hire",
+  "yearEst": "c.2021",
+  "notes": "Off-the-beaten-path. Numedal valley.",
+  "website": "",
+  "isMultiSite": false,
+  "priority": "low",
+  "stage": "prospect",
+  "outreachNotes": [],
+  "tags": [
+   "land-based",
+   "barrel",
+   "remote",
+   "innlandet"
+  ],
+  "contact": {
+   "contactSource": "research_needed"
+  },
+  "brreg_match": "none",
+  "brreg": null
+ },
+ {
+  "id": "heit-bergen-marineholmen",
+  "vertical": "sauna",
+  "name": "Heit Bergen (Marineholmen)",
+  "region": "Western Norway",
+  "subRegion": "Bergen",
+  "type": "Commercial",
+  "format": "Floating raft",
+  "ownershipModel": "Private company",
+  "waterAccess": "Yes — Bergen harbour",
+  "priceRange": "159–1,990 NOK",
+  "bookingModel": "Drop-in + Private hire",
+  "yearEst": "c.2019",
+  "notes": "Primary site at Marineholmen. Wood-fired, 8–12 ppl. Also Laksevåg & Måseskjæret.",
+  "website": "heitbergen.no",
+  "isMultiSite": true,
+  "priority": "high",
+  "stage": "prospect",
+  "outreachNotes": [],
+  "tags": [
+   "floating",
+   "multi-site",
+   "bergen",
+   "premium",
+   "brand"
+  ],
+  "estimatedValuation": "EUR 2–4M",
+  "contact": {
+   "email": "post@heitbergen.no",
+   "contactSource": "website"
+  },
+  "brreg_match": "high",
+  "brreg": {
+   "org_number": "832236292",
+   "legal_name": "HEIT BERGEN AS",
+   "org_form": "AS",
+   "nace": "77.220 Utleie og leasing av andre husholdningsvarer og varer til personlig bruk",
+   "employees": 23,
+   "founded": "2023-10-12",
+   "municipality": "BERGEN",
+   "registry_email": null,
+   "registry_website": null,
+   "ceo": null,
+   "board": [
+    "Veronica Eikemo Pedersen"
+   ],
+   "owners_count": 1,
+   "financials": [
+    {
+     "year": 2024,
+     "revenue_nok": 7005318,
+     "ebit_nok": 675566,
+     "result_nok": 645555,
+     "equity_nok": 1057995,
+     "debt_nok": 3527090
+    }
+   ],
+   "revenue_nok": 7005318,
+   "revenue_year": 2024,
+   "ebit_nok": 675566,
+   "yoy_growth_pct": null
+  }
+ },
+ {
+  "id": "heit-bergen-laksevag",
+  "vertical": "sauna",
+  "name": "Heit Bergen (Laksevåg)",
+  "region": "Western Norway",
+  "subRegion": "Bergen — Laksevåg",
+  "type": "Commercial",
+  "format": "Floating raft",
+  "ownershipModel": "Private company",
+  "waterAccess": "Yes — Bergen harbour",
+  "priceRange": "159–1,990 NOK",
+  "bookingModel": "Drop-in + Private hire",
+  "yearEst": "c.2020",
+  "notes": "Second Heit site across the harbour from city centre.",
+  "website": "heitbergen.no",
+  "isMultiSite": true,
+  "priority": "high",
+  "stage": "prospect",
+  "outreachNotes": [],
+  "tags": [
+   "floating",
+   "multi-site",
+   "bergen",
+   "heit-brand"
+  ],
+  "contact": {
+   "email": "post@heitbergen.no",
+   "contactSource": "website"
+  },
+  "brreg_match": "high",
+  "brreg": {
+   "org_number": "832236292",
+   "legal_name": "HEIT BERGEN AS",
+   "org_form": "AS",
+   "nace": "77.220 Utleie og leasing av andre husholdningsvarer og varer til personlig bruk",
+   "employees": 23,
+   "founded": "2023-10-12",
+   "municipality": "BERGEN",
+   "registry_email": null,
+   "registry_website": null,
+   "ceo": null,
+   "board": [
+    "Veronica Eikemo Pedersen"
+   ],
+   "owners_count": 1,
+   "financials": [
+    {
+     "year": 2024,
+     "revenue_nok": 7005318,
+     "ebit_nok": 675566,
+     "result_nok": 645555,
+     "equity_nok": 1057995,
+     "debt_nok": 3527090
+    }
+   ],
+   "revenue_nok": 7005318,
+   "revenue_year": 2024,
+   "ebit_nok": 675566,
+   "yoy_growth_pct": null
+  }
+ },
+ {
+  "id": "heit-bergen-maseskjaeret",
+  "vertical": "sauna",
+  "name": "Heit Bergen (Måseskjæret)",
+  "region": "Western Norway",
+  "subRegion": "Bergen — Måseskjæret",
+  "type": "Commercial",
+  "format": "Floating raft",
+  "ownershipModel": "Private company",
+  "waterAccess": "Yes",
+  "priceRange": "159–1,990 NOK",
+  "bookingModel": "Drop-in + Private hire",
+  "yearEst": "c.2022",
+  "notes": "Third Heit site; newest location.",
+  "website": "heitbergen.no",
+  "isMultiSite": true,
+  "priority": "high",
+  "stage": "prospect",
+  "outreachNotes": [],
+  "tags": [
+   "floating",
+   "multi-site",
+   "bergen",
+   "heit-brand"
+  ],
+  "contact": {
+   "email": "post@heitbergen.no",
+   "contactSource": "website"
+  },
+  "brreg_match": "high",
+  "brreg": {
+   "org_number": "832236292",
+   "legal_name": "HEIT BERGEN AS",
+   "org_form": "AS",
+   "nace": "77.220 Utleie og leasing av andre husholdningsvarer og varer til personlig bruk",
+   "employees": 23,
+   "founded": "2023-10-12",
+   "municipality": "BERGEN",
+   "registry_email": null,
+   "registry_website": null,
+   "ceo": null,
+   "board": [
+    "Veronica Eikemo Pedersen"
+   ],
+   "owners_count": 1,
+   "financials": [
+    {
+     "year": 2024,
+     "revenue_nok": 7005318,
+     "ebit_nok": 675566,
+     "result_nok": 645555,
+     "equity_nok": 1057995,
+     "debt_nok": 3527090
+    }
+   ],
+   "revenue_nok": 7005318,
+   "revenue_year": 2024,
+   "ebit_nok": 675566,
+   "yoy_growth_pct": null
+  }
+ },
+ {
+  "id": "city-sauna-bergen",
+  "vertical": "sauna",
+  "name": "City Sauna Bergen",
+  "region": "Western Norway",
+  "subRegion": "Bergen — Damsgårdsveien",
+  "type": "Commercial",
+  "format": "Floating (moored)",
+  "ownershipModel": "Private company",
+  "waterAccess": "Yes — Bergen waterway",
+  "priceRange": "150–4,200 NOK",
+  "bookingModel": "Drop-in + Private hire + Sauna cruise",
+  "yearEst": "c.2020",
+  "notes": "4.9-star Google rating; one of highest-rated in Norway. Cruise option 3,000 NOK.",
+  "website": "citysauna.no",
+  "isMultiSite": false,
+  "priority": "high",
+  "stage": "prospect",
+  "outreachNotes": [],
+  "tags": [
+   "floating",
+   "bergen",
+   "premium",
+   "top-rated"
+  ],
+  "estimatedValuation": "EUR 1.5–3M",
+  "contact": {
+   "email": "booking@citysauna.no",
+   "phone": "+47 414 03 982",
+   "ownerName": "Tormod Fagerbakke / Tore Fagerbakke",
+   "orgNumber": "926033972",
+   "address": "Solheimsgaten 3, 5058 Bergen",
+   "contactSource": "website"
+  },
+  "brreg_match": "confirmed",
+  "brreg": {
+   "org_number": "926033972",
+   "legal_name": "CITY SEA SAUNA AS",
+   "org_form": "AS",
+   "nace": "93.291 Opplevelsesaktiviteter",
+   "employees": 7,
+   "founded": "2020-10-22",
+   "municipality": "BERGEN",
+   "registry_email": null,
+   "registry_website": null,
+   "ceo": "Tore Fagerbakke",
+   "board": [
+    "Tormod Guzman Fagerbakke",
+    "Sondre Østervold Storebø",
+    "Tore Fagerbakke"
+   ],
+   "owners_count": 3,
+   "financials": [
+    {
+     "year": 2024,
+     "revenue_nok": 1872889,
+     "ebit_nok": 34328,
+     "result_nok": -11590,
+     "equity_nok": 318408,
+     "debt_nok": 1750012
+    }
+   ],
+   "revenue_nok": 1872889,
+   "revenue_year": 2024,
+   "ebit_nok": 34328,
+   "yoy_growth_pct": null
+  }
+ },
+ {
+  "id": "laugaren-bergen",
+  "vertical": "sauna",
+  "name": "Laugaren (Bergen Laugarlag)",
+  "region": "Western Norway",
+  "subRegion": "Bergen — Georgernes Verft",
+  "type": "Association / Non-profit",
+  "format": "Floating raft",
+  "ownershipModel": "Non-profit (volunteer)",
+  "waterAccess": "Yes — USF Verftet harbour",
+  "priceRange": "~100–150 NOK",
+  "bookingModel": "Drop-in + members",
+  "yearEst": "c.2019",
+  "notes": "Community sauna. Strong civic ethos. Affordable drop-in.",
+  "website": "",
+  "isMultiSite": false,
+  "priority": "low",
+  "stage": "prospect",
+  "outreachNotes": [],
+  "tags": [
+   "floating",
+   "non-profit",
+   "bergen"
+  ],
+  "contact": {
+   "contactSource": "research_needed"
+  },
+  "brreg_match": "none",
+  "brreg": null
+ },
+ {
+  "id": "vestfjord-sauna",
+  "vertical": "sauna",
+  "name": "Vestfjord Sauna",
+  "region": "Western Norway",
+  "subRegion": "Bergen — Kjøkkelvik",
+  "type": "Commercial",
+  "format": "Land-based (shore-side)",
+  "ownershipModel": "Private company",
+  "waterAccess": "Yes — sea",
+  "priceRange": "198–219 NOK",
+  "bookingModel": "Drop-in + Private hire",
+  "yearEst": "c.2022",
+  "notes": "Himalayan salt wall. Shore-based. 06:00–23:00 daily. Founded by Fredrik Lie-Helgesen (Oceanvs Head of Platform).",
+  "website": "vestfjordsauna.no",
+  "isMultiSite": false,
+  "priority": "high",
+  "stage": "prospect",
+  "outreachNotes": [],
+  "tags": [
+   "land-based",
+   "bergen",
+   "oceanvs-connected",
+   "anchor-asset"
+  ],
+  "estimatedValuation": "EUR 1–2M",
+  "contact": {
+   "ownerName": "Fredrik Lie-Helgesen",
+   "contactSource": "manual"
+  },
+  "brreg_match": "high",
+  "brreg": {
+   "org_number": "992121262",
+   "legal_name": "VESTFJORD AS",
+   "org_form": "AS",
+   "nace": "68.200 Utleie av egen eller leid fast eiendom",
+   "employees": null,
+   "founded": "2007-12-17",
+   "municipality": "SANDEFJORD",
+   "registry_email": null,
+   "registry_website": null,
+   "ceo": null,
+   "board": [
+    "Bjørn Erik Sparre",
+    "Ole Herman Ødeskaug"
+   ],
+   "owners_count": 2,
+   "financials": [
+    {
+     "year": 2025,
+     "revenue_nok": 0,
+     "ebit_nok": -7640,
+     "result_nok": 7180,
+     "equity_nok": 1185371,
+     "debt_nok": 668
+    }
+   ],
+   "revenue_nok": 0,
+   "revenue_year": 2025,
+   "ebit_nok": -7640,
+   "yoy_growth_pct": null
+  }
+ },
+ {
+  "id": "fjordsauna-flam",
+  "vertical": "sauna",
+  "name": "FjordSauna Flåm",
+  "region": "Western Norway",
+  "subRegion": "Flåm, Vestland",
+  "type": "Commercial",
+  "format": "Floating (moored)",
+  "ownershipModel": "Private company",
+  "waterAccess": "Yes — Aurlandsfjord",
+  "priceRange": "250–2,990 NOK",
+  "bookingModel": "Drop-in + Private hire",
+  "yearEst": "c.2019",
+  "notes": "Electric. Up to 12 ppl. Fjord-floor hatch for plunge. UNESCO fjord setting.",
+  "website": "fjordsauna.com",
+  "isMultiSite": true,
+  "priority": "high",
+  "stage": "prospect",
+  "outreachNotes": [],
+  "tags": [
+   "floating",
+   "unesco",
+   "fjord",
+   "multi-site",
+   "premium",
+   "tourist-facing"
+  ],
+  "estimatedValuation": "EUR 2–4M",
+  "contact": {
+   "email": "mail@fjordsauna.com",
+   "phone": "+47 960 05 305",
+   "address": "Postboks 50, 5742 Flåm",
+   "orgNumber": "934 924 142",
+   "contactSource": "website"
+  },
+  "brreg_match": "confirmed",
+  "brreg": {
+   "org_number": "934924142",
+   "legal_name": "FJORDSAUNA AS",
+   "org_form": "AS",
+   "nace": "93.292 Fritidsvirksomhet ellers",
+   "employees": 8,
+   "founded": "2025-01-03",
+   "municipality": "AURLAND",
+   "registry_email": "mail@fjordsauna.com",
+   "registry_website": "www.fjordsauna.com",
+   "ceo": "Kristin Skahjem",
+   "board": [
+    "Torgeir Skjerdal",
+    "Kristin Skahjem"
+   ],
+   "owners_count": 2,
+   "financials": [
+    {
+     "year": 2025,
+     "revenue_nok": 9055862,
+     "ebit_nok": 604738,
+     "result_nok": 299613,
+     "equity_nok": 443767,
+     "debt_nok": 4078998
+    }
+   ],
+   "revenue_nok": 9055862,
+   "revenue_year": 2025,
+   "ebit_nok": 604738,
+   "yoy_growth_pct": null
+  }
+ },
+ {
+  "id": "fjordsauna-aurland",
+  "vertical": "sauna",
+  "name": "FjordSauna Aurland",
+  "region": "Western Norway",
+  "subRegion": "Aurland, Vestland",
+  "type": "Commercial",
+  "format": "Floating (moored)",
+  "ownershipModel": "Private company",
+  "waterAccess": "Yes — Aurlandsfjord",
+  "priceRange": "250–2,990 NOK",
+  "bookingModel": "Drop-in + Private hire",
+  "yearEst": "c.2020",
+  "notes": "Sister operation to Flåm FjordSauna. Same UNESCO fjord branch.",
+  "website": "fjordsauna.com",
+  "isMultiSite": true,
+  "priority": "high",
+  "stage": "prospect",
+  "outreachNotes": [],
+  "tags": [
+   "floating",
+   "unesco",
+   "fjord",
+   "multi-site",
+   "premium",
+   "fjordsauna-brand"
+  ],
+  "contact": {
+   "email": "mail@fjordsauna.com",
+   "phone": "+47 960 05 305",
+   "address": "Postboks 50, 5742 Flåm",
+   "orgNumber": "934 924 142",
+   "contactSource": "website"
+  },
+  "brreg_match": "confirmed",
+  "brreg": {
+   "org_number": "934924142",
+   "legal_name": "FJORDSAUNA AS",
+   "org_form": "AS",
+   "nace": "93.292 Fritidsvirksomhet ellers",
+   "employees": 8,
+   "founded": "2025-01-03",
+   "municipality": "AURLAND",
+   "registry_email": "mail@fjordsauna.com",
+   "registry_website": "www.fjordsauna.com",
+   "ceo": "Kristin Skahjem",
+   "board": [
+    "Torgeir Skjerdal",
+    "Kristin Skahjem"
+   ],
+   "owners_count": 2,
+   "financials": [
+    {
+     "year": 2025,
+     "revenue_nok": 9055862,
+     "ebit_nok": 604738,
+     "result_nok": 299613,
+     "equity_nok": 443767,
+     "debt_nok": 4078998
+    }
+   ],
+   "revenue_nok": 9055862,
+   "revenue_year": 2025,
+   "ebit_nok": 604738,
+   "yoy_growth_pct": null
+  }
+ },
+ {
+  "id": "hardanger-flytebadstu",
+  "vertical": "sauna",
+  "name": "Hardanger Flytebadstu",
+  "region": "Western Norway",
+  "subRegion": "Ulvik, Hardangerfjord",
+  "type": "Commercial",
+  "format": "Floating raft",
+  "ownershipModel": "Private company",
+  "waterAccess": "Yes — Hardangerfjord",
+  "priceRange": "~300–500 NOK",
+  "bookingModel": "Private hire",
+  "yearEst": "c.2021",
+  "notes": "Orchard valley fjord setting. Drama of Hardangerfjord walls.",
+  "website": "",
+  "isMultiSite": false,
+  "priority": "medium",
+  "stage": "prospect",
+  "outreachNotes": [],
+  "tags": [
+   "floating",
+   "hardangerfjord",
+   "scenic"
+  ],
+  "contact": {
+   "contactSource": "research_needed"
+  },
+  "brreg_match": "uncertain",
+  "brreg": {
+   "org_number": "935786088",
+   "legal_name": "HARDANGER AS",
+   "org_form": "AS",
+   "nace": "58.120 Utgivelse av aviser",
+   "founded": "2025-06-16",
+   "municipality": "BERGEN",
+   "registry_email": null,
+   "registry_website": null,
+   "ceo": null,
+   "board": [
+    "Sturle Wolfgang Rasmussen"
+   ],
+   "owners_count": 1,
+   "financials": [],
+   "revenue_nok": null,
+   "revenue_year": null,
+   "ebit_nok": null,
+   "yoy_growth_pct": null
+  }
+ },
+ {
+  "id": "os-sauna",
+  "vertical": "sauna",
+  "name": "Os Sauna",
+  "region": "Western Norway",
+  "subRegion": "Os (Bjørnafjorden), Vestland",
+  "type": "Commercial",
+  "format": "Floating",
+  "ownershipModel": "Private company",
+  "waterAccess": "Yes — fjord/coast",
+  "priceRange": "~250–400 NOK",
+  "bookingModel": "Drop-in + Private hire",
+  "yearEst": "c.2021",
+  "notes": "Just south of Bergen.",
+  "website": "",
+  "isMultiSite": false,
+  "priority": "medium",
+  "stage": "prospect",
+  "outreachNotes": [],
+  "tags": [
+   "floating",
+   "vestland"
+  ],
+  "contact": {
+   "contactSource": "research_needed"
+  },
+  "brreg_match": "none",
+  "brreg": null
+ },
+ {
+  "id": "dampen-fjaerland",
+  "vertical": "sauna",
+  "name": "Dampen Sauna Fjaerland",
+  "region": "Western Norway",
+  "subRegion": "Fjærland, Vestland",
+  "type": "Commercial",
+  "format": "Floating (moored)",
+  "ownershipModel": "Private company",
+  "waterAccess": "Yes — Fjærlandsfjord/glacier",
+  "priceRange": "~250–400 NOK",
+  "bookingModel": "Private hire",
+  "yearEst": "c.2021",
+  "notes": "Glacier-view setting. Wood-fired. Partner with Fjærland Guiding.",
+  "website": "",
+  "isMultiSite": false,
+  "priority": "medium",
+  "stage": "prospect",
+  "outreachNotes": [],
+  "tags": [
+   "floating",
+   "glacier",
+   "vestland",
+   "scenic"
+  ],
+  "contact": {
+   "contactSource": "research_needed"
+  },
+  "brreg_match": "high",
+  "brreg": {
+   "org_number": "924537647",
+   "legal_name": "DAMP AS",
+   "org_form": "AS",
+   "nace": "68.200 Utleie av egen eller leid fast eiendom",
+   "employees": 31,
+   "founded": "2020-01-23",
+   "municipality": "STAVANGER",
+   "registry_email": null,
+   "registry_website": null,
+   "ceo": "Frode Hognestad",
+   "board": [
+    "Amalie Kivijärvi",
+    "Frode Hognestad"
+   ],
+   "owners_count": 2,
+   "financials": [
+    {
+     "year": 2024,
+     "revenue_nok": 15273188,
+     "ebit_nok": 1537092,
+     "result_nok": 1118796,
+     "equity_nok": 2469539,
+     "debt_nok": 4519343
+    }
+   ],
+   "revenue_nok": 15273188,
+   "revenue_year": 2024,
+   "ebit_nok": 1537092,
+   "yoy_growth_pct": null
+  }
+ },
+ {
+  "id": "elvatun-friluftsspa",
+  "vertical": "sauna",
+  "name": "Elvatun Friluftsspa",
+  "region": "Western Norway",
+  "subRegion": "Inner Vestland (river valley)",
+  "type": "Commercial",
+  "format": "Land-based barrel",
+  "ownershipModel": "Private company",
+  "waterAccess": "Yes — river",
+  "priceRange": "~250–400 NOK",
+  "bookingModel": "Private hire",
+  "yearEst": "c.2021",
+  "notes": "River cold plunge. Barrel form in rustic valley surroundings.",
+  "website": "",
+  "isMultiSite": false,
+  "priority": "medium",
+  "stage": "prospect",
+  "outreachNotes": [],
+  "tags": [
+   "land-based",
+   "barrel",
+   "river",
+   "vestland"
+  ],
+  "contact": {
+   "contactSource": "research_needed"
+  },
+  "brreg_match": "none",
+  "brreg": null
+ },
+ {
+  "id": "kinn-damp",
+  "vertical": "sauna",
+  "name": "Kinn Damp",
+  "region": "Western Norway",
+  "subRegion": "Florø, Vestland",
+  "type": "Commercial",
+  "format": "Floating / Coastal",
+  "ownershipModel": "Private company",
+  "waterAccess": "Yes — Atlantic/open coast",
+  "priceRange": "~250–400 NOK",
+  "bookingModel": "Private hire",
+  "yearEst": "c.2021",
+  "notes": "Open Atlantic coast. One of westernmost sauna operators in Norway.",
+  "website": "",
+  "isMultiSite": false,
+  "priority": "medium",
+  "stage": "prospect",
+  "outreachNotes": [],
+  "tags": [
+   "floating",
+   "atlantic",
+   "vestland",
+   "remote"
+  ],
+  "contact": {
+   "contactSource": "research_needed"
+  },
+  "brreg_match": "uncertain",
+  "brreg": {
+   "org_number": "924537647",
+   "legal_name": "DAMP AS",
+   "org_form": "AS",
+   "nace": "68.200 Utleie av egen eller leid fast eiendom",
+   "employees": 31,
+   "founded": "2020-01-23",
+   "municipality": "STAVANGER",
+   "registry_email": null,
+   "registry_website": null,
+   "ceo": "Frode Hognestad",
+   "board": [
+    "Amalie Kivijärvi",
+    "Frode Hognestad"
+   ],
+   "owners_count": 2,
+   "financials": [
+    {
+     "year": 2024,
+     "revenue_nok": 15273188,
+     "ebit_nok": 1537092,
+     "result_nok": 1118796,
+     "equity_nok": 2469539,
+     "debt_nok": 4519343
+    }
+   ],
+   "revenue_nok": 15273188,
+   "revenue_year": 2024,
+   "ebit_nok": 1537092,
+   "yoy_growth_pct": null
+  }
+ },
+ {
+  "id": "sjobris-sauna",
+  "vertical": "sauna",
+  "name": "Sjøbris Sauna",
+  "region": "Western Norway",
+  "subRegion": "Ørsta, Sunnmøre",
+  "type": "Commercial",
+  "format": "Floating / land-based",
+  "ownershipModel": "Private company",
+  "waterAccess": "Yes — fjord",
+  "priceRange": "~200–350 NOK",
+  "bookingModel": "Drop-in + Private hire",
+  "yearEst": "c.2022",
+  "notes": "Sunnmøre region, Ørsta.",
+  "website": "",
+  "isMultiSite": false,
+  "priority": "medium",
+  "stage": "prospect",
+  "outreachNotes": [],
+  "tags": [
+   "floating",
+   "sunnmøre"
+  ],
+  "contact": {
+   "contactSource": "research_needed"
+  },
+  "brreg_match": "high",
+  "brreg": {
+   "org_number": "932837838",
+   "legal_name": "SJØBRIS SAUNA AS",
+   "org_form": "AS",
+   "nace": "93.292 Fritidsvirksomhet ellers",
+   "founded": "2023-12-15",
+   "municipality": "ÅLESUND",
+   "registry_email": null,
+   "registry_website": null,
+   "ceo": null,
+   "board": [
+    "Silje Nathalie Renberg Kile",
+    "Linus Christoffer Åkerberg"
+   ],
+   "owners_count": 2,
+   "financials": [
+    {
+     "year": 2025,
+     "revenue_nok": 604062,
+     "ebit_nok": 74133,
+     "result_nok": 5617,
+     "equity_nok": 496951,
+     "debt_nok": 892025
+    }
+   ],
+   "revenue_nok": 604062,
+   "revenue_year": 2025,
+   "ebit_nok": 74133,
+   "yoy_growth_pct": null
+  }
+ },
+ {
+  "id": "lidasanden",
+  "vertical": "sauna",
+  "name": "Lidasanden Flytende Badstu",
+  "region": "Western Norway",
+  "subRegion": "Stryn, Nordfjord",
+  "type": "Commercial",
+  "format": "Floating raft",
+  "ownershipModel": "Private company",
+  "waterAccess": "Yes — fjord",
+  "priceRange": "~200–350 NOK",
+  "bookingModel": "Private hire",
+  "yearEst": "c.2022",
+  "notes": "Nordfjord region, Stryn.",
+  "website": "",
+  "isMultiSite": false,
+  "priority": "medium",
+  "stage": "prospect",
+  "outreachNotes": [],
+  "tags": [
+   "floating",
+   "nordfjord"
+  ],
+  "contact": {
+   "contactSource": "research_needed"
+  },
+  "brreg_match": "none",
+  "brreg": null
+ },
+ {
+  "id": "fjelg-sauna",
+  "vertical": "sauna",
+  "name": "Fjelg Sauna / Fjolg Sauna",
+  "region": "Western Norway",
+  "subRegion": "Outer Vestland coast",
+  "type": "Commercial",
+  "format": "Land-based barrel (coastal)",
+  "ownershipModel": "Private company",
+  "waterAccess": "Yes — Atlantic coast",
+  "priceRange": "~250–400 NOK",
+  "bookingModel": "Private hire",
+  "yearEst": "c.2022",
+  "notes": "Twin operations; outer coast Atlantic exposure. Cold and elemental.",
+  "website": "",
+  "isMultiSite": true,
+  "priority": "medium",
+  "stage": "prospect",
+  "outreachNotes": [],
+  "tags": [
+   "land-based",
+   "barrel",
+   "atlantic",
+   "vestland",
+   "twin"
+  ],
+  "contact": {
+   "contactSource": "research_needed"
+  },
+  "brreg_match": "none",
+  "brreg": null
+ },
+ {
+  "id": "pulpit-sauna",
+  "vertical": "sauna",
+  "name": "Pulpit Sauna (Jørpeland)",
+  "region": "Western Norway",
+  "subRegion": "Jørpeland, Rogaland",
+  "type": "Commercial",
+  "format": "Floating (moored)",
+  "ownershipModel": "Private company",
+  "waterAccess": "Yes — Lysefjord/lake",
+  "priceRange": "~250–500 NOK",
+  "bookingModel": "Private hire",
+  "yearEst": "c.2020",
+  "notes": "At foot of Preikestolen (Pulpit Rock) hike. Distinctive post-hike pairing.",
+  "website": "",
+  "isMultiSite": false,
+  "priority": "high",
+  "stage": "prospect",
+  "outreachNotes": [],
+  "tags": [
+   "floating",
+   "lysefjord",
+   "tourism",
+   "scenic",
+   "preikestolen"
+  ],
+  "contact": {
+   "contactSource": "research_needed"
+  },
+  "brreg_match": "none",
+  "brreg": null
+ },
+ {
+  "id": "svai-sauna",
+  "vertical": "sauna",
+  "name": "SVAI Sauna Ålesund",
+  "region": "Western Norway",
+  "subRegion": "Ålesund, Møre og Romsdal",
+  "type": "Commercial",
+  "format": "Floating (moored)",
+  "ownershipModel": "Private company",
+  "waterAccess": "Yes — Brosundet / Atlantic",
+  "priceRange": "250–2,500 NOK",
+  "bookingModel": "Drop-in + Private hire",
+  "yearEst": "c.2020",
+  "notes": "Molja harbour. Fish-drying rack design. Panoramic Atlantic views. 10:00–22:00.",
+  "website": "svaisauna.no",
+  "isMultiSite": false,
+  "priority": "high",
+  "stage": "prospect",
+  "outreachNotes": [],
+  "tags": [
+   "floating",
+   "ålesund",
+   "design",
+   "atlantic",
+   "premium"
+  ],
+  "estimatedValuation": "EUR 1–2M",
+  "contact": {
+   "contactSource": "research_needed",
+   "email": "post@svaisauna.no"
+  },
+  "brreg_match": "high",
+  "brreg": {
+   "org_number": "925777986",
+   "legal_name": "SVAI SAUNA AS",
+   "org_form": "AS",
+   "nace": "93.292 Fritidsvirksomhet ellers",
+   "employees": 5,
+   "founded": "2020-09-14",
+   "municipality": "ÅLESUND",
+   "registry_email": "post@svaisauna.no",
+   "registry_website": "www.svaisauna.no",
+   "ceo": "Mathias Knudsen Tvedten",
+   "board": [
+    "Mathias Knudsen Tvedten",
+    "Benjamin Knudsen Tvedten",
+    "Caroline Aaserud Basberg"
+   ],
+   "owners_count": 3,
+   "financials": [
+    {
+     "year": 2025,
+     "revenue_nok": 2830486,
+     "ebit_nok": 774166,
+     "result_nok": 578570,
+     "equity_nok": 1798516,
+     "debt_nok": 801011
+    }
+   ],
+   "revenue_nok": 2830486,
+   "revenue_year": 2025,
+   "ebit_nok": 774166,
+   "yoy_growth_pct": null
+  }
+ },
+ {
+  "id": "damp-storhaug",
+  "vertical": "sauna",
+  "name": "Damp Sauna Storhaug",
+  "region": "Western Norway",
+  "subRegion": "Stavanger — Storhaug",
+  "type": "Commercial",
+  "format": "Floating (fleet)",
+  "ownershipModel": "Private company (Damp brand)",
+  "waterAccess": "Yes — Gandsfjorden/harbour",
+  "priceRange": "~225–300+ NOK",
+  "bookingModel": "Private hire",
+  "yearEst": "c.2021",
+  "notes": "Cluster of small Damp boats at Storhaug waterfront. Most competitive micro-market in Norway.",
+  "website": "",
+  "isMultiSite": true,
+  "priority": "high",
+  "stage": "prospect",
+  "outreachNotes": [],
+  "tags": [
+   "floating",
+   "stavanger",
+   "fleet",
+   "damp-brand",
+   "multi-site"
+  ],
+  "estimatedValuation": "EUR 2–4M (full Damp brand)",
+  "contact": {
+   "contactSource": "research_needed"
+  },
+  "brreg_match": "high",
+  "brreg": {
+   "org_number": "924537647",
+   "legal_name": "DAMP AS",
+   "org_form": "AS",
+   "nace": "68.200 Utleie av egen eller leid fast eiendom",
+   "employees": 31,
+   "founded": "2020-01-23",
+   "municipality": "STAVANGER",
+   "registry_email": null,
+   "registry_website": null,
+   "ceo": "Frode Hognestad",
+   "board": [
+    "Amalie Kivijärvi",
+    "Frode Hognestad"
+   ],
+   "owners_count": 2,
+   "financials": [
+    {
+     "year": 2024,
+     "revenue_nok": 15273188,
+     "ebit_nok": 1537092,
+     "result_nok": 1118796,
+     "equity_nok": 2469539,
+     "debt_nok": 4519343
+    }
+   ],
+   "revenue_nok": 15273188,
+   "revenue_year": 2024,
+   "ebit_nok": 1537092,
+   "yoy_growth_pct": null
+  }
+ },
+ {
+  "id": "booksauna-otto",
+  "vertical": "sauna",
+  "name": "BookSauna Otto / Vaulen",
+  "region": "Western Norway",
+  "subRegion": "Stavanger — Vaulen",
+  "type": "Commercial",
+  "format": "Floating raft",
+  "ownershipModel": "Platform (BookSauna model)",
+  "waterAccess": "Yes — Gandsfjorden",
+  "priceRange": "225–300 NOK",
+  "bookingModel": "Private hire only",
+  "yearEst": "c.2020",
+  "notes": "Min 4 ppl charge. SUP boards included. One of highest-rated in Stavanger.",
+  "website": "booksauna.no",
+  "isMultiSite": false,
+  "priority": "medium",
+  "stage": "prospect",
+  "outreachNotes": [],
+  "tags": [
+   "floating",
+   "stavanger",
+   "platform-model"
+  ],
+  "contact": {
+   "email": "post@booksauna.no",
+   "orgNumber": "831 938 692",
+   "contactSource": "website"
+  },
+  "brreg_match": "confirmed",
+  "brreg": {
+   "org_number": "831938692",
+   "legal_name": "BOOKSAUNA AS",
+   "org_form": "AS",
+   "nace": "77.220 Utleie og leasing av andre husholdningsvarer og varer til personlig bruk",
+   "employees": 5,
+   "founded": "2023-08-10",
+   "municipality": "STAVANGER",
+   "registry_email": null,
+   "registry_website": null,
+   "ceo": "Thor André Johnsen Nysted",
+   "board": [
+    "Otto Stefan Kunnas",
+    "Thor André Johnsen Nysted",
+    "Trym Tangen Andersen"
+   ],
+   "owners_count": 3,
+   "financials": [
+    {
+     "year": 2024,
+     "revenue_nok": 4781537,
+     "ebit_nok": 296143,
+     "result_nok": 231085,
+     "equity_nok": 39830,
+     "debt_nok": 1438752
+    }
+   ],
+   "revenue_nok": 4781537,
+   "revenue_year": 2024,
+   "ebit_nok": 296143,
+   "yoy_growth_pct": null
+  }
+ },
+ {
+  "id": "tananger-sauna",
+  "vertical": "sauna",
+  "name": "Tananger Floating Sauna",
+  "region": "Western Norway",
+  "subRegion": "Tananger (Sola), Rogaland",
+  "type": "Commercial",
+  "format": "Floating (moored at hotel jetty)",
+  "ownershipModel": "Private company (Hummeren)",
+  "waterAccess": "Yes — North Sea coast",
+  "priceRange": "~500+ NOK",
+  "bookingModel": "Private hire only",
+  "yearEst": "c.2020",
+  "notes": "Affiliated with Hummeren Hotel jetty but sold as standalone sauna experience. 6–8 ppl.",
+  "website": "hummeren.no",
+  "isMultiSite": false,
+  "priority": "medium",
+  "stage": "prospect",
+  "outreachNotes": [],
+  "tags": [
+   "floating",
+   "rogaland",
+   "hotel-affiliated",
+   "north-sea"
+  ],
+  "contact": {
+   "contactSource": "research_needed"
+  },
+  "brreg_match": "none",
+  "brreg": null
+ },
+ {
+  "id": "damp-isla",
+  "vertical": "sauna",
+  "name": "Damp Isla / Damp Lohui / Damp Sanna",
+  "region": "Western Norway",
+  "subRegion": "Stavanger / Rogaland",
+  "type": "Commercial",
+  "format": "Floating (barrel design fleet)",
+  "ownershipModel": "Private company (Damp brand)",
+  "waterAccess": "Yes",
+  "priceRange": "~225–350 NOK",
+  "bookingModel": "Private hire",
+  "yearEst": "c.2021",
+  "notes": "Design-forward Damp fleet; each unit named individually. Barrel architecture on water.",
+  "website": "",
+  "isMultiSite": true,
+  "priority": "high",
+  "stage": "prospect",
+  "outreachNotes": [],
+  "tags": [
+   "floating",
+   "stavanger",
+   "fleet",
+   "damp-brand",
+   "design"
+  ],
+  "contact": {
+   "contactSource": "research_needed"
+  },
+  "brreg_match": "high",
+  "brreg": {
+   "org_number": "924537647",
+   "legal_name": "DAMP AS",
+   "org_form": "AS",
+   "nace": "68.200 Utleie av egen eller leid fast eiendom",
+   "employees": 31,
+   "founded": "2020-01-23",
+   "municipality": "STAVANGER",
+   "registry_email": null,
+   "registry_website": null,
+   "ceo": "Frode Hognestad",
+   "board": [
+    "Amalie Kivijärvi",
+    "Frode Hognestad"
+   ],
+   "owners_count": 2,
+   "financials": [
+    {
+     "year": 2024,
+     "revenue_nok": 15273188,
+     "ebit_nok": 1537092,
+     "result_nok": 1118796,
+     "equity_nok": 2469539,
+     "debt_nok": 4519343
+    }
+   ],
+   "revenue_nok": 15273188,
+   "revenue_year": 2024,
+   "ebit_nok": 1537092,
+   "yoy_growth_pct": null
+  }
+ },
+ {
+  "id": "kur-sauna-ula",
+  "vertical": "sauna",
+  "name": "Kur Sauna Ula",
+  "region": "Western Norway",
+  "subRegion": "Jæren coast, Rogaland",
+  "type": "Commercial",
+  "format": "Land-based barrel (coastal)",
+  "ownershipModel": "Private company",
+  "waterAccess": "Yes — North Sea / Jæren coast",
+  "priceRange": "~250–400 NOK",
+  "bookingModel": "Private hire",
+  "yearEst": "c.2022",
+  "notes": "Elemental setting on flat wind-scoured Jæren shore.",
+  "website": "",
+  "isMultiSite": false,
+  "priority": "medium",
+  "stage": "prospect",
+  "outreachNotes": [],
+  "tags": [
+   "land-based",
+   "barrel",
+   "jæren",
+   "rogaland"
+  ],
+  "contact": {
+   "contactSource": "research_needed"
+  },
+  "brreg_match": "uncertain",
+  "brreg": {
+   "org_number": "931035975",
+   "legal_name": "KUR SAUNA AS",
+   "org_form": "AS",
+   "nace": "77.390 Utleie og leasing av andre maskiner og annet utstyr og materiell ikke nevnt annet sted",
+   "founded": "2023-03-04",
+   "municipality": "LARVIK",
+   "registry_email": "post@kursauna.no",
+   "registry_website": "www.kursauna.no",
+   "ceo": "Morten Dalflyen",
+   "board": [
+    "Thor Espen Gogstad Haugen",
+    "Morten Dalflyen"
+   ],
+   "owners_count": 2,
+   "financials": [
+    {
+     "year": 2024,
+     "revenue_nok": 1709942,
+     "ebit_nok": 510667,
+     "result_nok": 340712,
+     "equity_nok": 456971,
+     "debt_nok": 673587
+    }
+   ],
+   "revenue_nok": 1709942,
+   "revenue_year": 2024,
+   "ebit_nok": 510667,
+   "yoy_growth_pct": null
+  }
+ },
+ {
+  "id": "blaud-sauna",
+  "vertical": "sauna",
+  "name": "Blaud Sauna",
+  "region": "Southern Norway",
+  "subRegion": "Kristiansand",
+  "type": "Commercial",
+  "format": "Floating",
+  "ownershipModel": "Private company",
+  "waterAccess": "Yes — Skagerrak",
+  "priceRange": "~250–400 NOK",
+  "bookingModel": "Private hire",
+  "yearEst": "c.2021",
+  "notes": "Norway's southernmost city. Capacity ~10 ppl.",
+  "website": "",
+  "isMultiSite": false,
+  "priority": "medium",
+  "stage": "prospect",
+  "outreachNotes": [],
+  "tags": [
+   "floating",
+   "skagerrak",
+   "kristiansand"
+  ],
+  "contact": {
+   "contactSource": "research_needed"
+  },
+  "brreg_match": "uncertain",
+  "brreg": {
+   "org_number": "927406276",
+   "legal_name": "BLAUD AS",
+   "org_form": "AS",
+   "nace": "77.320 Utleie og leasing av bygge- og anleggsmaskiner og -utstyr",
+   "employees": null,
+   "founded": "2021-05-04",
+   "municipality": "KRISTIANSAND",
+   "registry_email": null,
+   "registry_website": null,
+   "ceo": null,
+   "board": [
+    "Peter Kjellby",
+    "Willy Ly",
+    "Tor Andre Gjesteland",
+    "Carl Henrik Seyffarth"
+   ],
+   "owners_count": 4,
+   "financials": [
+    {
+     "year": 2024,
+     "revenue_nok": 933721,
+     "ebit_nok": -334097,
+     "result_nok": -361208,
+     "equity_nok": 1214572,
+     "debt_nok": 1570724
+    }
+   ],
+   "revenue_nok": 933721,
+   "revenue_year": 2024,
+   "ebit_nok": -334097,
+   "yoy_growth_pct": null
+  }
+ },
+ {
+  "id": "damp-kata",
+  "vertical": "sauna",
+  "name": "Damp Kata",
+  "region": "Southern Norway",
+  "subRegion": "Arendal, Aust-Agder",
+  "type": "Commercial",
+  "format": "Floating (Damp boat)",
+  "ownershipModel": "Private company (Damp brand)",
+  "waterAccess": "Yes — Skagerrak inlet",
+  "priceRange": "~200–350 NOK",
+  "bookingModel": "Private hire",
+  "yearEst": "c.2021",
+  "notes": "Damp fleet boat. Calm Skagerrak setting.",
+  "website": "",
+  "isMultiSite": false,
+  "priority": "medium",
+  "stage": "prospect",
+  "outreachNotes": [],
+  "tags": [
+   "floating",
+   "damp-brand",
+   "skagerrak"
+  ],
+  "contact": {
+   "contactSource": "research_needed"
+  },
+  "brreg_match": "high",
+  "brreg": {
+   "org_number": "924537647",
+   "legal_name": "DAMP AS",
+   "org_form": "AS",
+   "nace": "68.200 Utleie av egen eller leid fast eiendom",
+   "employees": 31,
+   "founded": "2020-01-23",
+   "municipality": "STAVANGER",
+   "registry_email": null,
+   "registry_website": null,
+   "ceo": "Frode Hognestad",
+   "board": [
+    "Amalie Kivijärvi",
+    "Frode Hognestad"
+   ],
+   "owners_count": 2,
+   "financials": [
+    {
+     "year": 2024,
+     "revenue_nok": 15273188,
+     "ebit_nok": 1537092,
+     "result_nok": 1118796,
+     "equity_nok": 2469539,
+     "debt_nok": 4519343
+    }
+   ],
+   "revenue_nok": 15273188,
+   "revenue_year": 2024,
+   "ebit_nok": 1537092,
+   "yoy_growth_pct": null
+  }
+ },
+ {
+  "id": "damp-fevik",
+  "vertical": "sauna",
+  "name": "Damp Fevik",
+  "region": "Southern Norway",
+  "subRegion": "Grimstad, Aust-Agder",
+  "type": "Commercial",
+  "format": "Floating (Damp boat)",
+  "ownershipModel": "Private company (Damp brand)",
+  "waterAccess": "Yes — Skagerrak",
+  "priceRange": "~200–350 NOK",
+  "bookingModel": "Private hire",
+  "yearEst": "c.2022",
+  "notes": "Perfect 5-star Google rating. Near Grimstad.",
+  "website": "",
+  "isMultiSite": false,
+  "priority": "medium",
+  "stage": "prospect",
+  "outreachNotes": [],
+  "tags": [
+   "floating",
+   "damp-brand",
+   "skagerrak",
+   "top-rated"
+  ],
+  "contact": {
+   "contactSource": "research_needed"
+  },
+  "brreg_match": "high",
+  "brreg": {
+   "org_number": "924537647",
+   "legal_name": "DAMP AS",
+   "org_form": "AS",
+   "nace": "68.200 Utleie av egen eller leid fast eiendom",
+   "employees": 31,
+   "founded": "2020-01-23",
+   "municipality": "STAVANGER",
+   "registry_email": null,
+   "registry_website": null,
+   "ceo": "Frode Hognestad",
+   "board": [
+    "Amalie Kivijärvi",
+    "Frode Hognestad"
+   ],
+   "owners_count": 2,
+   "financials": [
+    {
+     "year": 2024,
+     "revenue_nok": 15273188,
+     "ebit_nok": 1537092,
+     "result_nok": 1118796,
+     "equity_nok": 2469539,
+     "debt_nok": 4519343
+    }
+   ],
+   "revenue_nok": 15273188,
+   "revenue_year": 2024,
+   "ebit_nok": 1537092,
+   "yoy_growth_pct": null
+  }
+ },
+ {
+  "id": "badstubaten-pysen",
+  "vertical": "sauna",
+  "name": "Badstubåten Pysen",
+  "region": "Southern Norway",
+  "subRegion": "Mandal, Vest-Agder",
+  "type": "Commercial",
+  "format": "Floating sauna boat",
+  "ownershipModel": "Private company",
+  "waterAccess": "Yes — Skagerrak/Mandal river",
+  "priceRange": "~250–400 NOK",
+  "bookingModel": "Private hire",
+  "yearEst": "c.2021",
+  "notes": "Mandal, Norway's southernmost town area.",
+  "website": "",
+  "isMultiSite": false,
+  "priority": "medium",
+  "stage": "prospect",
+  "outreachNotes": [],
+  "tags": [
+   "floating",
+   "skagerrak",
+   "mandal"
+  ],
+  "contact": {
+   "contactSource": "research_needed"
+  },
+  "brreg_match": "none",
+  "brreg": null
+ },
+ {
+  "id": "homborsauna",
+  "vertical": "sauna",
+  "name": "Homborsauna",
+  "region": "Southern Norway",
+  "subRegion": "Grimstad, Aust-Agder",
+  "type": "Commercial",
+  "format": "Floating / land-based coastal",
+  "ownershipModel": "Private company",
+  "waterAccess": "Yes — Skagerrak",
+  "priceRange": "~200–350 NOK",
+  "bookingModel": "Drop-in + Private hire",
+  "yearEst": "c.2022",
+  "notes": "Grimstad area.",
+  "website": "",
+  "isMultiSite": false,
+  "priority": "medium",
+  "stage": "prospect",
+  "outreachNotes": [],
+  "tags": [
+   "floating",
+   "skagerrak",
+   "grimstad"
+  ],
+  "contact": {
+   "contactSource": "research_needed"
+  },
+  "brreg_match": "high",
+  "brreg": {
+   "org_number": "930677825",
+   "legal_name": "HOMBORSAUNA AS",
+   "org_form": "AS",
+   "nace": "96.230 Aktiviteter i dagspa, badstue og dampbad",
+   "employees": 6,
+   "founded": "2023-01-01",
+   "municipality": "GRIMSTAD",
+   "registry_email": null,
+   "registry_website": null,
+   "ceo": "Anders Fossing",
+   "board": [
+    "Anders Fossing",
+    "Gunn-Kristin Hermansen",
+    "Hanne Siri Hodne Fossing",
+    "Christen Hermansen"
+   ],
+   "owners_count": 4,
+   "financials": [
+    {
+     "year": 2024,
+     "revenue_nok": 1282448,
+     "ebit_nok": 32865,
+     "result_nok": 26474,
+     "equity_nok": 153514,
+     "debt_nok": 956469
+    }
+   ],
+   "revenue_nok": 1282448,
+   "revenue_year": 2024,
+   "ebit_nok": 32865,
+   "yoy_growth_pct": null
+  }
+ },
+ {
+  "id": "stu-brattora",
+  "vertical": "sauna",
+  "name": "Stu Brattøra",
+  "region": "Central Norway",
+  "subRegion": "Trondheim",
+  "type": "Commercial",
+  "format": "Floating (moored)",
+  "ownershipModel": "Private company",
+  "waterAccess": "Yes — Trondheimsfjord",
+  "priceRange": "~200–400 NOK",
+  "bookingModel": "Drop-in + Private hire",
+  "yearEst": "c.2020",
+  "notes": "Behind Trondheim central station. Walkable from cruise terminal. Very convenient.",
+  "website": "",
+  "isMultiSite": false,
+  "priority": "high",
+  "stage": "prospect",
+  "outreachNotes": [],
+  "tags": [
+   "floating",
+   "trondheim",
+   "central-location",
+   "tourism"
+  ],
+  "contact": {
+   "contactSource": "research_needed"
+  },
+  "brreg_match": "none",
+  "brreg": null
+ },
+ {
+  "id": "damp-trondja",
+  "vertical": "sauna",
+  "name": "Damp Trondja",
+  "region": "Central Norway",
+  "subRegion": "Trondheim",
+  "type": "Commercial",
+  "format": "Floating (Damp boat)",
+  "ownershipModel": "Private company (Damp brand)",
+  "waterAccess": "Yes — Trondheimsfjord",
+  "priceRange": "~200–350 NOK",
+  "bookingModel": "Drop-in + Private hire",
+  "yearEst": "c.2021",
+  "notes": "Central Trondheim harbour. Short walk from Stu Brattøra.",
+  "website": "",
+  "isMultiSite": false,
+  "priority": "medium",
+  "stage": "prospect",
+  "outreachNotes": [],
+  "tags": [
+   "floating",
+   "trondheim",
+   "damp-brand"
+  ],
+  "contact": {
+   "contactSource": "research_needed"
+  },
+  "brreg_match": "high",
+  "brreg": {
+   "org_number": "924537647",
+   "legal_name": "DAMP AS",
+   "org_form": "AS",
+   "nace": "68.200 Utleie av egen eller leid fast eiendom",
+   "employees": 31,
+   "founded": "2020-01-23",
+   "municipality": "STAVANGER",
+   "registry_email": null,
+   "registry_website": null,
+   "ceo": "Frode Hognestad",
+   "board": [
+    "Amalie Kivijärvi",
+    "Frode Hognestad"
+   ],
+   "owners_count": 2,
+   "financials": [
+    {
+     "year": 2024,
+     "revenue_nok": 15273188,
+     "ebit_nok": 1537092,
+     "result_nok": 1118796,
+     "equity_nok": 2469539,
+     "debt_nok": 4519343
+    }
+   ],
+   "revenue_nok": 15273188,
+   "revenue_year": 2024,
+   "ebit_nok": 1537092,
+   "yoy_growth_pct": null
+  }
+ },
+ {
+  "id": "kristiansund-floating",
+  "vertical": "sauna",
+  "name": "Kristiansund Floating Sauna",
+  "region": "Central Norway",
+  "subRegion": "Kristiansund, Møre og Romsdal",
+  "type": "Commercial",
+  "format": "Floating",
+  "ownershipModel": "Private company",
+  "waterAccess": "Yes — Atlantic coast",
+  "priceRange": "~200–400 NOK",
+  "bookingModel": "Private hire",
+  "yearEst": "c.2022",
+  "notes": "Fishing harbour setting.",
+  "website": "",
+  "isMultiSite": false,
+  "priority": "medium",
+  "stage": "prospect",
+  "outreachNotes": [],
+  "tags": [
+   "floating",
+   "atlantic",
+   "møre-og-romsdal"
+  ],
+  "contact": {
+   "contactSource": "research_needed"
+  },
+  "brreg_match": "none",
+  "brreg": null
+ },
+ {
+  "id": "havna-sjobad",
+  "vertical": "sauna",
+  "name": "Havna Sjøbad",
+  "region": "Central Norway",
+  "subRegion": "Namsos, Trøndelag",
+  "type": "Commercial",
+  "format": "Floating / waterfront",
+  "ownershipModel": "Private company",
+  "waterAccess": "Yes — Namsenfjord",
+  "priceRange": "~200–350 NOK",
+  "bookingModel": "Drop-in + Private hire",
+  "yearEst": "c.2022",
+  "notes": "Small fishing harbour town. Among working boats.",
+  "website": "",
+  "isMultiSite": false,
+  "priority": "medium",
+  "stage": "prospect",
+  "outreachNotes": [],
+  "tags": [
+   "floating",
+   "trøndelag",
+   "harbour"
+  ],
+  "contact": {
+   "contactSource": "research_needed"
+  },
+  "brreg_match": "none",
+  "brreg": null
+ },
+ {
+  "id": "pust-tromso",
+  "vertical": "sauna",
+  "name": "Pust Tromsø",
+  "region": "Northern Norway",
+  "subRegion": "Tromsø",
+  "type": "Commercial",
+  "format": "Floating platform (2 rooms)",
+  "ownershipModel": "Private company",
+  "waterAccess": "Yes — Arctic Ocean/harbour",
+  "priceRange": "120–3,000 NOK",
+  "bookingModel": "Drop-in + Private hire + Rituals",
+  "yearEst": "c.2018",
+  "notes": "2 rooms: Original (12 ppl) + Lavvo (16 ppl). Aufguss rituals, 'Ice Bath Viking' package. Multiple locations across Norway.",
+  "website": "pust.io",
+  "isMultiSite": true,
+  "priority": "high",
+  "stage": "prospect",
+  "outreachNotes": [],
+  "tags": [
+   "floating",
+   "tromsø",
+   "arctic",
+   "premium",
+   "multi-site",
+   "brand",
+   "wellness"
+  ],
+  "estimatedValuation": "EUR 3–6M",
+  "contact": {
+   "email": "hello@pust.io",
+   "contactSource": "website"
+  },
+  "brreg_match": "high",
+  "brreg": {
+   "org_number": "925085448",
+   "legal_name": "PUST AS",
+   "org_form": "AS",
+   "nace": "96.230 Aktiviteter i dagspa, badstue og dampbad",
+   "employees": 27,
+   "founded": "2020-04-23",
+   "municipality": "TROMSØ",
+   "registry_email": null,
+   "registry_website": null,
+   "ceo": "Leif Tinus Smith Næss",
+   "board": [
+    "Erik Stange Ankre",
+    "Andreas Joki Arild",
+    "Leif Tinus Smith Næss"
+   ],
+   "owners_count": 3,
+   "financials": [
+    {
+     "year": 2025,
+     "revenue_nok": 22499387,
+     "ebit_nok": 4250341,
+     "result_nok": 3039303,
+     "equity_nok": 5146278,
+     "debt_nok": 12554235
+    }
+   ],
+   "revenue_nok": 22499387,
+   "revenue_year": 2025,
+   "ebit_nok": 4250341,
+   "yoy_growth_pct": null
+  }
+ },
+ {
+  "id": "vulkana",
+  "vertical": "sauna",
+  "name": "Vulkana",
+  "region": "Northern Norway",
+  "subRegion": "Tromsø",
+  "type": "Commercial",
+  "format": "Floating (converted vessel, mobile)",
+  "ownershipModel": "Private company",
+  "waterAccess": "Yes — Arctic Ocean",
+  "priceRange": "~500–2,000+ NOK",
+  "bookingModel": "Private cruise / Private hire",
+  "yearEst": "c.2016",
+  "notes": "Genuinely mobile; sails to different fjord arms during session. Wood-fired. One of most photographed wellness vessels in Norway.",
+  "website": "",
+  "isMultiSite": false,
+  "priority": "high",
+  "stage": "prospect",
+  "outreachNotes": [],
+  "tags": [
+   "floating",
+   "tromsø",
+   "arctic",
+   "premium",
+   "mobile",
+   "unique-format",
+   "iconic"
+  ],
+  "estimatedValuation": "EUR 1.5–3M",
+  "contact": {
+   "contactSource": "research_needed"
+  },
+  "brreg_match": "high",
+  "brreg": {
+   "org_number": "995786605",
+   "legal_name": "VULKANA DRIFT AS",
+   "org_form": "AS",
+   "nace": "68.200 Utleie av egen eller leid fast eiendom",
+   "employees": 22,
+   "founded": "2010-05-19",
+   "municipality": "TROMSØ",
+   "registry_email": "hogne.rundberg@gmail.com",
+   "registry_website": "www.vulkana.no",
+   "ceo": "Ima Agnes Bassi",
+   "board": [
+    "Hogne Rundberg",
+    "Christine Mølmann Annexstad"
+   ],
+   "owners_count": 2,
+   "financials": [
+    {
+     "year": 2024,
+     "revenue_nok": 6017440,
+     "ebit_nok": 300860,
+     "result_nok": 92962,
+     "equity_nok": 48103,
+     "debt_nok": 3199428
+    }
+   ],
+   "revenue_nok": 6017440,
+   "revenue_year": 2024,
+   "ebit_nok": 300860,
+   "yoy_growth_pct": null
+  }
+ },
+ {
+  "id": "lofoten-sauna-svinoya",
+  "vertical": "sauna",
+  "name": "Lofoten Sauna Svinøya",
+  "region": "Northern Norway",
+  "subRegion": "Svolvær, Lofoten",
+  "type": "Commercial",
+  "format": "Floating (moored at rorbu)",
+  "ownershipModel": "Private company",
+  "waterAccess": "Yes — Vestfjord",
+  "priceRange": "250+ NOK",
+  "bookingModel": "Private hire",
+  "yearEst": "c.2019",
+  "notes": "Among historic rorbu fishing cabins. Svolværgeita peak backdrop.",
+  "website": "",
+  "isMultiSite": false,
+  "priority": "high",
+  "stage": "prospect",
+  "outreachNotes": [],
+  "tags": [
+   "floating",
+   "lofoten",
+   "arctic",
+   "tourism",
+   "heritage"
+  ],
+  "contact": {
+   "contactSource": "research_needed"
+  },
+  "brreg_match": "uncertain",
+  "brreg": {
+   "org_number": "912129381",
+   "legal_name": "SVINØYA AS",
+   "org_form": "AS",
+   "nace": "68.200 Utleie av egen eller leid fast eiendom",
+   "employees": null,
+   "founded": "2013-06-13",
+   "municipality": "VÅGAN",
+   "registry_email": "ola@svinoya.no",
+   "registry_website": null,
+   "ceo": "Ola Skjeseth",
+   "board": [
+    "Hugo Hegrem",
+    "Ola Skjeseth"
+   ],
+   "owners_count": 2,
+   "financials": [
+    {
+     "year": 2024,
+     "revenue_nok": 7281161,
+     "ebit_nok": 1718429,
+     "result_nok": 2904056,
+     "equity_nok": 29922552,
+     "debt_nok": 90781293
+    }
+   ],
+   "revenue_nok": 7281161,
+   "revenue_year": 2024,
+   "ebit_nok": 1718429,
+   "yoy_growth_pct": null
+  }
+ },
+ {
+  "id": "lofoten-beach-camp",
+  "vertical": "sauna",
+  "name": "Lofoten Beach Camp Sauna",
+  "region": "Northern Norway",
+  "subRegion": "Flakstad, Lofoten",
+  "type": "Commercial",
+  "format": "Land-based (beach-side)",
+  "ownershipModel": "Private company",
+  "waterAccess": "Yes — Arctic beach",
+  "priceRange": "~250–400 NOK",
+  "bookingModel": "Private hire",
+  "yearEst": "c.2021",
+  "notes": "White-sand Lofoten beach. Heat → run across sand → plunge.",
+  "website": "",
+  "isMultiSite": false,
+  "priority": "medium",
+  "stage": "prospect",
+  "outreachNotes": [],
+  "tags": [
+   "land-based",
+   "lofoten",
+   "arctic",
+   "beach"
+  ],
+  "contact": {
+   "contactSource": "research_needed"
+  },
+  "brreg_match": "high",
+  "brreg": {
+   "org_number": "995256878",
+   "legal_name": "LOFOTEN BEACH CAMP AS",
+   "org_form": "AS",
+   "nace": "55.300 Drift av campingplasser",
+   "employees": 18,
+   "founded": "2010-01-02",
+   "municipality": "FLAKSTAD",
+   "registry_email": "per@alvias.no",
+   "registry_website": null,
+   "ceo": "Per Ansgar Benjaminsen",
+   "board": [
+    "Per Ansgar Benjaminsen"
+   ],
+   "owners_count": 1,
+   "financials": [
+    {
+     "year": 2025,
+     "revenue_nok": 24103627,
+     "ebit_nok": 6678045,
+     "result_nok": 4104445,
+     "equity_nok": 12629053,
+     "debt_nok": 32018130
+    }
+   ],
+   "revenue_nok": 24103627,
+   "revenue_year": 2025,
+   "ebit_nok": 6678045,
+   "yoy_growth_pct": null
+  }
+ },
+ {
+  "id": "hov-sauna",
+  "vertical": "sauna",
+  "name": "Hov Sauna",
+  "region": "Northern Norway",
+  "subRegion": "Gimsøya, Lofoten",
+  "type": "Commercial",
+  "format": "Land-based outdoor (beach)",
+  "ownershipModel": "Private company",
+  "waterAccess": "Yes — Arctic beach / sea",
+  "priceRange": "~250–400 NOK",
+  "bookingModel": "Private hire",
+  "yearEst": "c.2022",
+  "notes": "Hidden option on quieter Gimsøya island. White sand + turquoise Arctic water.",
+  "website": "",
+  "isMultiSite": false,
+  "priority": "medium",
+  "stage": "prospect",
+  "outreachNotes": [],
+  "tags": [
+   "land-based",
+   "lofoten",
+   "arctic",
+   "beach"
+  ],
+  "contact": {
+   "contactSource": "research_needed"
+  },
+  "brreg_match": "none",
+  "brreg": null
+ },
+ {
+  "id": "skarungen-spa",
+  "vertical": "sauna",
+  "name": "Skårungen Spa Pier",
+  "region": "Northern Norway",
+  "subRegion": "Svolvær, Lofoten",
+  "type": "Commercial",
+  "format": "Land-based (sauna pier / hot tub)",
+  "ownershipModel": "Private company",
+  "waterAccess": "Yes — Vestfjord",
+  "priceRange": "250–399 NOK",
+  "bookingModel": "Private hire (exclusive)",
+  "yearEst": "2024 (renovated)",
+  "notes": "Hot tub + sauna pier. 8–10 ppl hot tub + 10–12 ppl sauna. Views to Vågekallen mt.",
+  "website": "",
+  "isMultiSite": false,
+  "priority": "medium",
+  "stage": "prospect",
+  "outreachNotes": [],
+  "tags": [
+   "land-based",
+   "lofoten",
+   "premium",
+   "pier"
+  ],
+  "contact": {
+   "contactSource": "research_needed"
+  },
+  "brreg_match": "high",
+  "brreg": {
+   "org_number": "918278443",
+   "legal_name": "SKÅRUNGEN AS",
+   "org_form": "AS",
+   "nace": "55.200 Drift av vandrerhjem og ferieleiligheter",
+   "employees": 29,
+   "founded": "2016-11-17",
+   "municipality": "VÅGAN",
+   "registry_email": "christer@skaarungen.no",
+   "registry_website": "skaarungen.no",
+   "ceo": "Tilla Lien Larsen",
+   "board": [
+    "Tommy Wårheim Seim",
+    "Christer Larsen",
+    "Maarten Edmond Raes"
+   ],
+   "owners_count": 3,
+   "financials": [
+    {
+     "year": 2024,
+     "revenue_nok": 21944685,
+     "ebit_nok": 607285,
+     "result_nok": 379124,
+     "equity_nok": 548229,
+     "debt_nok": 8313035
+    }
+   ],
+   "revenue_nok": 21944685,
+   "revenue_year": 2024,
+   "ebit_nok": 607285,
+   "yoy_growth_pct": null
+  }
+ },
+ {
+  "id": "kleksen-saunaboat",
+  "vertical": "sauna",
+  "name": "Kleksen Saunaboat",
+  "region": "Northern Norway",
+  "subRegion": "Narvik, Nordland",
+  "type": "Commercial",
+  "format": "Floating sauna boat (wood-fired)",
+  "ownershipModel": "Private company",
+  "waterAccess": "Yes — Ofotfjord",
+  "priceRange": "~300–500 NOK",
+  "bookingModel": "Private hire",
+  "yearEst": "c.2021",
+  "notes": "One of highest Google ratings for any floating sauna in Norway. ~12 ppl.",
+  "website": "",
+  "isMultiSite": false,
+  "priority": "high",
+  "stage": "prospect",
+  "outreachNotes": [],
+  "tags": [
+   "floating",
+   "narvik",
+   "arctic",
+   "top-rated",
+   "nordland"
+  ],
+  "contact": {
+   "contactSource": "research_needed"
+  },
+  "brreg_match": "high",
+  "brreg": {
+   "org_number": "934060989",
+   "legal_name": "KLEKSEN AS",
+   "org_form": "AS",
+   "nace": "96.990 Andre personlige tjenester ikke nevnt annet sted",
+   "employees": null,
+   "founded": "2024-08-23",
+   "municipality": "EVENES",
+   "registry_email": null,
+   "registry_website": null,
+   "ceo": "Anders Emanuel Bäckman",
+   "board": [
+    "Hans Anders Bäckman",
+    "Anders Emanuel Bäckman",
+    "Benjamin Erik Bäckman",
+    "Oscar Johan Bäckman",
+    "Isak Wilhelm Bäckman"
+   ],
+   "owners_count": 5,
+   "financials": [
+    {
+     "year": 2025,
+     "revenue_nok": 293849,
+     "ebit_nok": 22583,
+     "result_nok": 17493,
+     "equity_nok": 53782,
+     "debt_nok": 34032
+    }
+   ],
+   "revenue_nok": 293849,
+   "revenue_year": 2025,
+   "ebit_nok": 22583,
+   "yoy_growth_pct": null
+  }
+ },
+ {
+  "id": "varanger-brygge",
+  "vertical": "sauna",
+  "name": "Varanger Brygge",
+  "region": "Northern Norway",
+  "subRegion": "Bugøynes, Finnmark",
+  "type": "Commercial",
+  "format": "Floating / land-based waterfront",
+  "ownershipModel": "Private company",
+  "waterAccess": "Yes — Varangerfjord",
+  "priceRange": "~250–400 NOK",
+  "bookingModel": "Private hire",
+  "yearEst": "c.2020",
+  "notes": "Far northeast; near Russian border. Wood-fired. Extremely remote.",
+  "website": "",
+  "isMultiSite": false,
+  "priority": "low",
+  "stage": "prospect",
+  "outreachNotes": [],
+  "tags": [
+   "floating",
+   "finnmark",
+   "arctic",
+   "remote"
+  ],
+  "contact": {
+   "contactSource": "research_needed"
+  },
+  "brreg_match": "high",
+  "brreg": {
+   "org_number": "929174755",
+   "legal_name": "VARANGER BRYGGE AS",
+   "org_form": "AS",
+   "nace": "55.200 Drift av vandrerhjem og ferieleiligheter",
+   "employees": 9,
+   "founded": "2022-04-06",
+   "municipality": "SØR-VARANGER",
+   "registry_email": null,
+   "registry_website": null,
+   "ceo": null,
+   "board": [
+    "Liv-Reidun Haldorsen",
+    "Pål Haldorsen"
+   ],
+   "owners_count": 2,
+   "financials": [
+    {
+     "year": 2025,
+     "revenue_nok": 4472441,
+     "ebit_nok": -444786,
+     "result_nok": -445591,
+     "equity_nok": -624781,
+     "debt_nok": 1046763
+    }
+   ],
+   "revenue_nok": 4472441,
+   "revenue_year": 2025,
+   "ebit_nok": -444786,
+   "yoy_growth_pct": null
+  }
+ },
+ {
+  "id": "varanger-view",
+  "vertical": "sauna",
+  "name": "Varanger View",
+  "region": "Northern Norway",
+  "subRegion": "Vardø, Finnmark",
+  "type": "Commercial",
+  "format": "Floating / coastal",
+  "ownershipModel": "Private company",
+  "waterAccess": "Yes — Barents Sea",
+  "priceRange": "~250–400 NOK",
+  "bookingModel": "Private hire",
+  "yearEst": "c.2021",
+  "notes": "Vardø — among most remote sauna ops in Norway. Aurora/king-crab season.",
+  "website": "",
+  "isMultiSite": false,
+  "priority": "low",
+  "stage": "prospect",
+  "outreachNotes": [],
+  "tags": [
+   "floating",
+   "finnmark",
+   "arctic",
+   "remote",
+   "aurora"
+  ],
+  "contact": {
+   "contactSource": "research_needed"
+  },
+  "brreg_match": "high",
+  "brreg": {
+   "org_number": "921440138",
+   "legal_name": "VARANGER VIEW AS",
+   "org_form": "AS",
+   "nace": "55.200 Drift av vandrerhjem og ferieleiligheter",
+   "employees": null,
+   "founded": "2018-09-10",
+   "municipality": "VARDØ",
+   "registry_email": null,
+   "registry_website": null,
+   "ceo": "Lone Eriksen Bangsund",
+   "board": [
+    "Lone Eriksen Bangsund",
+    "Bjørn Solmund Bangsund"
+   ],
+   "owners_count": 2,
+   "financials": [
+    {
+     "year": 2025,
+     "revenue_nok": 1231639,
+     "ebit_nok": 368542,
+     "result_nok": 215895,
+     "equity_nok": 480860,
+     "debt_nok": 1315382
+    }
+   ],
+   "revenue_nok": 1231639,
+   "revenue_year": 2025,
+   "ebit_nok": 368542,
+   "yoy_growth_pct": null
+  }
+ },
+ {
+  "id": "ahpi-flytende",
+  "vertical": "sauna",
+  "name": "Áhpi Flytende Badstue",
+  "region": "Northern Norway",
+  "subRegion": "Skjervøy, Troms",
+  "type": "Commercial",
+  "format": "Floating",
+  "ownershipModel": "Private company",
+  "waterAccess": "Yes — Kvænangen fjord",
+  "priceRange": "~200–350 NOK",
+  "bookingModel": "Drop-in + Private hire",
+  "yearEst": "c.2022",
+  "notes": "Deep into Troms county, above Arctic Circle.",
+  "website": "",
+  "isMultiSite": false,
+  "priority": "low",
+  "stage": "prospect",
+  "outreachNotes": [],
+  "tags": [
+   "floating",
+   "troms",
+   "arctic"
+  ],
+  "contact": {
+   "contactSource": "research_needed"
+  },
+  "brreg_match": "high",
+  "brreg": {
+   "org_number": "934934660",
+   "legal_name": "ÁHPI AS",
+   "org_form": "AS",
+   "nace": "79.902 Guide- og reiseledervirksomhet",
+   "founded": "2025-01-02",
+   "municipality": "SKJERVØY",
+   "registry_email": null,
+   "registry_website": null,
+   "ceo": "Adrian Yngvar Hansen",
+   "board": [
+    "Bjørn Nilsen",
+    "Yngvar Hansen"
+   ],
+   "owners_count": 2,
+   "financials": [],
+   "revenue_nok": null,
+   "revenue_year": null,
+   "ebit_nok": null,
+   "yoy_growth_pct": null
+  }
+ },
+ {
+  "id": "bugoynes-opplevelser",
+  "vertical": "sauna",
+  "name": "Bugøynes Opplevelser",
+  "region": "Northern Norway",
+  "subRegion": "Bugøynes, Finnmark",
+  "type": "Commercial",
+  "format": "Land-based barrel (Arctic coastal)",
+  "ownershipModel": "Private company",
+  "waterAccess": "Yes — Varangerfjord",
+  "priceRange": "~250–400 NOK",
+  "bookingModel": "Private hire / Experience package",
+  "yearEst": "c.2020",
+  "notes": "Barrel sauna in far northeast. Most remote barrel experience in Norway.",
+  "website": "",
+  "isMultiSite": false,
+  "priority": "low",
+  "stage": "prospect",
+  "outreachNotes": [],
+  "tags": [
+   "land-based",
+   "barrel",
+   "finnmark",
+   "arctic",
+   "remote"
+  ],
+  "contact": {
+   "contactSource": "research_needed"
+  },
+  "brreg_match": "high",
+  "brreg": {
+   "org_number": "977499186",
+   "legal_name": "BUGØYNES OPPLEVELSER AS",
+   "org_form": "AS",
+   "nace": "55.300 Drift av campingplasser",
+   "employees": null,
+   "founded": "1997-04-15",
+   "municipality": "SØR-VARANGER",
+   "registry_email": "bo-a@online.no",
+   "registry_website": null,
+   "ceo": "Ola Haldorsen",
+   "board": [
+    "Elsa Magdalena Ingilæ Haldorsen",
+    "Pål Haldorsen"
+   ],
+   "owners_count": 2,
+   "financials": [
+    {
+     "year": 2025,
+     "revenue_nok": null,
+     "ebit_nok": -45986,
+     "result_nok": -30242,
+     "equity_nok": 680399,
+     "debt_nok": 880134
+    }
+   ],
+   "revenue_nok": null,
+   "revenue_year": 2025,
+   "ebit_nok": -45986,
+   "yoy_growth_pct": null
+  }
+ },
+ {
+  "id": "svalbad-svalbard",
+  "vertical": "sauna",
+  "name": "SvalBad Svalbard",
+  "region": "Northern Norway",
+  "subRegion": "Longyearbyen, Svalbard",
+  "type": "Commercial",
+  "format": "Floating",
+  "ownershipModel": "Private company",
+  "waterAccess": "Yes — Arctic Ocean (78°N)",
+  "priceRange": "~500+ NOK",
+  "bookingModel": "Private hire",
+  "yearEst": "c.2022",
+  "notes": "78° North. Rarest operating location in Norway. Polar wilderness.",
+  "website": "",
+  "isMultiSite": false,
+  "priority": "medium",
+  "stage": "prospect",
+  "outreachNotes": [],
+  "tags": [
+   "floating",
+   "svalbard",
+   "arctic",
+   "premium",
+   "unique-location"
+  ],
+  "contact": {
+   "contactSource": "research_needed"
+  },
+  "brreg_match": "none",
+  "brreg": null
+ }
+]

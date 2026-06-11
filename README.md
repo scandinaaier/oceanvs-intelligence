@@ -1,6 +1,26 @@
-# OCEANVS Intelligence Platform
+# OCEANVS Intelligence Platform (MI8)
 
 Daily-use acquisition intelligence tool for the Oceanvs senior team and a live presentation surface for family offices and institutional LPs. Covers two verticals (coastal hotels, premium saunas) across seven cities split into two tiers (Active Rollup, Investor-Led).
+
+**MI8** merges the Oceanvs CRM workstream into the platform: a Norway sauna operator registry and a Nordic campsite registry, both with filed financials from Brønnøysundregisteret and a shared acquisition CRM (stages, contacts, outreach log, email composer).
+
+## Roll-Up CRM (new in MI8)
+
+| Screen | Route | What it does |
+| --- | --- | --- |
+| **Sauna Registry** | `/dashboard/saunas` | 69 Norwegian operators (45 matched to the company registry, 38 with filed revenue). Filters: revenue floor (NOK 500k default chip), YoY growth, locations, board size, region, format, stage. Detail view shows filed accounts, CEO/board, unit economics vs the €45k-cabin deck benchmark. |
+| **Campsite Registry** | `/dashboard/campsites` | 4,362 Nordic campsites (1,541 Norway, 2,817 waterfront, 963 with sauna). Filters: country, county, waterfront, beach/sauna, city distance, revenue, NOK/m². Land economics per site (plot m² + asking price → NOK/m² vs county waterfront median → "Underpriced" flag). |
+| **CRM Board** | `/dashboard/crm` | Kanban across both verticals: Prospect → Outreach → Engaged → Meeting → LOI → Acquired/Passed. Every stage change, contact edit and outreach activity is shared via Supabase; the activity log records who contacted whom, when, through which channel. |
+
+### Data sources
+
+- **Brønnøysundregisteret** (free, keyless): entity facts, CEO + board (owners proxy), latest filed annual accounts. Routed through `netlify/functions/brreg.js` because the accounts API has no CORS headers. *The open API only serves the latest filed year* — earlier years are added manually per target (Proff.no) or accumulate as new filings land; YoY growth computes automatically once two years exist.
+- **Seed data**: `public/sauna_seed.json` (regenerate with `node scripts/enrich-brreg.mjs`) and `public/campsite_registry_seed.json` (regenerate with `node scripts/build-campsite-seed.mjs`).
+- **Email templates**: `src/data/emailTemplates.ts` — six outreach templates with token personalisation; sending opens the local mail client and logs the touch automatically.
+
+### Enabling the shared CRM
+
+Until migration `006_rollup_crm.sql` is run in the Supabase SQL editor, the registries run read-only from the bundled seed. After the migration, open each registry once and click **Import** to load the seed into Supabase. `007_email_allowlist.sql` (optional but recommended) enforces the team email allowlist in RLS — after running it, also disable open signups in Supabase Auth settings.
 
 ## Local development
 

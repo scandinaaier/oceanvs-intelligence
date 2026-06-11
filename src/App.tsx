@@ -11,6 +11,9 @@ import { PortfolioBuilder } from './pages/sections/PortfolioBuilder'
 import { GapMarkets } from './pages/sections/GapMarkets'
 import { LmiDetail } from './pages/sections/LmiDetail'
 import { SignalLog } from './pages/sections/SignalLog'
+import { SaunaRegistry } from './pages/sections/SaunaRegistry'
+import { CampsiteRegistry } from './pages/sections/CampsiteRegistry'
+import { CrmBoard } from './pages/sections/CrmBoard'
 
 const RequireAuth: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { email, loading } = useAuth()
@@ -43,6 +46,9 @@ const App: React.FC = () => (
         <Route path="operators" element={<AcquisitionPipeline />} />
         <Route path="portfolio" element={<PortfolioBuilder />} />
         <Route path="signals" element={<SignalLog />} />
+        <Route path="saunas" element={<SaunaRegistry />} />
+        <Route path="campsites" element={<CampsiteRegistry />} />
+        <Route path="crm" element={<CrmBoard />} />
         <Route path="gaps" element={<GapMarkets />} />
         <Route path="lmi" element={<LmiDetail />} />
       </Route>
