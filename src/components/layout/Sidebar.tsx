@@ -11,6 +11,7 @@ const PRIMARY_NAV = [
 const ROLLUP_NAV = [
   { to: '/dashboard/saunas', label: 'Sauna Registry' },
   { to: '/dashboard/campsites', label: 'Campsite Registry' },
+  { to: '/dashboard/deployment', label: 'Cabin Deployment' },
   { to: '/dashboard/crm', label: 'CRM Board' },
 ]
 

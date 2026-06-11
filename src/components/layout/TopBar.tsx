@@ -4,7 +4,7 @@ import { useAuth } from '../../state/AuthContext'
 import { CITIES } from '../../data/mock/cities'
 
 export const TopBar: React.FC = () => {
-  const { city, vertical, setCity } = useApp()
+  const { city, setCity } = useApp()
   const { signOut, email } = useAuth()
 
   const onSignOut = async () => {
@@ -19,32 +19,29 @@ export const TopBar: React.FC = () => {
         <span className="eyebrow text-[9px]">Intelligence</span>
       </div>
 
+      {/* Investor-led hotel cities were removed in MI8 — the platform is
+          focused on the Nordic sauna roll-up and campsite acquisitions.
+          (Mock data for Malta / Porto Heli / Osaka remains in the repo.) */}
       <div className="flex items-center gap-1 flex-1 overflow-x-auto">
-        {CITIES.map(c => {
+        {CITIES.filter(c => c.tier === 'ACTIVE_ROLLUP').map(c => {
           const active = c.key === city
-          const tierLabel = c.tier === 'ACTIVE_ROLLUP' ? 'ACTIVE' : 'INVESTOR-LED'
           return (
             <button
               key={c.key}
               onClick={() => setCity(c.key)}
-              className={`flex flex-col items-center px-3 py-1.5 rounded-full text-xs transition whitespace-nowrap ${
+              className={`px-3 py-1.5 rounded-full text-xs font-medium transition whitespace-nowrap ${
                 active ? 'bg-accent-primary text-white' : 'hover:bg-surface-alt text-text-primary'
               }`}
             >
-              <span className="font-medium leading-tight">{c.name}</span>
-              <span className={`text-[8.5px] tracking-widest leading-tight mt-0.5 ${active ? 'text-white/70' : 'text-text-muted'}`}>
-                {tierLabel}
-              </span>
+              {c.name}
             </button>
           )
         })}
       </div>
 
-      {/* The vertical follows the selected city's tier — Nordic roll-up
-          cities show the sauna play, investor-led cities show HOW. */}
       <div className="shrink-0 bg-surface-alt rounded-full px-3 py-1.5">
         <span className="text-[11px] uppercase tracking-widest text-text-muted">
-          {vertical === 'COASTAL_HOTELS' ? 'HOW Deployment' : 'Sauna Roll-Up'}
+          Sauna &amp; Campsite Roll-Up
         </span>
       </div>
 
