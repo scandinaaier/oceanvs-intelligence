@@ -16,9 +16,12 @@ create table if not exists public.authorized_emails (
   added_at    timestamptz default now()
 );
 
+-- Emails verified against auth.users on 11 June 2026 — these are the
+-- actual team logins (the @oceanvs.com addresses in older docs were
+-- never registered and would have locked everyone out).
 insert into public.authorized_emails (email) values
-  ('tauriq@oceanvs.com'),
-  ('andy@oceanvs.com')
+  ('hello@tauriqadams.com'),
+  ('andy@noovoworld.com')
 on conflict (email) do nothing;
 
 alter table public.authorized_emails enable row level security;

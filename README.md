@@ -20,7 +20,7 @@ Daily-use acquisition intelligence tool for the Oceanvs senior team and a live p
 
 ### Enabling the shared CRM
 
-Until migration `006_rollup_crm.sql` is run in the Supabase SQL editor, the registries run read-only from the bundled seed. After the migration, open each registry once and click **Import** to load the seed into Supabase. `007_email_allowlist.sql` (optional but recommended) enforces the team email allowlist in RLS — after running it, also disable open signups in Supabase Auth settings.
+Migrations `006_rollup_crm.sql` and `007_email_allowlist.sql` were applied to the live Supabase project on 11 June 2026, and both registries were seeded (69 saunas, 4,362 campsites). On a fresh database: run 006 + 007 in the SQL editor, then open each registry and click **Import** (or run `node scripts/build-import-sql.mjs` and execute the generated SQL). The allowlist in `authorized_emails` controls CRM access — keep it in sync with the team's actual login emails, and keep open signups disabled in Supabase Auth settings.
 
 ## Local development
 
