@@ -2,10 +2,9 @@ import React from 'react'
 import { useApp } from '../../state/AppContext'
 import { useAuth } from '../../state/AuthContext'
 import { CITIES } from '../../data/mock/cities'
-import type { Vertical } from '../../types'
 
 export const TopBar: React.FC = () => {
-  const { city, vertical, setCity, setVertical } = useApp()
+  const { city, vertical, setCity } = useApp()
   const { signOut, email } = useAuth()
 
   const onSignOut = async () => {
@@ -41,22 +40,12 @@ export const TopBar: React.FC = () => {
         })}
       </div>
 
-      <div className="flex items-center gap-1 shrink-0 bg-surface-alt rounded-full p-1">
-        {(['COASTAL_HOTELS', 'PREMIUM_SAUNAS'] as Vertical[]).map(v => {
-          const active = v === vertical
-          const label = v === 'COASTAL_HOTELS' ? 'Coastal Hotels' : 'Premium Saunas'
-          return (
-            <button
-              key={v}
-              onClick={() => setVertical(v)}
-              className={`px-3 py-1.5 rounded-full text-[11px] uppercase tracking-widest transition ${
-                active ? 'bg-accent-primary text-white' : 'text-text-muted hover:text-text-primary'
-              }`}
-            >
-              {label}
-            </button>
-          )
-        })}
+      {/* The vertical follows the selected city's tier — Nordic roll-up
+          cities show the sauna play, investor-led cities show HOW. */}
+      <div className="shrink-0 bg-surface-alt rounded-full px-3 py-1.5">
+        <span className="text-[11px] uppercase tracking-widest text-text-muted">
+          {vertical === 'COASTAL_HOTELS' ? 'HOW Deployment' : 'Sauna Roll-Up'}
+        </span>
       </div>
 
       <div className="flex items-center gap-2 shrink-0">
