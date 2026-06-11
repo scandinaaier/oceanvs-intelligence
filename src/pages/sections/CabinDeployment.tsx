@@ -4,6 +4,7 @@ import { fetchCampsiteTargets } from '../../api/rollup'
 import { Skeleton } from '../../components/common/Skeleton'
 import { TargetDetailModal } from '../../components/rollup/TargetDetailModal'
 import { StagePill, SeedModeBanner, Stat, FilterChip, FilterSelect } from '../../components/rollup/shared'
+import { CITIES } from '../../data/mock/cities'
 
 // Sauna Club deck benchmarks (June 2026): €45k build per cabin,
 // €60k/yr revenue at <60% utilization, ~€100k potential at 80% +
@@ -178,6 +179,25 @@ export const CabinDeployment: React.FC = () => {
               </button>
             ))}
           </div>
+        </div>
+      </div>
+
+      {/* International partner markets — cabin deployment beyond Norway,
+          all three in active dialogue (Sauna Club deck, June 2026) */}
+      <div className="card px-5 py-4 flex items-center gap-4 flex-wrap">
+        <div className="min-w-0">
+          <span className="eyebrow">International Partner Markets</span>
+          <p className="text-xs text-text-muted mt-1">
+            Cabin deployment beyond Norway — partnership dialogues in progress. Select a market in the top bar for its deployment context.
+          </p>
+        </div>
+        <div className="flex gap-2 ml-auto flex-wrap">
+          {CITIES.filter(c => c.tier === 'INVESTOR_LED').map(c => (
+            <span key={c.key} className="flex items-center gap-2 bg-[var(--surface-alt)] rounded-full px-3 py-1.5">
+              <span className="text-xs font-medium text-text-primary">{c.name}</span>
+              <span className="text-[9px] uppercase tracking-widest px-1.5 py-0.5 rounded-full bg-accent-primary/15 text-accent-primary">In Dialogue</span>
+            </span>
+          ))}
         </div>
       </div>
 
